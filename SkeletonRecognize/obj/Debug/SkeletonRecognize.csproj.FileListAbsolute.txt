@@ -1,0 +1,15 @@
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\bin\Debug\SkeletonRecognize.exe.config
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.csprojResolveAssemblyReference.cache
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\MainWindow.baml
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\MainWindow.g.cs
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\App.g.cs
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize_MarkupCompile.cache
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.g.resources
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.Properties.Resources.resources
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.csproj.GenerateResource.Cache
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\bin\Debug\SkeletonRecognize.exe
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\bin\Debug\SkeletonRecognize.pdb
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.exe
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\obj\Debug\SkeletonRecognize.pdb
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\bin\Debug\Coding4Fun.Kinect.Wpf.dll
+D:\Code\C#\ConsoleApplication\SkeletonRecognize\bin\Debug\Microsoft.Expression.Drawing.dll
