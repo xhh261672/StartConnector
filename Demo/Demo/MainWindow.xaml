@@ -1,0 +1,50 @@
+﻿<Window x:Class="Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="1024">
+    <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3">
+        <!--Player Side-->
+        <Image x:FieldModifier="public" x:Name="Player" Height="100" Width="100" Margin="500, 320" RenderTransformOrigin="0.5,0.75">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform x:Name="rotatePlayer" Angle="0"/>
+                    <TranslateTransform X="-45" Y="15"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image Name="Net" Height="130" Width="400" Margin="300, 430">
+
+        </Image>
+
+        <TextBox x:Name="Score" Margin="10, 10" Width="100" Height="20"
+                 ></TextBox>
+        <!--Footballs-->
+        <Image Name="Football0" Height="60" Width="60" Margin="10, 270">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="rotateFootball0" Angle="0" />
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="Football1" Height="60" Width="60" Margin="30, 30"></Image>
+        <Image x:Name="Football2" Height="60" Width="60" Margin="470, 10"></Image>
+        <Image x:Name="Football3" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="910" Right="30" Top="30"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image Name="Football4" Height="60" Width="60" >
+            <Image.Margin>
+                <Thickness Right="10" Top="30"></Thickness>
+            </Image.Margin>
+        </Image>
+
+        <Image Name="Football5" Height="60" Width="60"></Image>
+        <Image Name="Football6" Height="60" Width="60"></Image>
+        <Image Name="Football7" Height="60" Width="60"></Image>
+        <Image Name="Football8" Height="60" Width="60"></Image>
+        <Image Name="Football9" Height="60" Width="60" Margin="910, 290"></Image>
+
+    </Canvas>
+</Window>
