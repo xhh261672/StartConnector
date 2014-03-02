@@ -15,36 +15,67 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image Name="Net" Height="130" Width="400" Margin="300, 430">
-
+        <Image Name="Net" Source="Images/net.png" Height="130" Width="400">
+            <Image.Margin>
+                <Thickness Left="300" Top="430"></Thickness>
+            </Image.Margin>
         </Image>
 
-        <TextBox x:Name="Score" Margin="10, 10" Width="100" Height="20"
-                 ></TextBox>
+        <TextBox x:Name="ScoreText" Margin="10, 10" Width="100" Height="20" IsReadOnly="True"></TextBox>
         <!--Footballs-->
-        <Image Name="Football0" Height="60" Width="60" Margin="10, 270">
+        <Image x:Name="Football0" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="30" Top="150"></Thickness>
+            </Image.Margin>
             <Image.RenderTransform>
                 <RotateTransform x:Name="rotateFootball0" Angle="0" />
             </Image.RenderTransform>
         </Image>
-        <Image Name="Football1" Height="60" Width="60" Margin="30, 30"></Image>
-        <Image x:Name="Football2" Height="60" Width="60" Margin="470, 10"></Image>
+        <Image x:Name="Football1" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="240" Top="30"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image x:Name="Football2" Height="60" Width="60" >
+            <Image.Margin>
+                <Thickness Left="470" Top="5"></Thickness>
+            </Image.Margin>
+        </Image>
         <Image x:Name="Football3" Height="60" Width="60">
             <Image.Margin>
-                <Thickness Left="910" Right="30" Top="30"></Thickness>
+                <Thickness Left="700" Top="30"></Thickness>
             </Image.Margin>
         </Image>
-        <Image Name="Football4" Height="60" Width="60" >
+        <Image x:Name="Football4" Height="60" Width="60" >
             <Image.Margin>
-                <Thickness Right="10" Top="30"></Thickness>
+                <Thickness Left="910" Top="150"></Thickness>
             </Image.Margin>
         </Image>
 
-        <Image Name="Football5" Height="60" Width="60"></Image>
-        <Image Name="Football6" Height="60" Width="60"></Image>
-        <Image Name="Football7" Height="60" Width="60"></Image>
-        <Image Name="Football8" Height="60" Width="60"></Image>
-        <Image Name="Football9" Height="60" Width="60" Margin="910, 290"></Image>
-
+        <Image x:Name="Football5" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="30" Top="150"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image x:Name="Football6" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="240" Top="30"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image x:Name="Football7" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="470" Top="5"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image x:Name="Football8" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="700" Top="30"></Thickness>
+            </Image.Margin>
+        </Image>
+        <Image x:Name="Football9" Height="60" Width="60">
+            <Image.Margin>
+                <Thickness Left="910" Top="150"></Thickness>
+            </Image.Margin>
+        </Image>
     </Canvas>
 </Window>

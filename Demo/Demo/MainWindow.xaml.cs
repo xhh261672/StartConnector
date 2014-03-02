@@ -20,93 +20,164 @@ namespace Demo
     using System.Windows.Threading;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-    /// <summary>
-    /// MainWindow.xaml logic
-    /// </summary>
-    
+
+    using System.IO;
+    public class Football
+    {
+        public Image img;
+        public int gId;   // generate order
+        public int qId;   // queue id
+        public double xV; // x dir velocity 
+        public double yV; // y dir velocity
+        public int perms; // wait time
+        public BallState state;
+        //public MainWindow thisWindow = new MainWindow();
+        public void MoveBall(double xVelocity, double yVelocity)
+        {
+            //Console.WriteLine("moveBall thread called");
+
+            double xPos = Canvas.GetLeft(this.img);
+            double yPos = Canvas.GetTop(this.img);
+
+
+            if (Double.IsNaN(xPos) && Double.IsNaN(yPos))
+            {
+                Canvas.SetLeft(this.img, GameData.startPoint.X);
+                Canvas.SetTop(this.img, GameData.startPoint.Y);
+            }
+            else
+            {
+                xPos += xVelocity;
+                yPos += yVelocity;
+
+                Canvas.SetLeft(this.img, xPos);
+                Canvas.SetTop(this.img, yPos);
+            }
+
+            Point disPoint = this.img.TranslatePoint(new Point(0, 0), new MainWindow().canvas);
+            double distance = Math.Sqrt(disPoint.X * disPoint.X + disPoint.Y * disPoint.Y);
+            //Point ds = img.PointFromScreen(disPoint);
+            //Console.WriteLine(ds.X + " : " + ds.Y);
+            //Point playerPoint = new Point(500, 320);
+            //Point ballPoint = new Point(xPos + Canvas.GetLeft(img), yPos + Canvas.GetTop(img));
+            //double distance = Math.Sqrt((playerPoint.X - ballPoint.X) * (playerPoint.X - ballPoint.X)
+               // + (playerPoint.Y - ballPoint.Y) * (playerPoint.Y - ballPoint.Y));
+            if (distance > 0 && distance < 40)
+            {
+                ++GameData.getScore;
+                ReleaseImage(img);
+            }
+        }
+
+        private void ReleaseImage(Image img)
+        {
+            img.Source = null;
+        }
+
+        // when a ball was hit or in doorframe, release the image resource
+        private void releaseImage(Image img)
+        {
+            img.Source = null;
+            Canvas.SetLeft(img, GameData.startPoint.X);
+            Canvas.SetTop(img, GameData.startPoint.Y);
+        }
+    }
 
     public partial class MainWindow : Window
     {
         // class members
         bool isRendering = false;
-
-        // This ListQueue can be removed
-        List<Queue<Football>> balls = new List<Queue<Football>>();
         
         // Replace by int queue
-        Queue<int> ballsGid = new Queue<int>(5);
-        
-        List<Football> queBalls = new List<Football>();
-        static public Point[] startPoint = new Point[5]; 
+        static Queue<int> ballsGid = new Queue<int>();
+        static Queue<Thread> ballsThread = new Queue<Thread>();
+
+        List<Football> balls = new List<Football>();
         static Random rand = new Random();
-        static int totalCount = 0;
-        // static int getScore = 0;
 
         Football ball3 = new Football();
-
         // five ball move threads
-        Queue<Thread> ballMoveThread;
 
-
-
+        
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LoadNetImage();
+            // Initialization
             LoadPlayerImage();
+            InitBalls();
 
+            // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
             RunBackWorker();
 
             // regist keydown event to control angle of player's orientation
-            this.KeyDown += this.controlAngle;
-
+            this.KeyDown += new KeyEventHandler(this.controlAngle);
 
             this.Football3.Source = CreateNewball();
             ball3.img = this.Football3;
             
         }
-
-        //public class Params
-        //{
-        //    double xv;
-        //    double yv;
-        //    int e;
-
-        //    public Params(double _xv, double _yv, int _e)
-        //    {
-        //        xv = _xv;
-        //        yv = _yv;
-        //        e = _e;
-        //    }
-        //}
-        private void CreateBallMoveThread()
+        
+        private void InitBalls()
         {
-            ballMoveThread = new Queue<Thread>();
-            //Params par = new Params(30, 18, 2);
-            ThreadStart starter = delegate { this.BallMoveThread(-30, 18, 3); };
-            Thread t = new Thread(new ThreadStart(starter));
-            t.Start();
-            //ballMoveThread.Enqueue()
+            for (int i = 0; i < 10; i++)
+                balls.Add(new Football());
 
+            // set images
+            balls[0].img = this.Football0;
+            balls[1].img = this.Football1;
+            balls[2].img = this.Football2;
+            balls[3].img = this.Football3;
+            balls[4].img = this.Football4;
+            balls[5].img = this.Football5;
+            balls[6].img = this.Football6;
+            balls[7].img = this.Football7;
+            balls[8].img = this.Football8;
+            balls[9].img = this.Football9;
+
+            // set velocities
+            balls[0].xV = balls[5].xV = GameData.velocities[0].X;
+            balls[0].yV = balls[5].yV = GameData.velocities[0].Y;
+            balls[1].xV = balls[5].xV = GameData.velocities[1].X;
+            balls[1].yV = balls[5].yV = GameData.velocities[1].Y;
+            balls[2].xV = balls[5].xV = GameData.velocities[2].X;
+            balls[2].yV = balls[5].yV = GameData.velocities[2].Y;
+            balls[3].xV = balls[5].xV = GameData.velocities[3].X;
+            balls[3].yV = balls[5].yV = GameData.velocities[3].Y;
+            balls[4].xV = balls[5].xV = GameData.velocities[4].X;
+            balls[4].yV = balls[5].yV = GameData.velocities[4].Y;
         }
 
-        delegate void BallMoveDelegate(double xVelocity, double yVelocity, int exit);
 
-        private void BallMoveThread(double xV, double yV, int e)
+        
+
+        private void CreateBallMoveThread()
         {
-            BallMoveDelegate bmd = new BallMoveDelegate(ball3.MoveBall);
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, bmd, xV, yV, e);
+            var dequeBalls =
+                from ball in balls
+                where ball.img.Source != null
+                select ball;
+            foreach (Football ball in dequeBalls) 
+            {
+                BallMoveThread(ball, ball.xV, ball.yV);            
+            }
+            
+        }
+
+        delegate void BallMoveDelegate(double xVelocity, double yVelocity);
+
+        private void BallMoveThread(Football theBall, double xV, double yV)
+        {
+            //Console.WriteLine("Ball move thread called");
+            BallMoveDelegate bmd = new BallMoveDelegate(theBall.MoveBall);
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, bmd, xV, yV);
         }
 
         // Load basic pictures
-        private void LoadNetImage()
-        {
-            string netImgUrl = @"Images/net.png";
-            this.Net.Source = new BitmapImage(new Uri(netImgUrl, UriKind.Relative));
-        }
+        
+        
 
         private void LoadPlayerImage()
         {
@@ -119,30 +190,6 @@ namespace Demo
             return new BitmapImage(new Uri(@"Images/football.png", UriKind.Relative));
         }
 
-        // set the start points
-        private void SetStartPoints()
-        {
-            startPoint[0] = new Point(10, 270);
-            startPoint[1] = new Point(30, 30);
-            startPoint[2] = new Point(470, 10);
-            startPoint[3] = new Point(910, 30);
-            startPoint[4] = new Point(910, 270);
-        }
-
-
-        private void Rendering(object sender, EventArgs e)
-        {
-            if (isRendering)
-            {
-                Console.WriteLine("rendering");
-                isRendering = false;
-
-                CreateBallMoveThread();
-
-                //ball1.MoveBall(30, 17, 1);
-                
-            }
-        }
 
         private void RunBackWorker()
         {
@@ -151,6 +198,22 @@ namespace Demo
             bw.RunWorkerAsync();
         }
 
+        private void Rendering(object sender, EventArgs e)
+        {
+            if (isRendering)
+            {
+                //Point disPoint = this.ball3.img.TranslatePoint(new Point(), this.Player);
+                //double distance = Math.Sqrt(disPoint.X * disPoint.X + disPoint.Y * disPoint.Y);
+
+                isRendering = false;
+
+                this.ScoreText.Text = GameData.getScore.ToString();                
+                CreateBallMoveThread();                
+            
+            }
+        }
+
+
         private void BackWork(object sender, DoWorkEventArgs e)
         {
             while (true)
@@ -158,6 +221,7 @@ namespace Demo
                 Thread.Sleep(100);
                 isRendering = true;
             }
+
         }
 
 
@@ -167,47 +231,35 @@ namespace Demo
             switch(e.Key)
             {
                 case Key.A:
-                    rotatePlayer.Angle = 275.7;
+                    rotatePlayer.Angle = 290;
                     // this.Player.Source = null;
                     break;
                 case Key.S:
-                    rotatePlayer.Angle = 299.25;
+                    rotatePlayer.Angle = 325;
                     break;
                 case Key.D:
                     rotatePlayer.Angle = 0;
                     break;
                 case Key.F:
-                    rotatePlayer.Angle = 60.75;
+                    rotatePlayer.Angle = 35;
                     break;
                 case Key.G:
-                    rotatePlayer.Angle = 84.30;
+                    rotatePlayer.Angle = 70;
                     break;
                 default:
                     break;
             }
         }
     
-
-        private void ConnectImagesAndBalls()
-        {
-            
-        }
-
-        private void InitBallsList()
-        {
-            for (int i = 0; i < 5; i++)
-                balls.Add(new Queue<Football>());
-        }
-
         private void GenerateBalls()
         {
             // create some new balls
             int newBallsCount = rand.Next(2, 4);
-            totalCount += newBallsCount;
+            GameData.totalCount += newBallsCount;
 
             // find the null image to assign new image source
             //for (int i = 0; i < queBalls.Count; i++)
-            foreach (Football ball in queBalls)
+            foreach (Football ball in balls)
             {
                 if (null == ball.img.Source)
                 {
@@ -216,7 +268,8 @@ namespace Demo
                     // enqueue new balls
                     ball.state = BallState.EQUE;
                     int randId = rand.Next(0, 5);
-                    balls[randId].Enqueue(ball);
+                    //balls[randId].Enqueue(ball);
+                    ballsGid.Enqueue(randId);
                 }
             }
             // set position and move ball            
