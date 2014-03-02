@@ -33,7 +33,7 @@ namespace Demo
     {
         public Image img;
         public int gId;   // generate order
-        public int qId;   // queue id
+        public int eId;   // queue id
         public double xV; // x dir velocity 
         public double yV; // y dir velocity
         public int perms; // wait time
@@ -66,13 +66,17 @@ namespace Demo
             if (distance > 0 && distance < 40)
             {
                 ++GameData.getScore;
-                ReleaseImage(img);
+                this.ReleaseImage();
             }
         }
 
-        private void ReleaseImage(Image img)
+        private void ReleaseImage()
         {
-            img.Source = null;
+            this.img.Source = null;
+            Canvas.SetLeft(this.img, 0);
+            Canvas.SetTop(this.img, 0);
+            // this.state = BallState.NONE;
+
         }
 
         // when a ball was hit or in doorframe, release the image resource

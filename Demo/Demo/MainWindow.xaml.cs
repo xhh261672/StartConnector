@@ -30,14 +30,12 @@ namespace Demo
         bool isRendering = false;
         
         // Replace by int queue
-        static Queue<int> ballsGid = new Queue<int>();
-        static Queue<Thread> ballsThread = new Queue<Thread>();
+        static Queue<Football> enqueBalls = new Queue<Football>();
 
         List<Football> balls = new List<Football>();
         static Random rand = new Random();
 
-        Football ball4 = new Football();
-        Football ball1 = new Football();
+        
         // five ball move threads
 
         
@@ -50,18 +48,28 @@ namespace Demo
             LoadPlayerImage();
             InitBalls();
 
+
+            GenerateBalls();
+            while (enqueBalls.Count > 0)
+            {
+                GameData.Clock(2);
+                DeueBalls();
+            }
+
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
             RunBackWorker();
 
             // regist keydown event to control angle of player's orientation
             this.KeyDown += new KeyEventHandler(this.controlAngle);
+            
+            
+            //balls[3].img.Source = CreateBallImg();
+            //balls[2].img.Source = CreateNewball();
+            //balls[1].img.Source = CreateNewball();
+            //balls[4].img.Source = CreateNewball();
+            //balls[0].img.Source = CreateNewball();
 
-            this.Football4.Source = CreateNewball();
-            ball4.img = this.Football4;
-
-            //this.Football1.Source = CreateNewball();
-            //ball1.img = this.Football1;
 
         }
         
@@ -83,16 +91,11 @@ namespace Demo
             balls[9].img = this.Football9;
 
             // set velocities
-            balls[0].xV = balls[5].xV = GameData.velocities[0].X;
-            balls[0].yV = balls[5].yV = GameData.velocities[0].Y;
-            balls[1].xV = balls[5].xV = GameData.velocities[1].X;
-            balls[1].yV = balls[5].yV = GameData.velocities[1].Y;
-            balls[2].xV = balls[5].xV = GameData.velocities[2].X;
-            balls[2].yV = balls[5].yV = GameData.velocities[2].Y;
-            balls[3].xV = balls[5].xV = GameData.velocities[3].X;
-            balls[3].yV = balls[5].yV = GameData.velocities[3].Y;
-            balls[4].xV = balls[5].xV = GameData.velocities[4].X;
-            balls[4].yV = balls[5].yV = GameData.velocities[4].Y;
+            for (int i = 0; i < 10; i++)
+            {
+                balls[i].xV = GameData.velocities[i % 5].X;
+                balls[i].yV = GameData.velocities[i % 5].Y;
+            }
         }
 
 
@@ -102,27 +105,15 @@ namespace Demo
         {
             var dequeBalls =
                 from ball in balls
-                where ball.img.Source != null
+                where ball.img != null && ball.state == BallState.DQUE
                 select ball;
             foreach (Football ball in dequeBalls) 
             {
-                //BallMoveThread(ball, ball.xV, ball.yV);            
                 ball.MoveBall(ball.xV, ball.yV);
             }
             
         }
-
-        //delegate void BallMoveDelegate(double xVelocity, double yVelocity);
-
-        //private void BallMoveThread(Football theBall, double xV, double yV)
-        //{
-        //    BallMoveDelegate bmd = new BallMoveDelegate(theBall.MoveBall);
-        //    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, bmd, xV, yV);
-        //}
-
-        // Load basic pictures
-        
-        
+               
 
         private void LoadPlayerImage()
         {
@@ -130,7 +121,7 @@ namespace Demo
             this.Player.Source = new BitmapImage(new Uri(playerImgUrl, UriKind.Relative));
         }
 
-        private BitmapImage CreateNewball()
+        private BitmapImage CreateBallImg()
         {
             return new BitmapImage(new Uri(@"Images/football.png", UriKind.Relative));
         }
@@ -195,25 +186,27 @@ namespace Demo
         private void GenerateBalls()
         {
             // create some new balls
-            int newBallsCount = rand.Next(2, 4);
-            GameData.totalCount += newBallsCount;
+            int generateCount = rand.Next(3, 6);
+            GameData.totalCount += generateCount;
 
-            // find the null image to assign new image source
-            foreach (Football ball in balls)
+            for (int i = 0; i < generateCount; i++)
             {
-                if (null == ball.img.Source)
-                {
-                    ball.img.Source = CreateNewball();
-
-                    // enqueue new balls
-                    ball.state = BallState.EQUE;
-                    int randId = rand.Next(0, 5);
-                    //balls[randId].Enqueue(ball);
-                    ballsGid.Enqueue(randId);
-                }
+                Football theBall = new Football();
+                theBall.eId = rand.Next(0, 5);
+                //theBall.img.Source = CreateBallImg();
+                balls[theBall.eId].state = BallState.EQUE;
+                balls[theBall.eId].img.Source = CreateBallImg();
+                enqueBalls.Enqueue(theBall);
             }
             // set position and move ball            
             // ...
+        }
+
+        private void DeueBalls()
+        {
+            Football exitBall = enqueBalls.Dequeue();
+            //exitBall.state = BallState.DQUE;
+            balls[exitBall.eId].state = BallState.DQUE;
         }
     }
 }
