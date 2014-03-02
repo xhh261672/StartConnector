@@ -9,7 +9,12 @@ namespace Demo
     using System.Windows;
     class GameData
     {
-        static public void Clock(int seconds)
+        public static double CalcDistance(Point From, Point To)
+        {
+            return Math.Sqrt((From.X - To.X) * (From.X - To.X)
+                + (From.Y - To.Y) * (From.Y - To.Y));
+        }
+        public static void Clock(int seconds)
         {
             int endTickCount = System.Environment.TickCount + (seconds * 1000);
             while (System.Environment.TickCount < endTickCount) ;
@@ -18,9 +23,9 @@ namespace Demo
         public static Point[] velocities = new Point[]
         {
             new Point(20, 8),
-            new Point(15, 24),
+            new Point(21, 24),
             new Point(0, 15),
-            new Point(-15, 24),
+            new Point(-21, 24),
             new Point(-20, 8)
 
         };
