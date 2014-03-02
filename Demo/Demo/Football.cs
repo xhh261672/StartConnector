@@ -75,7 +75,7 @@ namespace Demo
             this.img.Source = null;
             Canvas.SetLeft(this.img, 0);
             Canvas.SetTop(this.img, 0);
-            // this.state = BallState.NONE;
+            this.state = BallState.NONE;
 
         }
 

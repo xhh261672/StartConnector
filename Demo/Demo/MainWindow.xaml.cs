@@ -20,14 +20,18 @@ namespace Demo
     using System.Windows.Threading;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-
     using System.IO;
     
+    // Reference
+    using Microsoft.Kinect;
+    using Coding4Fun.Kinect.Wpf;
 
     public partial class MainWindow : Window
     {
         // class members
         bool isRendering = false;
+        bool isBackGestureActive = false;
+        bool isForwardGestureActive = false;
         
         // Replace by int queue
         static Queue<Football> enqueBalls = new Queue<Football>();
@@ -35,10 +39,10 @@ namespace Demo
         List<Football> balls = new List<Football>();
         static Random rand = new Random();
 
-        
-        // five ball move threads
 
-        
+        KinectSensor kinect;
+        Skeleton[] skeletonData;
+
 
         public MainWindow()
         {
@@ -52,7 +56,6 @@ namespace Demo
             GenerateBalls();
             while (enqueBalls.Count > 0)
             {
-                GameData.Clock(2);
                 DeueBalls();
             }
 
@@ -62,17 +65,128 @@ namespace Demo
 
             // regist keydown event to control angle of player's orientation
             this.KeyDown += new KeyEventHandler(this.controlAngle);
-            
-            
-            //balls[3].img.Source = CreateBallImg();
-            //balls[2].img.Source = CreateNewball();
-            //balls[1].img.Source = CreateNewball();
-            //balls[4].img.Source = CreateNewball();
-            //balls[0].img.Source = CreateNewball();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            kinect = (from sensor in KinectSensor.KinectSensors
+                      where sensor.Status == KinectStatus.Connected
+                      select sensor).FirstOrDefault();
+            kinect.SkeletonStream.Enable();
+            kinect.SkeletonFrameReady +=
+                new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
+            kinect.Start();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            kinect.Stop();
+        }
+
+        private void SkeletonFrame_Ready(object sender,
+            SkeletonFrameReadyEventArgs e)
+        {
+            using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame())
+            {
+                if (null != skeletonFrame)
+                {
+                    skeletonData =
+                        new Skeleton[
+                            kinect.SkeletonStream.FrameSkeletonArrayLength];
+                    skeletonFrame.CopySkeletonDataTo(this.skeletonData);
+                    Skeleton skeleton =
+                        (from s in skeletonData
+                         where s.TrackingState == SkeletonTrackingState.Tracked
+                         select s).FirstOrDefault();
+                    if (null != skeleton)
+                    {
+                        canvas.Visibility = Visibility.Visible;
+                        ProcessGesture(skeleton);
+                    }
+                }
+            }
+        }
+
+        private void ProcessGesture(Skeleton s)
+        {
+            Joint leftHand = (from j in s.Joints
+                              where j.JointType == JointType.HandLeft
+                              select j).FirstOrDefault();
+            Joint rightHand = (from j in s.Joints
+                               where j.JointType == JointType.HandRight
+                               select j).FirstOrDefault();
+            Joint head = (from j in s.Joints
+                          where j.JointType == JointType.Head
+                          select j).FirstOrDefault();
+
+
+            /*Control */
+            var tempPosition = rightHand.ScaleTo(1024, 600);
+            //Console.WriteLine("X: {0}", tempPosition.Position.X);
+            //Console.WriteLine("Y: {0}", tempPosition.Position.Y);
+            if (rightHand.Position.X > head.Position.X + 0.45)
+            {
+
+                if (!isBackGestureActive && !isForwardGestureActive)
+                {
+                    isForwardGestureActive = true;
+                    System.Windows.Forms.SendKeys.SendWait("{G}");
+                }
+            }
+            else
+            {
+                isForwardGestureActive = false;
+            }
+
+            if (leftHand.Position.X < head.Position.X - 0.45)
+            {
+                if (!isBackGestureActive && !isForwardGestureActive)
+                {
+                    isBackGestureActive = true;
+                    System.Windows.Forms.SendKeys.SendWait("{A}");
+                }
+            }
+            else
+            {
+                isBackGestureActive = false;
+            }
+
+            SetEllipsePosition(ellipseHead, head, false);
+            SetEllipsePosition(ellipseLeftHand, leftHand, isBackGestureActive);
+            SetEllipsePosition(ellipseRightHand, rightHand, isForwardGestureActive);
 
 
         }
-        
+
+        private void SetEllipsePosition(Ellipse ellipse,
+            Joint joint, bool isHighlighted)
+        {
+
+
+            joint.ScaleTo(640, 480);
+
+
+
+            ColorImagePoint colorImagePoint =
+                kinect.CoordinateMapper.MapSkeletonPointToColorPoint(joint.Position,
+                ColorImageFormat.RgbResolution640x480Fps30);
+            if (isHighlighted)
+            {
+                ellipse.Width = 60;
+                ellipse.Height = 60;
+                ellipse.Fill = Brushes.Red;
+            }
+            else
+            {
+                ellipse.Width = 20;
+                ellipse.Height = 20;
+                ellipse.Fill = Brushes.Blue;
+            }
+            Canvas.SetLeft(ellipse, colorImagePoint.X - ellipse.ActualWidth / 2);
+            Canvas.SetTop(ellipse, colorImagePoint.Y - ellipse.ActualHeight / 2);
+        }
+
         private void InitBalls()
         {
             for (int i = 0; i < 10; i++)
@@ -105,13 +219,12 @@ namespace Demo
         {
             var dequeBalls =
                 from ball in balls
-                where ball.img != null && ball.state == BallState.DQUE
+                where (ball.img != null && ball.state == BallState.DQUE)
                 select ball;
             foreach (Football ball in dequeBalls) 
             {
                 ball.MoveBall(ball.xV, ball.yV);
             }
-            
         }
                
 
@@ -208,5 +321,7 @@ namespace Demo
             //exitBall.state = BallState.DQUE;
             balls[exitBall.eId].state = BallState.DQUE;
         }
+
+
     }
 }

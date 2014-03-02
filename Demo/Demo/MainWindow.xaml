@@ -2,8 +2,29 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="600" Width="1024">
-    <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3">
+    <!--<Canvas x:Name="SkeletonCanvas">
+        
+    </Canvas>-->
+    <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3" 
+            Loaded="Window_Loaded"
+            Background="Transparent">
+
+        <Ellipse Fill="Red"
+                     Height="20"
+                     Width="20"
+                     Name="ellipseLeftHand"
+                     Stroke="White"/>
+        <Ellipse Fill="Red"
+                     Height="20"
+                     Width="20"
+                     Name="ellipseRightHand"
+                     Stroke="White" />
+        <Ellipse Fill="Red"
+                     Width="20"
+                     Name="ellipseHead"
+                     Stroke="White"/>
         <!--Player Side-->
+        
         <Image x:FieldModifier="public" x:Name="Player" Height="100" Width="100"
                
                RenderTransformOrigin="0.5,0.5" Canvas.Left="510" Canvas.Top="310">
