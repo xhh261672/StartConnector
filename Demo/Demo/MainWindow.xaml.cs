@@ -32,7 +32,9 @@ namespace Demo
         bool isRendering = false;
         bool isBackGestureActive = false;
         bool isForwardGestureActive = false;
-        static Queue<Thread> threadList = new Queue<Thread>();
+        bool isCenterGestureActive = false;
+        bool isObliqueRight = false;
+        bool isObliqueLeft = false;
         // Replace by int queue
         static Queue<Football> enqueBalls = new Queue<Football>();
 
@@ -43,7 +45,8 @@ namespace Demo
 
         KinectSensor kinect;
         Skeleton[] skeletonData;
-
+        public static int playerAngle = 1;
+        
 
         public MainWindow()
         {
@@ -77,11 +80,11 @@ namespace Demo
                     new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                 kinect.Start();
             }
-            else
-            {
-                Console.WriteLine("Kinect Not Detected");
-                System.Environment.Exit(0);
-            }
+            //else
+            //{
+            //    Console.WriteLine("Kinect Not Detected");
+            //    System.Environment.Exit(0);
+            //}
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -109,27 +112,38 @@ namespace Demo
                         canvas.Visibility = Visibility.Visible;
                         ProcessGesture(skeleton);
                     }
+                    
                 }
             }
         }
 
         private void ProcessGesture(Skeleton s)
         {
-            Joint leftHand = (from j in s.Joints
-                              where j.JointType == JointType.HandLeft
-                              select j).FirstOrDefault();
+            // Recognize Joints
+            Joint leftHand =  (from j in s.Joints
+                               where j.JointType == JointType.HandLeft
+                               select j).FirstOrDefault();
             Joint rightHand = (from j in s.Joints
                                where j.JointType == JointType.HandRight
                                select j).FirstOrDefault();
-            Joint head = (from j in s.Joints
-                          where j.JointType == JointType.Head
-                          select j).FirstOrDefault();
+            Joint head =      (from j in s.Joints
+                               where j.JointType == JointType.Head
+                               select j).FirstOrDefault();
+            Joint hipCenter = (from j in s.Joints
+                               where j.JointType == JointType.HipCenter
+                               select j).FirstOrDefault();
 
+            // Drawing Point
+            SetEllipsePosition(ellipseHead, head, isObliqueRight);
+            SetEllipsePosition(ellipseLeftHand, leftHand, isBackGestureActive);
+            SetEllipsePosition(ellipseRightHand, rightHand, isForwardGestureActive);
+            SetEllipsePosition(ellipseHipCenter, hipCenter, isCenterGestureActive);
 
+            //var tempPosition = rightHand.ScaleTo(400, 200);
+
+            
+            
             /*Control */
-            var tempPosition = rightHand.ScaleTo(400, 200);
-            //Console.WriteLine("X: {0}", tempPosition.Position.X);
-            //Console.WriteLine("Y: {0}", tempPosition.Position.Y);
             if (rightHand.Position.X > head.Position.X + 0.45)
             {
 
@@ -157,13 +171,58 @@ namespace Demo
                 isBackGestureActive = false;
             }
 
-            SetEllipsePosition(ellipseHead, head, false);
-            SetEllipsePosition(ellipseLeftHand, leftHand, isBackGestureActive);
-            SetEllipsePosition(ellipseRightHand, rightHand, isForwardGestureActive);
+            // Center direction
+            if ((leftHand.Position.X > head.Position.X - 0.25) 
+                && (leftHand.Position.X < head.Position.X) 
+                && (rightHand.Position.X < head.Position.X + 0.25) 
+                && (rightHand.Position.X > head.Position.X))
+            {
+                if (!isCenterGestureActive)
+                {
+                    isCenterGestureActive = true;
+                    System.Windows.Forms.SendKeys.SendWait("{D}");
+                }
+            }
+            else
+            {
+                isCenterGestureActive = false;
+            }
 
+            // Oblique direction
+            // oblique right
+            if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
+                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 2
+                && (leftHand.Position.Y > head.Position.Y + 0.1)
+                && (rightHand.Position.Y > head.Position.Y + 0.1)
+                && ((head.Position.X - hipCenter.Position.X) > 0.2)
+                )
+            {
+                if (!isObliqueRight && !isObliqueRight)
+                {
+                    isObliqueRight = false;
+                    System.Windows.Forms.SendKeys.SendWait("{F}");
+                }
+            }
+
+            // oblique left
+            if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
+                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 2
+                && (leftHand.Position.Y > head.Position.Y + 0.1)
+                && (rightHand.Position.Y > head.Position.Y + 0.1)
+                && ((hipCenter.Position.X - head.Position.X) > 0.2)
+                )
+            {
+                if (!isObliqueRight && !isObliqueRight)
+                {
+                    isObliqueRight = false;
+                    System.Windows.Forms.SendKeys.SendWait("{S}");
+                }
+            }
 
         }
-
+        
         private void SetEllipsePosition(Ellipse ellipse,
             Joint joint, bool isHighlighted)
         {
@@ -248,48 +307,49 @@ namespace Demo
             bw.RunWorkerAsync();
         }
 
-        delegate void GenerateBallsDelegate();
-        private void GenerateBallThread()
-        {
-            //Console.WriteLine("Generate Balls");
-            GenerateBallsDelegate gbd = new GenerateBallsDelegate(GenerateBalls);
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, gbd);
-            Thread.Sleep(9000);
-        }
+        //delegate void GenerateBallsDelegate();
+        //private void GenerateBallThread()
+        //{
+        //    //Console.WriteLine("Generate Balls");
+        //    GenerateBallsDelegate gbd = new GenerateBallsDelegate(GenerateBalls);
+        //    this.Dispatcher.Invoke(DispatcherPriority.Normal, gbd);
+        //    Thread.Sleep(9000);
+        //}
 
-        private void CheckThreadCount()
-        {
-            if (threadList.Count > 3)
-            {
-                Thread thisThread = threadList.Dequeue();
-                if (thisThread.IsAlive)
-                {
-                    thisThread.Abort();
-                }
-            }
-            else
-            {
-                Thread t = new Thread(GenerateBallThread);
-                t.Start();
-                threadList.Enqueue(t);
-            }
-        }
+        //private void CheckThreadCount()
+        //{
+        //    if (threadList.Count > 3)
+        //    {
+        //        Thread thisThread = threadList.Dequeue();
+        //        if (thisThread.IsAlive)
+        //        {
+        //            thisThread.Abort();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Thread t = new Thread(GenerateBallThread);
+        //        t.Start();
+        //        threadList.Enqueue(t);
+        //    }
+        //}
         private void Rendering(object sender, EventArgs e)
         {
             if (isRendering)
             {
                 isRendering = false;
                 
-                //
+                // Calculate Generating Time
                 ++generateClock;
-                if (generateClock == 4)
+                if (generateClock == 6)
                 {   
                     generateClock = 0;
                     GenerateBalls();
                 }
-                //CheckThreadCount();
 
+                // Move Balls
                 CreateBallMoveAction();              
+                
                 this.ScoreText.Text = 
                     GameData.getScore.ToString() + " / " + GameData.totalCount.ToString();
                 while (enqueBalls.Count > 0)
@@ -316,20 +376,24 @@ namespace Demo
             switch(e.Key)
             {
                 case Key.A:
-                    rotatePlayer.Angle = 287.74;
-                    // this.Player.Source = null;
+                    rotatePlayer.Angle = GameData.Angles[0].Item1;
+                    playerAngle = 0;
                     break;
                 case Key.S:
-                    rotatePlayer.Angle = 311.08;
+                    rotatePlayer.Angle = GameData.Angles[1].Item1;
+                    playerAngle = 1;
                     break;
                 case Key.D:
-                    rotatePlayer.Angle = 0;
+                    rotatePlayer.Angle = GameData.Angles[2].Item1;
+                    playerAngle = 2;
                     break;
                 case Key.F:
-                    rotatePlayer.Angle = 48.92;
+                    rotatePlayer.Angle = GameData.Angles[3].Item1;
+                    playerAngle = 3;
                     break;
                 case Key.G:
-                    rotatePlayer.Angle = 72.26;
+                    rotatePlayer.Angle = GameData.Angles[4].Item1;
+                    playerAngle = 4;
                     break;
                 default:
                     break;
@@ -360,6 +424,7 @@ namespace Demo
                 theBall.yV = GameData.velocities[EId].Y;
 
                 enqueBalls.Enqueue(theBall);
+
             }
             //}
         }

@@ -32,11 +32,11 @@ namespace Demo
     public class Football
     {
         public Image img;
-        public int gId;   // generate order
+        //public int gId;   // generate order
         public int eId;   // queue id
         public double xV; // x dir velocity 
         public double yV; // y dir velocity
-        public int perms; // wait time
+        //public int perms; // wait time
         public BallState state;
         public void MoveBall()
         {
@@ -63,8 +63,7 @@ namespace Demo
             Point playerPoint = new Point(500, 320);
             Point ballPoint = new Point(xPos + img.Margin.Left, yPos + img.Margin.Top);
             double distance = GameData.CalcDistance(playerPoint, ballPoint);
-            //Console.WriteLine(distance);
-            if (distance > 0 && distance < 30)
+            if ((distance > 0 && distance < 40) && (eId == MainWindow.playerAngle))
             {
                 ++GameData.getScore;
                 this.ReleaseImage();
@@ -82,7 +81,7 @@ namespace Demo
             img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
             Canvas.SetLeft(img, 0);
             Canvas.SetTop(img, 0);
-            Console.WriteLine("eid:" + eId + " " + img.Name + " " + img.Margin.Left + " : " + img.Margin.Top);
+            //Console.WriteLine("eid:" + eId + " " + img.Name + " " + img.Margin.Left + " : " + img.Margin.Top);
             
             this.state = BallState.NONE;
 
