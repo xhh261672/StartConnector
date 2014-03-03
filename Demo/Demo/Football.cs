@@ -63,7 +63,7 @@ namespace Demo
             Point playerPoint = new Point(500, 320);
             Point ballPoint = new Point(xPos + img.Margin.Left, yPos + img.Margin.Top);
             double distance = GameData.CalcDistance(playerPoint, ballPoint);
-            if ((distance > 0 && distance < 40) && (eId == MainWindow.playerAngle))
+            if ((distance > 0 && distance < 35) && (eId == MainWindow.playerAngle))
             {
                 ++GameData.getScore;
                 this.ReleaseImage();
@@ -77,16 +77,13 @@ namespace Demo
         private void ReleaseImage()
         {
             this.img.Source = null;
-            Console.WriteLine();
-            img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
+            this.img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
             Canvas.SetLeft(img, 0);
             Canvas.SetTop(img, 0);
-            //Console.WriteLine("eid:" + eId + " " + img.Name + " " + img.Margin.Left + " : " + img.Margin.Top);
-            
             this.state = BallState.NONE;
-
         }
 
+        
     }
 
     

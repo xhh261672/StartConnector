@@ -89,7 +89,8 @@ namespace Demo
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            kinect.Stop();
+            if (kinect != null)
+                kinect.Stop();
         }
 
         private void SkeletonFrame_Ready(object sender,
@@ -144,7 +145,11 @@ namespace Demo
             
             
             /*Control */
-            if (rightHand.Position.X > head.Position.X + 0.45)
+            if (
+                (rightHand.Position.Y > head.Position.Y)
+                && (rightHand.Position.Y > head.Position.Y)
+                && ((rightHand.Position.X - hipCenter.Position.X) > 0.35)
+                )
             {
 
                 if (!isBackGestureActive && !isForwardGestureActive)
@@ -158,7 +163,11 @@ namespace Demo
                 isForwardGestureActive = false;
             }
 
-            if (leftHand.Position.X < head.Position.X - 0.45)
+            if (
+                 (rightHand.Position.Y > head.Position.Y)
+                && (rightHand.Position.Y > head.Position.Y)
+                && ((hipCenter.Position.X - leftHand.Position.X) > 0.35)
+                )
             {
                 if (!isBackGestureActive && !isForwardGestureActive)
                 {
@@ -172,10 +181,13 @@ namespace Demo
             }
 
             // Center direction
-            if ((leftHand.Position.X > head.Position.X - 0.25) 
-                && (leftHand.Position.X < head.Position.X) 
-                && (rightHand.Position.X < head.Position.X + 0.25) 
-                && (rightHand.Position.X > head.Position.X))
+            if ((leftHand.Position.X > head.Position.X - 0.35) 
+                && (leftHand.Position.X < head.Position.X)
+                && (rightHand.Position.X < head.Position.X + 0.35)
+                && (rightHand.Position.X > head.Position.X)
+                //&& (head.Position.Y > leftHand.Position.Y + 0.1) && (head.Position.Y < leftHand.Position.Y + 0.3)
+                //&& (head.Position.Y > rightHand.Position.Y + 0.1) && (head.Position.Y < rightHand.Position.Y + 0.3)
+                )
             {
                 if (!isCenterGestureActive)
                 {
@@ -192,10 +204,10 @@ namespace Demo
             // oblique right
             if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
                 && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 2
-                && (leftHand.Position.Y > head.Position.Y + 0.1)
-                && (rightHand.Position.Y > head.Position.Y + 0.1)
-                && ((head.Position.X - hipCenter.Position.X) > 0.2)
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
+                && (leftHand.Position.Y > head.Position.Y)
+                && (rightHand.Position.Y > head.Position.Y)
+                && ((head.Position.X - hipCenter.Position.X) > 0.1)
                 )
             {
                 if (!isObliqueRight && !isObliqueRight)
@@ -208,10 +220,10 @@ namespace Demo
             // oblique left
             if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
                 && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 2
-                && (leftHand.Position.Y > head.Position.Y + 0.1)
-                && (rightHand.Position.Y > head.Position.Y + 0.1)
-                && ((hipCenter.Position.X - head.Position.X) > 0.2)
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
+                && (leftHand.Position.Y > head.Position.Y)
+                && (rightHand.Position.Y > head.Position.Y)
+                && ((hipCenter.Position.X - head.Position.X) > 0.1)
                 )
             {
                 if (!isObliqueRight && !isObliqueRight)
@@ -341,12 +353,12 @@ namespace Demo
                 
                 // Calculate Generating Time
                 ++generateClock;
-                if (generateClock == 6)
+                if (generateClock == 9)
                 {   
                     generateClock = 0;
                     GenerateBalls();
                 }
-
+                WagglePlayer();
                 // Move Balls
                 CreateBallMoveAction();              
                 
@@ -436,6 +448,21 @@ namespace Demo
                 Football exitBall = enqueBalls.Dequeue();
                 balls[exitBall.eId].state = BallState.DQUE;
             }
+        }
+
+        private void WagglePlayer()
+        {
+            //if (!waggleActive)
+            //{
+            //    Canvas.SetLeft(Player, Canvas.GetLeft(Player) + 1);
+            //    Canvas.SetTop(Player, Canvas.GetLeft(Player) - 1);
+            //}
+            //else 
+            //{
+            //    Canvas.SetLeft(Player, Canvas.GetLeft(Player) - 1);
+            //    Canvas.SetTop(Player, Canvas.GetLeft(Player) + 1);
+            //}
+            //waggleActive = !waggleActive;
         }
     }
 }
