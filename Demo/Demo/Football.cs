@@ -38,22 +38,23 @@ namespace Demo
         public double yV; // y dir velocity
         public int perms; // wait time
         public BallState state;
-        public void MoveBall(double xVelocity, double yVelocity)
+        public void MoveBall()
         {
 
             double xPos = Canvas.GetLeft(this.img);
             double yPos = Canvas.GetTop(this.img);
+            //Console.WriteLine("xPos: " + xPos + " --- yPos: " + yPos);
 
 
             if (Double.IsNaN(xPos) && Double.IsNaN(yPos))
             {
-                Canvas.SetLeft(this.img, GameData.startPoint.X);
-                Canvas.SetTop(this.img, GameData.startPoint.Y);
+                Canvas.SetLeft(this.img, 0);
+                Canvas.SetTop(this.img, 0);
             }
             else
             {
-                xPos += xVelocity;
-                yPos += yVelocity;
+                xPos += xV;
+                yPos += yV;
 
                 Canvas.SetLeft(this.img, xPos);
                 Canvas.SetTop(this.img, yPos);
@@ -62,10 +63,14 @@ namespace Demo
             Point playerPoint = new Point(500, 320);
             Point ballPoint = new Point(xPos + img.Margin.Left, yPos + img.Margin.Top);
             double distance = GameData.CalcDistance(playerPoint, ballPoint);
-            Console.WriteLine(distance);
-            if (distance > 0 && distance < 40)
+            //Console.WriteLine(distance);
+            if (distance > 0 && distance < 30)
             {
                 ++GameData.getScore;
+                this.ReleaseImage();
+            }
+            else if (distance > 1000)
+            {
                 this.ReleaseImage();
             }
         }
@@ -73,19 +78,16 @@ namespace Demo
         private void ReleaseImage()
         {
             this.img.Source = null;
-            Canvas.SetLeft(this.img, 0);
-            Canvas.SetTop(this.img, 0);
+            Console.WriteLine();
+            img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
+            Canvas.SetLeft(img, 0);
+            Canvas.SetTop(img, 0);
+            Console.WriteLine("eid:" + eId + " " + img.Name + " " + img.Margin.Left + " : " + img.Margin.Top);
+            
             this.state = BallState.NONE;
 
         }
 
-        // when a ball was hit or in doorframe, release the image resource
-        private void releaseImage(Image img)
-        {
-            img.Source = null;
-            Canvas.SetLeft(img, GameData.startPoint.X);
-            Canvas.SetTop(img, GameData.startPoint.Y);
-        }
     }
 
     

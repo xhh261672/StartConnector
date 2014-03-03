@@ -32,12 +32,13 @@ namespace Demo
         bool isRendering = false;
         bool isBackGestureActive = false;
         bool isForwardGestureActive = false;
-        
+        static Queue<Thread> threadList = new Queue<Thread>();
         // Replace by int queue
         static Queue<Football> enqueBalls = new Queue<Football>();
 
         List<Football> balls = new List<Football>();
         static Random rand = new Random();
+        static int generateClock = 0;
 
 
         KinectSensor kinect;
@@ -52,31 +53,35 @@ namespace Demo
             LoadPlayerImage();
             InitBalls();
 
-
-            GenerateBalls();
-            while (enqueBalls.Count > 0)
-            {
-                DeueBalls();
-            }
-
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
+            //CompositionTarget.Rendering += new EventHandler(sum);
+
             RunBackWorker();
 
             // regist keydown event to control angle of player's orientation
             this.KeyDown += new KeyEventHandler(this.controlAngle);
-
         }
+
+        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             kinect = (from sensor in KinectSensor.KinectSensors
                       where sensor.Status == KinectStatus.Connected
                       select sensor).FirstOrDefault();
-            kinect.SkeletonStream.Enable();
-            kinect.SkeletonFrameReady +=
-                new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
-            kinect.Start();
+            if (null != kinect)
+            {
+                kinect.SkeletonStream.Enable();
+                kinect.SkeletonFrameReady +=
+                    new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
+                kinect.Start();
+            }
+            else
+            {
+                Console.WriteLine("Kinect Not Detected");
+                System.Environment.Exit(0);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -122,7 +127,7 @@ namespace Demo
 
 
             /*Control */
-            var tempPosition = rightHand.ScaleTo(1024, 600);
+            var tempPosition = rightHand.ScaleTo(400, 200);
             //Console.WriteLine("X: {0}", tempPosition.Position.X);
             //Console.WriteLine("Y: {0}", tempPosition.Position.Y);
             if (rightHand.Position.X > head.Position.X + 0.45)
@@ -162,11 +167,7 @@ namespace Demo
         private void SetEllipsePosition(Ellipse ellipse,
             Joint joint, bool isHighlighted)
         {
-
-
-            joint.ScaleTo(640, 480);
-
-
+            joint.ScaleTo(400, 200);
 
             ColorImagePoint colorImagePoint =
                 kinect.CoordinateMapper.MapSkeletonPointToColorPoint(joint.Position,
@@ -207,15 +208,15 @@ namespace Demo
             // set velocities
             for (int i = 0; i < 10; i++)
             {
-                balls[i].xV = GameData.velocities[i % 5].X;
-                balls[i].yV = GameData.velocities[i % 5].Y;
+                balls[i].xV = GameData.velocities[i].X;
+                balls[i].yV = GameData.velocities[i].Y;
             }
         }
 
 
         
 
-        private void CreateBallMoveThread()
+        private void CreateBallMoveAction()
         {
             var dequeBalls =
                 from ball in balls
@@ -223,7 +224,7 @@ namespace Demo
                 select ball;
             foreach (Football ball in dequeBalls) 
             {
-                ball.MoveBall(ball.xV, ball.yV);
+                ball.MoveBall();
             }
         }
                
@@ -247,15 +248,54 @@ namespace Demo
             bw.RunWorkerAsync();
         }
 
+        delegate void GenerateBallsDelegate();
+        private void GenerateBallThread()
+        {
+            //Console.WriteLine("Generate Balls");
+            GenerateBallsDelegate gbd = new GenerateBallsDelegate(GenerateBalls);
+            this.Dispatcher.Invoke(DispatcherPriority.Normal, gbd);
+            Thread.Sleep(9000);
+        }
+
+        private void CheckThreadCount()
+        {
+            if (threadList.Count > 3)
+            {
+                Thread thisThread = threadList.Dequeue();
+                if (thisThread.IsAlive)
+                {
+                    thisThread.Abort();
+                }
+            }
+            else
+            {
+                Thread t = new Thread(GenerateBallThread);
+                t.Start();
+                threadList.Enqueue(t);
+            }
+        }
         private void Rendering(object sender, EventArgs e)
         {
             if (isRendering)
             {
-
                 isRendering = false;
-                CreateBallMoveThread();                
-                this.ScoreText.Text = GameData.getScore.ToString();                
-            
+                
+                //
+                ++generateClock;
+                if (generateClock == 4)
+                {   
+                    generateClock = 0;
+                    GenerateBalls();
+                }
+                //CheckThreadCount();
+
+                CreateBallMoveAction();              
+                this.ScoreText.Text = 
+                    GameData.getScore.ToString() + " / " + GameData.totalCount.ToString();
+                while (enqueBalls.Count > 0)
+                {
+                    DeueBalls();
+                }
             }
         }
 
@@ -298,30 +338,39 @@ namespace Demo
     
         private void GenerateBalls()
         {
-            // create some new balls
-            int generateCount = rand.Next(3, 6);
+            
+                // create some new balls
+            int generateCount = rand.Next(1, 3);
             GameData.totalCount += generateCount;
 
             for (int i = 0; i < generateCount; i++)
             {
                 Football theBall = new Football();
-                theBall.eId = rand.Next(0, 5);
-                //theBall.img.Source = CreateBallImg();
-                balls[theBall.eId].state = BallState.EQUE;
-                balls[theBall.eId].img.Source = CreateBallImg();
+                int EId = rand.Next(0, 5);
+                theBall.eId = EId;
+                Console.WriteLine(EId);
+                //balls[theBall.eId] =
+                //    (from ball in balls
+                //    where ball.img == null && ball != null
+                //    select ball).First();
+                balls[EId].eId = EId;
+                balls[EId].img.Source = CreateBallImg();
+                theBall.state = BallState.EQUE;
+                theBall.xV = GameData.velocities[EId].X;
+                theBall.yV = GameData.velocities[EId].Y;
+
                 enqueBalls.Enqueue(theBall);
             }
-            // set position and move ball            
-            // ...
+            //}
         }
 
         private void DeueBalls()
         {
-            Football exitBall = enqueBalls.Dequeue();
-            //exitBall.state = BallState.DQUE;
-            balls[exitBall.eId].state = BallState.DQUE;
+            if (enqueBalls.Count > 0)
+            {
+                Football exitBall = enqueBalls.Dequeue();
+                balls[exitBall.eId].state = BallState.DQUE;
+            }
         }
-
-
     }
 }

@@ -26,11 +26,31 @@ namespace Demo
             new Point(21, 24),
             new Point(0, 15),
             new Point(-21, 24),
-            new Point(-20, 8)
+            new Point(-20, 8),
+
+            new Point(20, 8),
+            new Point(21, 24),
+            new Point(0, 15),
+            new Point(-21, 24),
+            new Point(-20, 8),
 
         };
 
-        public static Point startPoint = new Point(0, 0);
+        public static Point[] startPoint = new Point[]
+        {
+            new Point(10, 150),
+            new Point(213, 51),
+            new Point(480, 25),
+            new Point(737, 51),
+            new Point(930, 150),
+
+            new Point(10, 150),
+            new Point(213, 51),
+            new Point(480, 25),
+            new Point(737, 51),
+            new Point(930, 150),
+
+        };
         public static int totalCount = 0;
         public static int getScore = 0;
     }
