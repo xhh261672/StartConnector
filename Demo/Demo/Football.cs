@@ -32,6 +32,7 @@ namespace Demo
     public class Football
     {
         public Image img;
+        public bool isClosed;
         //public int gId;   // generate order
         public int eId;   // queue id
         public double xV; // x dir velocity 
@@ -43,7 +44,6 @@ namespace Demo
 
             double xPos = Canvas.GetLeft(this.img);
             double yPos = Canvas.GetTop(this.img);
-            //Console.WriteLine("xPos: " + xPos + " --- yPos: " + yPos);
 
 
             if (Double.IsNaN(xPos) && Double.IsNaN(yPos))
@@ -63,19 +63,34 @@ namespace Demo
             Point playerPoint = new Point(500, 320);
             Point ballPoint = new Point(xPos + img.Margin.Left, yPos + img.Margin.Top);
             double distance = GameData.CalcDistance(playerPoint, ballPoint);
-            if ((distance > 0 && distance < 35) && (eId == MainWindow.playerAngle))
+
+            //MainWindow.netStatus = false;
+            if (distance > 0 && distance < 50)
             {
-                ++GameData.getScore;
+                isClosed = true;
+                // catch the ball
+                if (eId == MainWindow.playerAngle)
+                {
+                    GameData.getScore += 1;
+                    this.ReleaseImage();
+                }
+
+                
+            }
+            else if (distance > 50 && isClosed)
+            {
+                MainWindow.netStatus = true;
                 this.ReleaseImage();
             }
-            else if (distance > 1000)
+            else
             {
-                this.ReleaseImage();
+                MainWindow.netStatus = false;
             }
         }
 
         private void ReleaseImage()
         {
+            this.isClosed = false;
             this.img.Source = null;
             this.img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
             Canvas.SetLeft(img, 0);

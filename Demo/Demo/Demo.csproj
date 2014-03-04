@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TimeTickFlash.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +105,18 @@
     <Resource Include="Images\football.png" />
     <Resource Include="Images\net.png" />
     <Resource Include="Images\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\plumpnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\timer1.png" />
+    <Resource Include="Images\timer2.png" />
+    <Resource Include="Images\timer3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resource\" />
+    <Folder Include="Sounds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

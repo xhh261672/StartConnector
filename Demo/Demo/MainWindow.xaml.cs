@@ -25,6 +25,7 @@ namespace Demo
     // Reference
     using Microsoft.Kinect;
     using Coding4Fun.Kinect.Wpf;
+    using System.Media;
 
     public partial class MainWindow : Window
     {
@@ -35,19 +36,33 @@ namespace Demo
         bool isCenterGestureActive = false;
         bool isObliqueRight = false;
         bool isObliqueLeft = false;
+        bool timerImgZomIn = false;
+
+        int timerImgCount = 3;
+
+        static int MIN_BALL_COUNT = 1;
+        static int MAX_BALL_COUNT = 2; // easy mode
+
         // Replace by int queue
         static Queue<Football> enqueBalls = new Queue<Football>();
+
 
         List<Football> balls = new List<Football>();
         static Random rand = new Random();
         static int generateClock = 0;
+        static int startGameCount = 0;
 
+        public static bool netStatus = false;
+        static BitmapImage net = new BitmapImage(new Uri(@"Images/net.png", UriKind.Relative));
+        static BitmapImage plumpNet = new BitmapImage(new Uri(@"Images/plumpnet.png", UriKind.Relative));
+
+        public static int playerAngle = 2; // middle direction
+        public static int sleepTime = 100;
 
         KinectSensor kinect;
         Skeleton[] skeletonData;
-        public static int playerAngle = 1;
-        
 
+        Timer countDownTimer;
         public MainWindow()
         {
             InitializeComponent();
@@ -56,23 +71,130 @@ namespace Demo
             LoadPlayerImage();
             InitBalls();
 
+            // Count down befoe start game
+            countDownTimer = new Timer(
+    new TimerCallback(countDownTimerDelegate), null, 10, 30);
+
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
-            //CompositionTarget.Rendering += new EventHandler(sum);
 
             RunBackWorker();
 
+            //countDownTimer.Dispose();
             // regist keydown event to control angle of player's orientation
-            this.KeyDown += new KeyEventHandler(this.controlAngle);
+            this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
+        }
+
+        private void countDownTimerDelegate(object sender)
+        {
+            this.Dispatcher.BeginInvoke(
+             (Action)delegate()
+             {
+                 ChangeTimerImage();
+             });
+        }
+
+        private void ChangeTimerImage()
+        {
+            if (TimerImage.Opacity > 1.0)
+            {
+                timerImgZomIn = false;
+                TimerImage.Opacity = 1.0;
+            }
+            if (TimerImage.Opacity <= 0.1)
+            {
+                timerImgZomIn = true;
+                TimerImage.Opacity = 0.1;
+                LoadTimerImage();
+            }
+
+            if (timerImgZomIn)
+            {
+                TimerImage.Opacity += 0.1;
+            }
+            else
+            {
+                TimerImage.Opacity -= 0.1;
+            }
+        }
+
+        private void LoadTimerImage()
+        {
+            if (timerImgCount > 0)
+            {
+                this.TimerImage.Source = new BitmapImage(
+                    new Uri(@"Images/timer" + timerImgCount + ".png", UriKind.Relative));
+                timerImgCount -= 1;
+            }
+            else
+            {
+                this.TimerImage.Source = null;
+                countDownTimer.Dispose();
+            }
+            
         }
 
         
 
+        private void Rendering(object sender, EventArgs e)
+        {
+            if (isRendering)
+            {
+                isRendering = false;
+
+                // Timer : wait 3 seconds to start game
+                if (startGameCount <= 3)
+                {
+                    startGameCount += 1;
+                }
+                else
+                {
+                    // Calculate Generating Time
+                    generateClock += 1;
+                    if (generateClock == 12)
+                    {
+                        generateClock = 0;
+                        GenerateBalls();
+                    }
+
+                    CheckNetStatus();
+
+                    // Move Balls
+                    CreateBallMoveAction();
+
+                    this.ScoreText.Text =
+                        GameData.getScore.ToString() + " / " + GameData.totalCount.ToString();
+                    
+                    // if hard mode
+                    //while (enqueBalls.Count > 0)
+                    //{
+                    //    DeueBalls();
+                    //}
+
+                    // if easy mode
+                    DequeueBalls();
+                    
+                    
+                }
+
+            }
+        }
+
+
+        private void BackWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {                
+                Thread.Sleep(sleepTime);
+                isRendering = true;
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             kinect = (from sensor in KinectSensor.KinectSensors
                       where sensor.Status == KinectStatus.Connected
-                      select sensor).FirstOrDefault();
+                      select sensor
+                      ).FirstOrDefault();
             if (null != kinect)
             {
                 kinect.SkeletonStream.Enable();
@@ -80,17 +202,14 @@ namespace Demo
                     new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                 kinect.Start();
             }
-            //else
-            //{
-            //    Console.WriteLine("Kinect Not Detected");
-            //    System.Environment.Exit(0);
-            //}
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             if (kinect != null)
+            {
                 kinect.Stop();
+            }
         }
 
         private void SkeletonFrame_Ready(object sender,
@@ -113,7 +232,6 @@ namespace Demo
                         canvas.Visibility = Visibility.Visible;
                         ProcessGesture(skeleton);
                     }
-                    
                 }
             }
         }
@@ -140,11 +258,15 @@ namespace Demo
             SetEllipsePosition(ellipseRightHand, rightHand, isForwardGestureActive);
             SetEllipsePosition(ellipseHipCenter, hipCenter, isCenterGestureActive);
 
-            //var tempPosition = rightHand.ScaleTo(400, 200);
+            leftHand.ScaleTo(400, 200);
+            rightHand.ScaleTo(400, 200);
+            head.ScaleTo(400, 200);
+            hipCenter.ScaleTo(400, 200);
+
 
             
             
-            /*Control */
+            /* Body Control */
             if (
                 (rightHand.Position.Y > head.Position.Y)
                 && (rightHand.Position.Y > head.Position.Y)
@@ -210,7 +332,7 @@ namespace Demo
                 && ((head.Position.X - hipCenter.Position.X) > 0.1)
                 )
             {
-                if (!isObliqueRight && !isObliqueRight)
+                if (!isObliqueLeft && !isObliqueRight)
                 {
                     isObliqueRight = false;
                     System.Windows.Forms.SendKeys.SendWait("{F}");
@@ -226,9 +348,9 @@ namespace Demo
                 && ((hipCenter.Position.X - head.Position.X) > 0.1)
                 )
             {
-                if (!isObliqueRight && !isObliqueRight)
+                if (!isObliqueLeft && !isObliqueRight)
                 {
-                    isObliqueRight = false;
+                    isObliqueLeft = false;
                     System.Windows.Forms.SendKeys.SendWait("{S}");
                 }
             }
@@ -270,14 +392,14 @@ namespace Demo
             balls[2].img = this.Football2;
             balls[3].img = this.Football3;
             balls[4].img = this.Football4;
-            balls[5].img = this.Football5;
-            balls[6].img = this.Football6;
-            balls[7].img = this.Football7;
-            balls[8].img = this.Football8;
-            balls[9].img = this.Football9;
+            //balls[5].img = this.Football5;
+            //balls[6].img = this.Football6;
+            //balls[7].img = this.Football7;
+            //balls[8].img = this.Football8;
+            //balls[9].img = this.Football9;
 
             // set velocities
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 balls[i].xV = GameData.velocities[i].X;
                 balls[i].yV = GameData.velocities[i].Y;
@@ -302,8 +424,7 @@ namespace Demo
 
         private void LoadPlayerImage()
         {
-            string playerImgUrl = @"Images/player.png";
-            this.Player.Source = new BitmapImage(new Uri(playerImgUrl, UriKind.Relative));
+            this.Player.Source = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
         }
 
         private BitmapImage CreateBallImg()
@@ -319,71 +440,11 @@ namespace Demo
             bw.RunWorkerAsync();
         }
 
-        //delegate void GenerateBallsDelegate();
-        //private void GenerateBallThread()
-        //{
-        //    //Console.WriteLine("Generate Balls");
-        //    GenerateBallsDelegate gbd = new GenerateBallsDelegate(GenerateBalls);
-        //    this.Dispatcher.Invoke(DispatcherPriority.Normal, gbd);
-        //    Thread.Sleep(9000);
-        //}
 
-        //private void CheckThreadCount()
-        //{
-        //    if (threadList.Count > 3)
-        //    {
-        //        Thread thisThread = threadList.Dequeue();
-        //        if (thisThread.IsAlive)
-        //        {
-        //            thisThread.Abort();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Thread t = new Thread(GenerateBallThread);
-        //        t.Start();
-        //        threadList.Enqueue(t);
-        //    }
-        //}
-        private void Rendering(object sender, EventArgs e)
-        {
-            if (isRendering)
-            {
-                isRendering = false;
-                
-                // Calculate Generating Time
-                ++generateClock;
-                if (generateClock == 9)
-                {   
-                    generateClock = 0;
-                    GenerateBalls();
-                }
-                WagglePlayer();
-                // Move Balls
-                CreateBallMoveAction();              
-                
-                this.ScoreText.Text = 
-                    GameData.getScore.ToString() + " / " + GameData.totalCount.ToString();
-                while (enqueBalls.Count > 0)
-                {
-                    DeueBalls();
-                }
-            }
-        }
-
-
-        private void BackWork(object sender, DoWorkEventArgs e)
-        {
-            while (true)
-            {
-                Thread.Sleep(100);
-                isRendering = true;
-            }
-        }
 
 
         // Keyboard control
-        private void controlAngle(object sender, KeyEventArgs e)
+        private void controPlayerlAngle(object sender, KeyEventArgs e)
         {
             switch(e.Key)
             {
@@ -415,8 +476,8 @@ namespace Demo
         private void GenerateBalls()
         {
             
-                // create some new balls
-            int generateCount = rand.Next(1, 3);
+            // create some new balls
+            int generateCount = rand.Next(MIN_BALL_COUNT, MAX_BALL_COUNT);
             GameData.totalCount += generateCount;
 
             for (int i = 0; i < generateCount; i++)
@@ -424,11 +485,11 @@ namespace Demo
                 Football theBall = new Football();
                 int EId = rand.Next(0, 5);
                 theBall.eId = EId;
-                Console.WriteLine(EId);
                 //balls[theBall.eId] =
                 //    (from ball in balls
                 //    where ball.img == null && ball != null
                 //    select ball).First();
+                theBall.isClosed = false;
                 balls[EId].eId = EId;
                 balls[EId].img.Source = CreateBallImg();
                 theBall.state = BallState.EQUE;
@@ -436,12 +497,10 @@ namespace Demo
                 theBall.yV = GameData.velocities[EId].Y;
 
                 enqueBalls.Enqueue(theBall);
-
             }
-            //}
         }
 
-        private void DeueBalls()
+        private void DequeueBalls()
         {
             if (enqueBalls.Count > 0)
             {
@@ -450,19 +509,16 @@ namespace Demo
             }
         }
 
-        private void WagglePlayer()
+        private void CheckNetStatus()
         {
-            //if (!waggleActive)
-            //{
-            //    Canvas.SetLeft(Player, Canvas.GetLeft(Player) + 1);
-            //    Canvas.SetTop(Player, Canvas.GetLeft(Player) - 1);
-            //}
-            //else 
-            //{
-            //    Canvas.SetLeft(Player, Canvas.GetLeft(Player) - 1);
-            //    Canvas.SetTop(Player, Canvas.GetLeft(Player) + 1);
-            //}
-            //waggleActive = !waggleActive;
+            if (netStatus == false)
+            {
+                Net.Source = net;
+            }
+            else
+            {
+                Net.Source = plumpNet;
+            }
         }
     }
 }

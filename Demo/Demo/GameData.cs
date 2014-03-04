@@ -22,17 +22,17 @@ namespace Demo
 
         public static Point[] velocities = new Point[]
         {
-            new Point(20,  8),
-            new Point(21,  24),
-            new Point(0,   15),
-            new Point(-21, 24),
-            new Point(-20, 8),
+            new Point(10,  4),
+            new Point(8,   8),
+            new Point(0,   5),
+            new Point(-6,  6),
+            new Point(-10, 4),
 
-            new Point(20,  8),
-            new Point(21,  24),
-            new Point(0,   15),
-            new Point(-21, 24),
-            new Point(-20, 8),
+            //new Point(20,  8),
+            //new Point(21,  24),
+            //new Point(0,   15),
+            //new Point(-21, 24),
+            //new Point(-20, 8),
 
         };
 
@@ -42,24 +42,17 @@ namespace Demo
             new Point(213, 51),
             new Point(480, 25),
             new Point(737, 51),
-            new Point(930, 150),
-
-            new Point(10,  150),
-            new Point(213, 51),
-            new Point(480, 25),
-            new Point(737, 51),
-            new Point(930, 150),
-            
+            new Point(930, 150),            
         };
 
         public static Tuple<double, int>[] Angles = new Tuple<double, int>[]
         {
             
-            new Tuple<double, int>(287.74, 0),
-            new Tuple<double, int>(311.08, 1),
-            new Tuple<double, int>(0.00,   2),
-            new Tuple<double, int>(48.92,  3),
-            new Tuple<double, int>(72.26,  4),
+            new Tuple<double, int>(288, 0),
+            new Tuple<double, int>(311, 1),
+            new Tuple<double, int>(0,   2),
+            new Tuple<double, int>(50,  3),
+            new Tuple<double, int>(72,  4),
         };
 
         public static int totalCount = 0;
