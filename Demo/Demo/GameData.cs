@@ -43,8 +43,8 @@ namespace Demo
         public static Tuple<double, int>[] Angles = new Tuple<double, int>[]
         {
             
-            new Tuple<double, int>(288, 0),
-            new Tuple<double, int>(311, 1),
+            new Tuple<double, int>(-72, 0),
+            new Tuple<double, int>(-50, 1),
             new Tuple<double, int>(0,   2),
             new Tuple<double, int>(50,  3),
             new Tuple<double, int>(72,  4),

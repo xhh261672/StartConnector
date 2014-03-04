@@ -275,9 +275,9 @@ namespace Demo
             {
                 System.Environment.Exit(0);
             }
-            
-            Console.WriteLine("head.Y:{0}\nhead.Z{1}\n",head.Position.Y,head.Position.Z);
-            Console.WriteLine("rightHand.Y:{0}\nrightHand.Z{1}\n", rightHand.Position.Y, rightHand.Position.Z);
+
+            Console.WriteLine("leftHand.Y:{0}\nrightHand.X{1}\n", leftHand.Position.X, rightHand.Position.X);
+            //Console.WriteLine("rightHand.Y:{0}\nrightHand.X{1}\n", rightHand.Position.X, rightHand.Position.X);
 
             /* Body Control */
 
