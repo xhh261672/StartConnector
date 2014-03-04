@@ -27,9 +27,16 @@ namespace Demo
     using Coding4Fun.Kinect.Wpf;
     using System.Media;
 
+    public enum GameStatus
+    {
+        STA_NULL,
+        STA_START,
+        STA_OVER
+    };
     public partial class MainWindow : Window
     {
-        // class members
+        static GameStatus Running = GameStatus.STA_NULL;
+
         bool isRendering = false;
         bool isBackGestureActive = false;
         bool isForwardGestureActive = false;
@@ -73,14 +80,13 @@ namespace Demo
 
             // Count down befoe start game
             countDownTimer = new Timer(
-    new TimerCallback(countDownTimerDelegate), null, 10, 30);
+    new TimerCallback(countDownTimerDelegate), null, 30, 90);
 
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
 
             RunBackWorker();
 
-            //countDownTimer.Dispose();
             // regist keydown event to control angle of player's orientation
             this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
         }
@@ -96,25 +102,28 @@ namespace Demo
 
         private void ChangeTimerImage()
         {
-            if (TimerImage.Opacity > 1.0)
+            if (Running == GameStatus.STA_START)
             {
-                timerImgZomIn = false;
-                TimerImage.Opacity = 1.0;
-            }
-            if (TimerImage.Opacity <= 0.1)
-            {
-                timerImgZomIn = true;
-                TimerImage.Opacity = 0.1;
-                LoadTimerImage();
-            }
+                if (TimerImage.Opacity > 1.0)
+                {
+                    timerImgZomIn = false;
+                    TimerImage.Opacity = 1.0;
+                }
+                if (TimerImage.Opacity <= 0.1)
+                {
+                    timerImgZomIn = true;
+                    TimerImage.Opacity = 0.1;
+                    LoadTimerImage();
+                }
 
-            if (timerImgZomIn)
-            {
-                TimerImage.Opacity += 0.1;
-            }
-            else
-            {
-                TimerImage.Opacity -= 0.1;
+                if (timerImgZomIn)
+                {
+                    TimerImage.Opacity += 0.1;
+                }
+                else
+                {
+                    TimerImage.Opacity -= 0.1;
+                }
             }
         }
 
@@ -138,12 +147,12 @@ namespace Demo
 
         private void Rendering(object sender, EventArgs e)
         {
-            if (isRendering)
+            if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
 
                 // Timer : wait 3 seconds to start game
-                if (startGameCount <= 3)
+                if (startGameCount <= 30)
                 {
                     startGameCount += 1;
                 }
@@ -164,13 +173,7 @@ namespace Demo
 
                     this.ScoreText.Text =
                         GameData.getScore.ToString() + " / " + GameData.totalCount.ToString();
-                    
-                    // if hard mode
-                    //while (enqueBalls.Count > 0)
-                    //{
-                    //    DeueBalls();
-                    //}
-
+             
                     // if easy mode
                     DequeueBalls();
                     
@@ -219,6 +222,9 @@ namespace Demo
             {
                 if (null != skeletonFrame)
                 {
+                    
+
+                    // playing game
                     skeletonData =
                         new Skeleton[
                             kinect.SkeletonStream.FrameSkeletonArrayLength];
@@ -263,10 +269,46 @@ namespace Demo
             head.ScaleTo(400, 200);
             hipCenter.ScaleTo(400, 200);
 
+            // end game manully
 
+            if (GameStatus.STA_OVER == Running)
+            {
+                System.Environment.Exit(0);
+            }
             
-            
+            Console.WriteLine("head.Y:{0}\nhead.Z{1}\n",head.Position.Y,head.Position.Z);
+            Console.WriteLine("rightHand.Y:{0}\nrightHand.Z{1}\n", rightHand.Position.Y, rightHand.Position.Z);
+
             /* Body Control */
+
+            // Start game
+            if (
+                   Math.Abs(rightHand.Position.Y - leftHand.Position.Y) < 0.1
+                && Math.Abs(rightHand.Position.Z - leftHand.Position.Z) < 0.1
+                && rightHand.Position.X - leftHand.Position.X > 1.3
+
+                )
+            {
+                Running = GameStatus.STA_START;   
+            }
+
+            // End game
+            if (
+                   (rightHand.Position.Y < head.Position.Y)
+                && (rightHand.Position.Y > head.Position.Y - 0.2)
+                && (leftHand.Position.Y < head.Position.Y)
+                && (leftHand.Position.Y > head.Position.Y - 0.2)
+
+                && (rightHand.Position.Z < head.Position.Z)
+                && (rightHand.Position.Z > head.Position.Z - 0.2)
+                && (leftHand.Position.Z < head.Position.Z)
+                && (leftHand.Position.Z > head.Position.Z - 0.2)
+
+                )
+            {
+                Running = GameStatus.STA_OVER;
+            }
+
             if (
                 (rightHand.Position.Y > head.Position.Y)
                 && (rightHand.Position.Y > head.Position.Y)
@@ -303,12 +345,13 @@ namespace Demo
             }
 
             // Center direction
-            if ((leftHand.Position.X > head.Position.X - 0.35) 
+            if (
+                (leftHand.Position.X > head.Position.X - 0.35) 
                 && (leftHand.Position.X < head.Position.X)
                 && (rightHand.Position.X < head.Position.X + 0.35)
                 && (rightHand.Position.X > head.Position.X)
-                //&& (head.Position.Y > leftHand.Position.Y + 0.1) && (head.Position.Y < leftHand.Position.Y + 0.3)
-                //&& (head.Position.Y > rightHand.Position.Y + 0.1) && (head.Position.Y < rightHand.Position.Y + 0.3)
+                && (rightHand.Position.X > head.Position.X + 0.15)
+                && (leftHand.Position.X < head.Position.X - 0.15)
                 )
             {
                 if (!isCenterGestureActive)
@@ -392,11 +435,6 @@ namespace Demo
             balls[2].img = this.Football2;
             balls[3].img = this.Football3;
             balls[4].img = this.Football4;
-            //balls[5].img = this.Football5;
-            //balls[6].img = this.Football6;
-            //balls[7].img = this.Football7;
-            //balls[8].img = this.Football8;
-            //balls[9].img = this.Football9;
 
             // set velocities
             for (int i = 0; i < 5; i++)
@@ -405,9 +443,6 @@ namespace Demo
                 balls[i].yV = GameData.velocities[i].Y;
             }
         }
-
-
-        
 
         private void CreateBallMoveAction()
         {
@@ -444,7 +479,7 @@ namespace Demo
 
 
         // Keyboard control
-        private void controPlayerlAngle(object sender, KeyEventArgs e)
+        private void controlPlayerAngle(object sender, KeyEventArgs e)
         {
             switch(e.Key)
             {
@@ -485,10 +520,6 @@ namespace Demo
                 Football theBall = new Football();
                 int EId = rand.Next(0, 5);
                 theBall.eId = EId;
-                //balls[theBall.eId] =
-                //    (from ball in balls
-                //    where ball.img == null && ball != null
-                //    select ball).First();
                 theBall.isClosed = false;
                 balls[EId].eId = EId;
                 balls[EId].img.Source = CreateBallImg();

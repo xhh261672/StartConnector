@@ -9,6 +9,7 @@ namespace Demo
     using System.Windows;
     class GameData
     {
+        
         public static double CalcDistance(Point From, Point To)
         {
             return Math.Sqrt((From.X - To.X) * (From.X - To.X)
@@ -24,15 +25,9 @@ namespace Demo
         {
             new Point(10,  4),
             new Point(8,   8),
-            new Point(0,   5),
+            new Point(0,   7),
             new Point(-6,  6),
             new Point(-10, 4),
-
-            //new Point(20,  8),
-            //new Point(21,  24),
-            //new Point(0,   15),
-            //new Point(-21, 24),
-            //new Point(-20, 8),
 
         };
 

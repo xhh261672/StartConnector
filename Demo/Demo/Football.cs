@@ -33,18 +33,15 @@ namespace Demo
     {
         public Image img;
         public bool isClosed;
-        //public int gId;   // generate order
         public int eId;   // queue id
         public double xV; // x dir velocity 
         public double yV; // y dir velocity
-        //public int perms; // wait time
         public BallState state;
         public void MoveBall()
         {
 
             double xPos = Canvas.GetLeft(this.img);
             double yPos = Canvas.GetTop(this.img);
-
 
             if (Double.IsNaN(xPos) && Double.IsNaN(yPos))
             {
@@ -64,7 +61,6 @@ namespace Demo
             Point ballPoint = new Point(xPos + img.Margin.Left, yPos + img.Margin.Top);
             double distance = GameData.CalcDistance(playerPoint, ballPoint);
 
-            //MainWindow.netStatus = false;
             if (distance > 0 && distance < 50)
             {
                 isClosed = true;
