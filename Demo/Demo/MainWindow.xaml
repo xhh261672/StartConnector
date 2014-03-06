@@ -7,7 +7,20 @@
 
     <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3" 
             Background="Transparent">
-
+        <Image x:Name="background"  
+               Source="Images/background.png"
+               Stretch="Fill" 
+               Height="606" Width="1000" 
+               Canvas.Top="-183">
+        </Image>
+        
+        <Image x:Name="CatchStatus" Width="200" Height="130"
+               Canvas.Left="60"
+               Canvas.Top="416"
+               
+               >
+        </Image>
+        
         <Image x:Name="Tube0" Source="Images/tube.png" Width="160" Height="160" Canvas.Left="-124" Canvas.Top="208">
             <Image.RenderTransform>
                 <RotateTransform x:Name="rotateTube0" Angle="-72" />
@@ -62,9 +75,9 @@
                      Stroke="White"/>
         <!--Player Side-->
 
-        <Image x:FieldModifier="public" x:Name="Player" Height="100" Width="100"
+        <Image x:FieldModifier="public" x:Name="Player" Height="130" Width="195"
                
-               RenderTransformOrigin="0.5,0.5" Canvas.Left="510" Canvas.Top="310">
+               RenderTransformOrigin="0.5,0.5" Canvas.Left="450" Canvas.Top="290">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -75,8 +88,12 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image Name="Net"  Height="130" Width="400" Canvas.Left="312" Canvas.Top="416"
-               RenderTransformOrigin="0.5,0.5"/>
+        <Image Name="Net"  Height="220" Width="870" 
+               Stretch="Fill"
+               Canvas.Left="60" Canvas.Top="415"
+               RenderTransformOrigin="0.5,0.5"
+               >
+        </Image>
 
         <TextBox x:Name="ScoreText" Margin="10, 10" Width="100" Height="20" IsReadOnly="True"></TextBox>
         <!--Footballs-->

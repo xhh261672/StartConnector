@@ -69,14 +69,24 @@ namespace Demo
                 {
                     GameData.getScore += 1;
                     this.ReleaseImage();
+                    MainWindow.playerStatus = ScoreStatus.SCO_CATCH;
                 }
-
+                // lose the ball
+                else
+                {
+                    MainWindow.playerStatus = ScoreStatus.SCO_LOSE;
+                }
                 
             }
+            
             else if (distance > 50 && isClosed)
             {
                 MainWindow.netStatus = true;
                 this.ReleaseImage();
+                if (MainWindow.playerStatus != ScoreStatus.SCO_NULL)
+                {
+                    MainWindow.playerStatus = ScoreStatus.SCO_NULL;
+                }
             }
             else
             {
@@ -88,14 +98,16 @@ namespace Demo
         {
             this.isClosed = false;
             this.img.Source = null;
-            this.img.Margin = new Thickness(GameData.startPoint[eId].X, GameData.startPoint[eId].Y, 0, 0);
+            this.img.Margin = new Thickness(
+                GameData.startPoint[eId].X,
+                GameData.startPoint[eId].Y,
+                0,
+                0
+            );
             Canvas.SetLeft(img, 0);
             Canvas.SetTop(img, 0);
             this.state = BallState.NONE;
+            MainWindow.playerStatus = ScoreStatus.SCO_NULL;
         }
-
-        
     }
-
-    
 }

@@ -33,6 +33,14 @@ namespace Demo
         STA_START,
         STA_OVER
     };
+
+    public enum ScoreStatus
+    {
+        SCO_CATCH,
+        SCO_LOSE,
+        SCO_NULL
+    }
+
     public partial class MainWindow : Window
     {
         static GameStatus Running = GameStatus.STA_NULL;
@@ -59,9 +67,16 @@ namespace Demo
         static int generateClock = 0;
         static int startGameCount = 0;
 
+        public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
         public static bool netStatus = false;
         static BitmapImage net = new BitmapImage(new Uri(@"Images/net.png", UriKind.Relative));
         static BitmapImage plumpNet = new BitmapImage(new Uri(@"Images/plumpnet.png", UriKind.Relative));
+        static BitmapImage catchBall = new BitmapImage(new Uri(@"Images/get.png", UriKind.Relative));
+        static BitmapImage loseBall = new BitmapImage(new Uri(@"Images/miss.png", UriKind.Relative));
+        static BitmapImage playerLose = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
+        static BitmapImage playerCatch = new BitmapImage(new Uri(@"Images/player2.png", UriKind.Relative));
+        
+
 
         public static int playerAngle = 2; // middle direction
         public static int sleepTime = 100;
@@ -167,6 +182,7 @@ namespace Demo
                     }
 
                     CheckNetStatus();
+                    CheckPlayerStatus();
 
                     // Move Balls
                     CreateBallMoveAction();
@@ -276,16 +292,13 @@ namespace Demo
                 System.Environment.Exit(0);
             }
 
-            Console.WriteLine("leftHand.Y:{0}\nrightHand.X{1}\n", leftHand.Position.X, rightHand.Position.X);
-            //Console.WriteLine("rightHand.Y:{0}\nrightHand.X{1}\n", rightHand.Position.X, rightHand.Position.X);
 
             /* Body Control */
-
             // Start game
             if (
-                   Math.Abs(rightHand.Position.Y - leftHand.Position.Y) < 0.1
-                && Math.Abs(rightHand.Position.Z - leftHand.Position.Z) < 0.1
-                && rightHand.Position.X - leftHand.Position.X > 1.3
+                   Math.Abs(rightHand.Position.Y - leftHand.Position.Y) < 0.3
+                && Math.Abs(rightHand.Position.Z - leftHand.Position.Z) < 0.3
+                && rightHand.Position.X - leftHand.Position.X > 1.0
 
                 )
             {
@@ -309,10 +322,15 @@ namespace Demo
                 Running = GameStatus.STA_OVER;
             }
 
+            // most right and left
             if (
-                (rightHand.Position.Y > head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y)
-                && ((rightHand.Position.X - hipCenter.Position.X) > 0.35)
+                (rightHand.Position.X - hipCenter.Position.X > 0.35)
+                && Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1
+                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
+                && (rightHand.Position.Y < head.Position.Y)
+                && ((head.Position.X - hipCenter.Position.X) > 0.1)
+                && (head.Position.Y > rightHand.Position.Y)
                 )
             {
 
@@ -328,9 +346,13 @@ namespace Demo
             }
 
             if (
-                 (rightHand.Position.Y > head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y)
-                && ((hipCenter.Position.X - leftHand.Position.X) > 0.35)
+                 (leftHand.Position.X - hipCenter.Position.X < -0.35)
+                && Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1
+                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
+                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
+                && (leftHand.Position.Y < head.Position.Y)
+                && (head.Position.X - hipCenter.Position.X < -0.1)
+                && (head.Position.Y > leftHand.Position.Y)
                 )
             {
                 if (!isBackGestureActive && !isForwardGestureActive)
@@ -346,9 +368,9 @@ namespace Demo
 
             // Center direction
             if (
-                (leftHand.Position.X > head.Position.X - 0.35) 
+                (leftHand.Position.X > head.Position.X - 0.4) 
                 && (leftHand.Position.X < head.Position.X)
-                && (rightHand.Position.X < head.Position.X + 0.35)
+                && (rightHand.Position.X < head.Position.X + 0.4)
                 && (rightHand.Position.X > head.Position.X)
                 && (rightHand.Position.X > head.Position.X + 0.15)
                 && (leftHand.Position.X < head.Position.X - 0.15)
@@ -388,7 +410,8 @@ namespace Demo
                 && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
                 && (leftHand.Position.Y > head.Position.Y)
                 && (rightHand.Position.Y > head.Position.Y)
-                && ((hipCenter.Position.X - head.Position.X) > 0.1)
+                && (hipCenter.Position.X - head.Position.X > 0.1)
+                && (hipCenter.Position.X - head.Position.X < 0.3)
                 )
             {
                 if (!isObliqueLeft && !isObliqueRight)
@@ -459,7 +482,7 @@ namespace Demo
 
         private void LoadPlayerImage()
         {
-            this.Player.Source = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
+            this.Player.Source = playerLose;
         }
 
         private BitmapImage CreateBallImg()
@@ -549,6 +572,24 @@ namespace Demo
             else
             {
                 Net.Source = plumpNet;
+            }
+        }
+
+        private void CheckPlayerStatus()
+        {
+            if (playerStatus == ScoreStatus.SCO_NULL)
+            {
+                CatchStatus.Source = null;
+            }
+            else if (playerStatus == ScoreStatus.SCO_CATCH)
+            {
+                Player.Source = playerCatch;
+                CatchStatus.Source = catchBall;
+            }
+            else
+            {
+                Player.Source = playerLose;
+                CatchStatus.Source = loseBall;
             }
         }
     }
