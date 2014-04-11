@@ -1,0 +1,86 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="leftBall.UserControl4"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480">
+	<UserControl.Resources>
+		<Storyboard x:Key="rightball">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-23.539"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-53.731"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-76.247"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-94.159"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-123.839"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-181.664"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-227.718"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-295.267"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-369.039"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-466.183"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-605.884"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-21.493"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-45.544"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-61.919"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-70.619"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-64.99"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-48.544"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-30.191"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-4.569"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="26.098"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="61.97"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="128.956"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.085"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.119"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.119"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.221"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.17"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1.255"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.187"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1.235"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.204"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1.34"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.119"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.051"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.119"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.17"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.224"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1.255"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.273"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1.306"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.325"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1.34"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource rightball}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+
+	<Canvas x:Name="LayoutRoot">
+		<Image x:Name="image" Height="60" Canvas.Left="580" Source="football.png" Stretch="Fill" Canvas.Top="320.341" Width="60" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+	</Canvas>
+</UserControl>
