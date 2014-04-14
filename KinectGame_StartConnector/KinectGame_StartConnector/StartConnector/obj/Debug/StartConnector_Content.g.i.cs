@@ -8,19 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/background.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/football.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/gameover.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/get.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/miss.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/net.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/player.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/player2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/plumpnet.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/timer0.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/timer1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/timer2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/timer3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/tube.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/waterfall.wav")]
 
 

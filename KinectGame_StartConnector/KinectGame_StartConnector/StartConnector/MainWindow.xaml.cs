@@ -23,6 +23,8 @@ namespace StartConnector
     using System.ComponentModel;
     // Reference
     using Microsoft.Kinect;
+    using System.IO;
+    using System.Reflection;
 
     public enum GameStatus
     {
@@ -30,6 +32,7 @@ namespace StartConnector
         STA_START,
         STA_OVER
     };
+
 
     public enum ScoreStatus
     {
@@ -76,6 +79,8 @@ namespace StartConnector
         Skeleton[] skeletonData;
 
         Timer countDownTimer;
+        
+        
         public MainWindow()
         {
             InitializeComponent();
