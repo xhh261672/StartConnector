@@ -17,12 +17,20 @@ using System.Windows.Shapes;
 namespace StartConnector
 {
     using System.Media;
+    using BallTrackPath;
     using System.Diagnostics;
     using System.Windows.Threading;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     // Reference
     using Microsoft.Kinect;
+
+    public enum BallState
+    {
+        EQUE,
+        DQUE,
+        NONE
+    }
 
     public enum GameStatus
     {
@@ -38,10 +46,12 @@ namespace StartConnector
         SCO_NULL
     }
 
+
     public partial class MainWindow : Window
     {
         static GameStatus Running = GameStatus.STA_NULL;
 
+        //test rendering
         bool isRendering = false;
         bool isBackGestureActive = false;
         bool isForwardGestureActive = false;
@@ -76,13 +86,18 @@ namespace StartConnector
         Skeleton[] skeletonData;
 
         Timer countDownTimer;
+
+        // test
+        RotateFootball rfb = new RotateFootball();
+
         public MainWindow()
         {
             InitializeComponent();
+            
 
             // Initialization
-            LoadPlayerImage();
-            InitBalls();
+            //LoadPlayerImage();
+            InitBallsData();
 
             // Count down befoe start game
             countDownTimer = new Timer(
@@ -100,6 +115,11 @@ namespace StartConnector
 
             // regist keydown event to control angle of player's orientation
             this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
+           
+
+            // test
+            //TestRotateBall1.play();
+            
         }
 
         private void countDownTimerDelegate(object sender)
@@ -158,6 +178,14 @@ namespace StartConnector
 
         private void Rendering(object sender, EventArgs e)
         {
+            if (isRendering)
+            {
+                isRendering = false;
+
+                rfb.RotateBall();
+                rfb.MoveBall();
+            }
+            /*
             if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
@@ -202,6 +230,7 @@ namespace StartConnector
                     DequeueBalls();
                     
                 }
+                
             }
             else if (GameStatus.STA_OVER == Running)
             {
@@ -226,9 +255,8 @@ namespace StartConnector
                         + ", "
                         + hitRateStr
                         + "%";
-                
             }
-            
+            */
         }
 
         private void BackWork(object sender, DoWorkEventArgs e)
@@ -323,9 +351,14 @@ namespace StartConnector
             // End game
             if (
                    (rightHand.Position.Y < head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y - 0.2)
+                && (rightHand.Position.Y > head.Position.Y - 0.15)
                 && (leftHand.Position.Y < head.Position.Y)
-                && (leftHand.Position.Y > head.Position.Y - 0.2)
+                && (leftHand.Position.Y > head.Position.Y - 0.15)
+
+                && (rightHand.Position.X > head.Position.X)
+                && (rightHand.Position.X < head.Position.X + 0.15)
+                && (leftHand.Position.X < head.Position.X)
+                && (leftHand.Position.X > head.Position.X - 0.15)
 
                 && (rightHand.Position.Z < head.Position.Z)
                 && (rightHand.Position.Z > head.Position.Z - 0.2)
@@ -440,8 +473,14 @@ namespace StartConnector
         }
 
 
-        private void InitBalls()
+        private void InitBallsData()
         {
+            rfb = Football5;
+            rfb.img = Football5.FootballImageSource;
+            rfb.xV = GameKernel.velocities[4].X;
+            rfb.yV = GameKernel.velocities[4].Y;
+            rfb.eId = 4;
+
             for (int i = 0; i < 10; i++)
                 balls.Add(new Football());
 
@@ -462,6 +501,7 @@ namespace StartConnector
 
         private void CreateBallMoveAction()
         {
+            
             var dequeBalls =
                 from ball in balls
                 where (ball.img != null && ball.state == BallState.DQUE)
@@ -491,7 +531,7 @@ namespace StartConnector
             bw.RunWorkerAsync();
         }
 
-
+        //BallTrackPath.Player maya = new Player();
 
 
         // Keyboard control
@@ -501,23 +541,28 @@ namespace StartConnector
             {
                 case Key.A:
                     rotatePlayer.Angle = GameKernel.Angles[0].Item1;
-                    playerAngle = 0;
+                    Maya.ControlAction(1);
+                    //playerAngle = 0;
                     break;
                 case Key.S:
                     rotatePlayer.Angle = GameKernel.Angles[1].Item1;
-                    playerAngle = 1;
+                    Maya.ControlAction(2);
+                    //playerAngle = 1;
                     break;
                 case Key.D:
                     rotatePlayer.Angle = GameKernel.Angles[2].Item1;
-                    playerAngle = 2;
+                    Maya.ControlAction(3);
+                    //playerAngle = 2;
                     break;
                 case Key.F:
                     rotatePlayer.Angle = GameKernel.Angles[3].Item1;
-                    playerAngle = 3;
+                    Maya.ControlAction(4);
+                    //playerAngle = 3;
                     break;
                 case Key.G:
                     rotatePlayer.Angle = GameKernel.Angles[4].Item1;
-                    playerAngle = 4;
+                    Maya.ControlAction(5);
+                    //playerAngle = 4;
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;
@@ -586,5 +631,6 @@ namespace StartConnector
                 CatchStatus.Source = loseBall;
             }
         }
+
     }
 }

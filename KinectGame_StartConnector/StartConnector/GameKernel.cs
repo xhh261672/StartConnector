@@ -49,6 +49,8 @@ namespace StartConnector
             new Tuple<double, int>(72,  4),
         };
 
+        public static Point playerPoint = new Point(500, 320);
+
         public static int totalCount = 0;
         public static int getScore = 0;
     }

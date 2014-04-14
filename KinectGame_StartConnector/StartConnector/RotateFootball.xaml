@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="StartConnector.RotateFootball"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="60" Width="60">
+    <Image x:Name="FootballImageSource" x:FieldModifier="public"
+           Stretch="Fill" Source="Images/football.png" RenderTransformOrigin="0.5,0.5"
+           >
+        <Image.RenderTransform>
+                <RotateTransform x:Name="ChangeFootballAngle" Angle="0"/>
+            </Image.RenderTransform>
+        </Image>
+</UserControl>

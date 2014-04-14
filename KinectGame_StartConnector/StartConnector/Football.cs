@@ -21,12 +21,12 @@ namespace StartConnector
     // test
     using System.IO;
     using System.Windows.Media.Imaging;
-    public enum BallState
-    {
-        EQUE,
-        DQUE,
-        NONE
-    }
+    //public enum BallState
+    //{
+    //    EQUE,
+    //    DQUE,
+    //    NONE
+    //}
 
     public class Football
     {
@@ -38,7 +38,7 @@ namespace StartConnector
         public BallState state;
         public void MoveBall()
         {
-
+            
             double xPos = Canvas.GetLeft(this.img);
             double yPos = Canvas.GetTop(this.img);
 
