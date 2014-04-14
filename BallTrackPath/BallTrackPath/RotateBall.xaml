@@ -1,0 +1,193 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="BallTrackPath.RotateBall"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480">
+	<UserControl.Resources>
+		<Storyboard x:Key="MoveObliqueLeft" RepeatBehavior="0x">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0" Value="0.672"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0.672"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1.029"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0" Value="0.672"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0.672"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1.029"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0" Value="-15.206"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="-6.206"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="8.794"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="23.498"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40.703"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="54.908"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="79.612"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="308.504"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:1.4" Value="431.794"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0" Value="15.247"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="-1.253"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="-11.753"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-17.634"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-16.515"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-3.397"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="18.722"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="222.618"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:1.4" Value="363.247"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="image">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:1.4" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="80"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="80"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+				<SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MoveRight">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="580.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-28.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Top)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MoveMiddle">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="285"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="286.8"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="286.775"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="285.225"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="288.05"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="289.55"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="289.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="142.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="94.6"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="55.7"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="28.8"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="61.4"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="123.804"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="216.113"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="287.745"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="385.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="60"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="60"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MoveObliqueRight">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="591.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="576.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="558.429"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="542.893"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="524.357"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="487.821"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="442.286"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="349.179"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="256.607"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="129"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="76"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="48"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="28.071"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="18.107"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="12.643"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="20.679"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="45.214"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="121.821"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="217.393"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="366"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.625"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.625"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard x:Name="MoveObliqueLeft_BeginStoryboard" Storyboard="{StaticResource MoveObliqueLeft}"/>
+			<BeginStoryboard Storyboard="{StaticResource MoveRight}"/>
+			<BeginStoryboard Storyboard="{StaticResource MoveMiddle}"/>
+			<BeginStoryboard Storyboard="{StaticResource MoveObliqueRight}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+
+	<Canvas x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+		<Canvas.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform/>
+				<SkewTransform/>
+				<RotateTransform/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</Canvas.RenderTransform>
+		<Image x:Name="image" Source="testball.png" Stretch="Fill" Width="120" Height="120" RenderTransformOrigin="0.5,0.5" OpacityMask="{x:Null}" Canvas.Top="33.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+	</Canvas>
+</UserControl>

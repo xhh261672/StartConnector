@@ -1,0 +1,60 @@
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.config
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.pdb
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csprojResolveAssemblyReference.cache
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.baml
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.g.cs
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\App.g.cs
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.cache
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.g.resources
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.Properties.Resources.resources
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csproj.GenerateResource.Cache
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe
+D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.pdb
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.config
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.pdb
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.pdb
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csprojResolveAssemblyReference.cache
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.baml
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.g.cs
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\App.g.cs
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.cache
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.g.resources
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.Properties.Resources.resources
+D:\Documents\Tencent Files\563249383\FileRecv\KinectGame_StartConnector (1)\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csproj.GenerateResource.Cache
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.config
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.pdb
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.pdb
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csprojResolveAssemblyReference.cache
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.baml
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.g.cs
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\App.g.cs
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.cache
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.g.resources
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.Properties.Resources.resources
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csproj.GenerateResource.Cache
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.manifest
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.application
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe.manifest
+D:\Code\C#\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.application
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.config
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.pdb
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csprojResolveAssemblyReference.cache
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.baml
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\MainWindow.g.cs
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\App.g.cs
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.cache
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.g.resources
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.Properties.Resources.resources
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csproj.GenerateResource.Cache
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.manifest
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.application
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.pdb
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe.manifest
+D:\Code\C#\Kinect\KinectGame_StartConnector\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.application
