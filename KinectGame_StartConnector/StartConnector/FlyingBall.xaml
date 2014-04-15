@@ -314,7 +314,11 @@
 	</UserControl.Triggers>-->
     <Canvas x:Name="canvas" Width="640" Height="480">
         
-		<Image x:Name="RotateFootBall" Source="Images/football.png" Stretch="Fill" Height="60" Canvas.Top="120" Width="60" RenderTransformOrigin="0.5,0.5">
+		<Image x:Name="football1" 
+               Source="Images/football.png" Stretch="Fill" 
+               Height="60" Width="60"
+               Canvas.Top="120" Canvas.Left="0"
+               RenderTransformOrigin="0.5,0.5">
 			<Image.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>

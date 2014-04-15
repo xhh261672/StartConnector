@@ -46,7 +46,7 @@ namespace StartConnector
         List<FlyingBall> balls = new List<FlyingBall>();
         static Random rand = new Random();
         static int generateClock = 0;
-        static int startGameCount = 0;
+        static int startGameCount = 31;
 
         public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
         public static bool netStatus = false;
@@ -67,16 +67,11 @@ namespace StartConnector
 
         Timer countDownTimer;
 
-        // test
-        //RotateFlyingBall rfb = new RotateFlyingBall();
-
         public GameWindow()
         {
             InitializeComponent();
-            
 
             // Initialization
-            //LoadPlayerImage();
             InitBallsData();
 
             // Count down befoe start game
@@ -87,7 +82,6 @@ namespace StartConnector
                     20,
                     60
                     );
-
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
 
@@ -95,8 +89,6 @@ namespace StartConnector
 
             // regist keydown event to control angle of player's orientation
             //this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
-           
-
         }
 
         private void countDownTimerDelegate(object sender)
@@ -104,7 +96,7 @@ namespace StartConnector
             this.Dispatcher.BeginInvoke(
              (Action)delegate()
              {
-                 ChangeTimerImage();
+                 //ChangeTimerImage();
              });
         }
 
@@ -155,13 +147,7 @@ namespace StartConnector
 
         private void Rendering(object sender, EventArgs e)
         {
-            if (isRendering)
-            {
-                isRendering = false;
-
-                
-            }
-            /*
+            
             if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
@@ -175,14 +161,10 @@ namespace StartConnector
                 {
                     // Calculate Generating Time
                     generateClock += 1;
-                    if (generateClock == 12)
-                    {
-                        generateClock = 0;
-                        GenerateBalls();
-                    }
+                    
+                    GenerateBalls();
 
                     CheckNetStatus();
-                    CheckPlayerStatus();
 
                     // Move Balls
                     CreateBallMoveAction();
@@ -202,7 +184,6 @@ namespace StartConnector
                         + "/"
                         + totalStr;
 
-                    // if easy mode
                     DequeueBalls();
                     
                 }
@@ -232,7 +213,7 @@ namespace StartConnector
                         + hitRateStr
                         + "%";
             }
-            */
+            
         }
 
         private void BackWork(object sender, DoWorkEventArgs e)
@@ -456,11 +437,12 @@ namespace StartConnector
             //rfb.xV = GameKernel.velocities[4].X;
             //rfb.yV = GameKernel.velocities[4].Y;
             //rfb.eId = 4;
+               
 
-            //for (int i = 0; i < 10; i++)
-                //balls.Add(new FlyingBall());
+            //balls.
+            for (int i = 0; i < 10; i++)
+                balls.Add(new FlyingBall());
 
-            // set images
             balls[0] = LeftBall;
             balls[1] = ObliqueLeftBall;
             balls[2] = MiddleBall;
@@ -480,19 +462,22 @@ namespace StartConnector
             
             var dequeBalls =
                 from ball in balls
-                where (ball.img != null && ball.state == BallState.DQUE)
+                where (ball.state == BallState.DQUE)
                 select ball;
             foreach (FlyingBall ball in dequeBalls)
             {
+                //Console.WriteLine("Create Ball ing...");
+                
                 ball.MoveBall();
+                ball.CalcScore();
             }
         }
 
 
-        private void LoadPlayerImage()
-        {
-            this.Player.Source = playerLose;
-        }
+        //private void LoadPlayerImage()
+        //{
+        //    this.Player.Source = playerLose;
+        //}
 
         private BitmapImage CreateBallImg()
         {
@@ -516,29 +501,29 @@ namespace StartConnector
             switch (e.Key)
             {
                 case Key.A:
-                    rotatePlayer.Angle = GameKernel.Angles[0].Item1;
+                    //rotatePlayer.Angle = GameKernel.Angles[0].Item1;
                     Maya.ControlAction(1);
-                    //playerAngle = 0;
+                    playerAngle = 0;
                     break;
                 case Key.S:
-                    rotatePlayer.Angle = GameKernel.Angles[1].Item1;
+                    //rotatePlayer.Angle = GameKernel.Angles[1].Item1;
                     Maya.ControlAction(2);
-                    //playerAngle = 1;
+                    playerAngle = 1;
                     break;
                 case Key.D:
-                    rotatePlayer.Angle = GameKernel.Angles[2].Item1;
+                    //rotatePlayer.Angle = GameKernel.Angles[2].Item1;
                     Maya.ControlAction(3);
-                    //playerAngle = 2;
+                    playerAngle = 2;
                     break;
                 case Key.F:
-                    rotatePlayer.Angle = GameKernel.Angles[3].Item1;
+                    //rotatePlayer.Angle = GameKernel.Angles[3].Item1;
                     Maya.ControlAction(4);
-                    //playerAngle = 3;
+                    playerAngle = 3;
                     break;
                 case Key.G:
-                    rotatePlayer.Angle = GameKernel.Angles[4].Item1;
+                    //rotatePlayer.Angle = GameKernel.Angles[4].Item1;
                     Maya.ControlAction(5);
-                    //playerAngle = 4;
+                    playerAngle = 4;
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;
@@ -553,19 +538,25 @@ namespace StartConnector
 
         private void GenerateBalls()
         {
-            GameKernel.totalCount += 1;
+            if (generateClock == 12)
+            {
+                GameKernel.totalCount += 1;
 
-            FlyingBall theBall = new FlyingBall();
-            int EId = rand.Next(0, 5);
-            theBall.eId = EId;
-            theBall.isClosed = false;
-            balls[EId].eId = EId;
-            balls[EId].img.Source = CreateBallImg();
-            theBall.state = BallState.EQUE;
-            theBall.xV = GameKernel.velocities[EId].X;
-            theBall.yV = GameKernel.velocities[EId].Y;
+                FlyingBall theBall = new FlyingBall();
+                int EId = rand.Next(0, 5);
+                theBall.eId = EId;
+                theBall.isClosed = false;
+                balls[EId].eId = EId;
+                //balls[EId].img.Source = CreateBallImg();
+                theBall.state = BallState.EQUE;
+                theBall.xV = GameKernel.velocities[EId].X;
+                theBall.yV = GameKernel.velocities[EId].Y;
 
-            enqueBalls.Enqueue(theBall);
+                enqueBalls.Enqueue(theBall);
+
+                // set defualt clock
+                generateClock = 0;
+            }
         }
 
         private void DequeueBalls()
@@ -589,23 +580,23 @@ namespace StartConnector
             }
         }
 
-        private void CheckPlayerStatus()
-        {
-            if (playerStatus == ScoreStatus.SCO_NULL)
-            {
-                Player.Source = playerLose;
-                CatchStatus.Source = null;
-            }
-            else if (playerStatus == ScoreStatus.SCO_CATCH)
-            {
-                Player.Source = playerCatch;
-                CatchStatus.Source = catchBall;
-            }
-            else
-            {
-                Player.Source = playerLose;
-                CatchStatus.Source = loseBall;
-            }
-        }
+        //private void CheckPlayerStatus()
+        //{
+        //    if (playerStatus == ScoreStatus.SCO_NULL)
+        //    {
+        //        Player.Source = playerLose;
+        //        CatchStatus.Source = null;
+        //    }
+        //    else if (playerStatus == ScoreStatus.SCO_CATCH)
+        //    {
+        //        Player.Source = playerCatch;
+        //        CatchStatus.Source = catchBall;
+        //    }
+        //    else
+        //    {
+        //        Player.Source = playerLose;
+        //        CatchStatus.Source = loseBall;
+        //    }
+        //}
     }
 }

@@ -68,12 +68,6 @@
     <Compile Include="Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RotateBall.xaml.cs">
-      <DependentUpon>RotateBall.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RotateFootball.xaml.cs">
-      <DependentUpon>RotateFootball.xaml</DependentUpon>
-    </Compile>
     <Page Include="FlyingBall.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,7 +80,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Football.cs" />
     <Compile Include="GameKernel.cs" />
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
@@ -103,14 +96,6 @@
     <Page Include="Player.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="RotateBall.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="RotateFootball.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
