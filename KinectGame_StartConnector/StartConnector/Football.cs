@@ -13,7 +13,6 @@ namespace StartConnector
 
     using System.Threading;
     using System.Diagnostics;
-    //using System.Threading;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Windows.Threading;
@@ -36,6 +35,10 @@ namespace StartConnector
         public double xV; // x dir velocity 
         public double yV; // y dir velocity
         public BallState state;
+
+
+
+
         public void MoveBall()
         {
             
@@ -64,32 +67,32 @@ namespace StartConnector
             {
                 isClosed = true;
                 // catch the ball
-                if (eId == MainWindow.playerAngle)
+                if (eId == GameWindow.playerAngle)
                 {
                     GameKernel.getScore += 1;
                     this.ReleaseImage();
-                    MainWindow.playerStatus = ScoreStatus.SCO_CATCH;
+                    GameWindow.playerStatus = ScoreStatus.SCO_CATCH;
                 }
                 // lose the ball
                 else
                 {
-                    MainWindow.playerStatus = ScoreStatus.SCO_LOSE;
+                    GameWindow.playerStatus = ScoreStatus.SCO_LOSE;
                 }
             }
 
             else if (distance > 50 && isClosed)
             {
-                MainWindow.netStatus = true;
+                GameWindow.netStatus = true;
                 this.ReleaseImage();
-                if (MainWindow.playerStatus != ScoreStatus.SCO_NULL)
+                if (GameWindow.playerStatus != ScoreStatus.SCO_NULL)
                 {
-                    MainWindow.playerStatus = ScoreStatus.SCO_NULL;
+                    GameWindow.playerStatus = ScoreStatus.SCO_NULL;
                 }
             }
             else
             {
-                MainWindow.playerStatus = ScoreStatus.SCO_NULL;
-                MainWindow.netStatus = false;
+                GameWindow.playerStatus = ScoreStatus.SCO_NULL;
+                GameWindow.netStatus = false;
             }
         }
 
@@ -106,7 +109,7 @@ namespace StartConnector
             Canvas.SetLeft(img, 0);
             Canvas.SetTop(img, 0);
             this.state = BallState.NONE;
-            MainWindow.playerStatus = ScoreStatus.SCO_NULL;
+            GameWindow.playerStatus = ScoreStatus.SCO_NULL;
         }
     }
 }

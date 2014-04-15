@@ -25,29 +25,9 @@ namespace StartConnector
     // Reference
     using Microsoft.Kinect;
 
-    public enum BallState
-    {
-        EQUE,
-        DQUE,
-        NONE
-    }
-
-    public enum GameStatus
-    {
-        STA_NULL,
-        STA_START,
-        STA_OVER
-    };
-
-    public enum ScoreStatus
-    {
-        SCO_CATCH,
-        SCO_LOSE,
-        SCO_NULL
-    }
 
 
-    public partial class MainWindow : Window
+    public partial class GameWindow : Window
     {
         static GameStatus Running = GameStatus.STA_NULL;
 
@@ -62,8 +42,8 @@ namespace StartConnector
         bool firstStart = false;
 
         int timerImgCount = 3;
-        Queue<Football> enqueBalls = new Queue<Football>();
-        List<Football> balls = new List<Football>();
+        Queue<FlyingBall> enqueBalls = new Queue<FlyingBall>();
+        List<FlyingBall> balls = new List<FlyingBall>();
         static Random rand = new Random();
         static int generateClock = 0;
         static int startGameCount = 0;
@@ -88,9 +68,9 @@ namespace StartConnector
         Timer countDownTimer;
 
         // test
-        RotateFootball rfb = new RotateFootball();
+        //RotateFlyingBall rfb = new RotateFlyingBall();
 
-        public MainWindow()
+        public GameWindow()
         {
             InitializeComponent();
             
@@ -114,12 +94,9 @@ namespace StartConnector
             RunBackWorker();
 
             // regist keydown event to control angle of player's orientation
-            this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
+            //this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
            
 
-            // test
-            //TestRotateBall1.play();
-            
         }
 
         private void countDownTimerDelegate(object sender)
@@ -182,8 +159,7 @@ namespace StartConnector
             {
                 isRendering = false;
 
-                rfb.RotateBall();
-                rfb.MoveBall();
+                
             }
             /*
             if (Running == GameStatus.STA_START && isRendering)
@@ -475,21 +451,21 @@ namespace StartConnector
 
         private void InitBallsData()
         {
-            rfb = Football5;
-            rfb.img = Football5.FootballImageSource;
-            rfb.xV = GameKernel.velocities[4].X;
-            rfb.yV = GameKernel.velocities[4].Y;
-            rfb.eId = 4;
+            //rfb = FlyingBall5;
+            //rfb.img = FlyingBall5.FlyingBallImageSource;
+            //rfb.xV = GameKernel.velocities[4].X;
+            //rfb.yV = GameKernel.velocities[4].Y;
+            //rfb.eId = 4;
 
-            for (int i = 0; i < 10; i++)
-                balls.Add(new Football());
+            //for (int i = 0; i < 10; i++)
+                //balls.Add(new FlyingBall());
 
             // set images
-            balls[0].img = this.Football0;
-            balls[1].img = this.Football1;
-            balls[2].img = this.Football2;
-            balls[3].img = this.Football3;
-            balls[4].img = this.Football4;
+            balls[0] = LeftBall;
+            balls[1] = ObliqueLeftBall;
+            balls[2] = MiddleBall;
+            balls[3] = ObliqueRightBall;
+            balls[4] = RightBall;
 
             // set velocities
             for (int i = 0; i < 5; i++)
@@ -506,7 +482,7 @@ namespace StartConnector
                 from ball in balls
                 where (ball.img != null && ball.state == BallState.DQUE)
                 select ball;
-            foreach (Football ball in dequeBalls)
+            foreach (FlyingBall ball in dequeBalls)
             {
                 ball.MoveBall();
             }
@@ -520,7 +496,7 @@ namespace StartConnector
 
         private BitmapImage CreateBallImg()
         {
-            return new BitmapImage(new Uri(@"Images/football.png", UriKind.Relative));
+            return new BitmapImage(new Uri(@"Images/FlyingBall.png", UriKind.Relative));
         }
 
 
@@ -579,7 +555,7 @@ namespace StartConnector
         {
             GameKernel.totalCount += 1;
 
-            Football theBall = new Football();
+            FlyingBall theBall = new FlyingBall();
             int EId = rand.Next(0, 5);
             theBall.eId = EId;
             theBall.isClosed = false;
@@ -596,7 +572,7 @@ namespace StartConnector
         {
             if (enqueBalls.Count > 0)
             {
-                Football exitBall = enqueBalls.Dequeue();
+                FlyingBall exitBall = enqueBalls.Dequeue();
                 balls[exitBall.eId].state = BallState.DQUE;
             }
         }
@@ -631,6 +607,5 @@ namespace StartConnector
                 CatchStatus.Source = loseBall;
             }
         }
-
     }
 }

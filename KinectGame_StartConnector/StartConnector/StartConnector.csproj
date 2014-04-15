@@ -59,6 +59,12 @@
     <Compile Include="FlyingBall.xaml.cs">
       <DependentUpon>FlyingBall.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NavigateWindow.xaml.cs">
+      <DependentUpon>NavigateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menual.xaml.cs">
+      <DependentUpon>Menual.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
     </Compile>
@@ -72,7 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,10 +88,18 @@
     </Compile>
     <Compile Include="Football.cs" />
     <Compile Include="GameKernel.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NavigateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Player.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\glove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\helper.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

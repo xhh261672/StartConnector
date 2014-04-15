@@ -3,12 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StartConnector
 {
-    using System.Windows;
+    using Microsoft.Kinect;
+
+    
+    //int s=3;
+
+    public enum BallState
+    {
+        EQUE,
+        DQUE,
+        NONE
+    }
+
+    public enum GameStatus
+    {
+        STA_NULL,
+        STA_START,
+        STA_OVER
+    };
+
+    public enum ScoreStatus
+    {
+        SCO_CATCH,
+        SCO_LOSE,
+        SCO_NULL
+    };
+
+
     class GameKernel
     {
+        //public static KinectSensor sensor;
+
         public static double CalcDistance(Point From, Point To)
         {
             return Math.Sqrt((From.X - To.X) * (From.X - To.X)
