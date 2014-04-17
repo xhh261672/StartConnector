@@ -22,11 +22,7 @@ namespace StartConnector
     using System.Windows.Threading;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-    // Reference
     using Microsoft.Kinect;
-
-
-
     public partial class GameWindow : Window
     {
         static GameStatus Running = GameStatus.STA_NULL;
@@ -40,9 +36,11 @@ namespace StartConnector
         bool isObliqueLeft = false;
         bool timerImgZomIn = false;
         bool firstStart = false;
+        bool hashPlayerd = false;
 
         int timerImgCount = 3;
         Queue<FlyingBall> enqueBalls = new Queue<FlyingBall>();
+        
         List<FlyingBall> balls = new List<FlyingBall>();
         static Random rand = new Random();
         static int generateClock = 0;
@@ -471,10 +469,10 @@ namespace StartConnector
             }
         }
 
-        private BitmapImage CreateBallImg()
-        {
-            return new BitmapImage(new Uri(@"Images/FlyingBall.png", UriKind.Relative));
-        }
+        //private BitmapImage CreateBallImg()
+        //{
+        //    return new BitmapImage(new Uri(@"Images/FlyingBall.png", UriKind.Relative));
+        //}
 
 
         private void RunBackWorker()
@@ -516,10 +514,12 @@ namespace StartConnector
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;
+                    hashPlayerd = true;
                     break;
                 case Key.Escape:
                     Running = GameStatus.STA_OVER;
-                    ResultPanel.ShowResult();
+                    if (hashPlayerd)
+                        ResultPanel.ShowResult();
                     break;
                 default:
                     break;

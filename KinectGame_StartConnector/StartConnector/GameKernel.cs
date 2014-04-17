@@ -59,31 +59,35 @@ namespace StartConnector
 
         };
 
-        public static Point[] startPoint = new Point[]
-        {
-            new Point(10,  150),
-            new Point(213, 51),
-            new Point(480, 25),
-            new Point(737, 51),
-            new Point(930, 150),            
-        };
+        //public static Point[] startPoint = new Point[]
+        //{
+        //    new Point(10,  150),
+        //    new Point(213, 51),
+        //    new Point(480, 25),
+        //    new Point(737, 51),
+        //    new Point(930, 150),            
+        //};
 
-        public static Tuple<double, int>[] Angles = new Tuple<double, int>[]
-        {
+        //public static Tuple<double, int>[] Angles = new Tuple<double, int>[]
+        //{
             
-            new Tuple<double, int>(-72, 0),
-            new Tuple<double, int>(-50, 1),
-            new Tuple<double, int>(0,   2),
-            new Tuple<double, int>(50,  3),
-            new Tuple<double, int>(72,  4),
-        };
+        //    new Tuple<double, int>(-72, 0),
+        //    new Tuple<double, int>(-50, 1),
+        //    new Tuple<double, int>(0,   2),
+        //    new Tuple<double, int>(50,  3),
+        //    new Tuple<double, int>(72,  4),
+        //};
 
         public static Point playerPoint = new Point(600, 340);
         public static Point zeroPoint = new Point(30, 120);
         public static Point middleEnd = new Point(30, 430);
-        
 
+
+        public static int comboCount = 0;
+        public static int maxComboCount = 0;
+        public static double hitRate = 0.0;
         public static int totalCount = 0;
         public static int getScore = 0;
+
     }
 }

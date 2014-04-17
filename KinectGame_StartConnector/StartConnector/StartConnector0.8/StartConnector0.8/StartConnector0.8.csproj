@@ -4,19 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1E632C5-509C-40FB-A9B2-20AC34C42C68}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>1be3e069-f329-49c6-ac3a-4802c2ca30d3</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StartConnector</RootNamespace>
-    <AssemblyName>StartConnector</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>StartConnector0_8</RootNamespace>
+    <AssemblyName>StartConnector0_8</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +25,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,10 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,59 +48,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="FlyingBall.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Page>
     <Compile Include="FlyingBall.xaml.cs">
       <DependentUpon>FlyingBall.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NavigateWindow.xaml.cs">
-      <DependentUpon>NavigateWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Menual.xaml.cs">
-      <DependentUpon>Menual.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Player.xaml.cs">
-      <DependentUpon>Player.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ResultMenu.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>ResultMenu.xaml</DependentUpon>
-    </Compile>
-    <Page Include="FlyingBall.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GameWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameKernel.cs" />
-    <Compile Include="GameWindow.xaml.cs">
-      <DependentUpon>GameWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="NavigateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Menual.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Player.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ResultMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -131,35 +82,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\background.png" />
-    <Resource Include="Images\football.png" />
-    <Resource Include="Images\gameover.png" />
-    <Resource Include="Images\get.png" />
-    <Resource Include="Images\miss.png" />
-    <Resource Include="Images\net.png" />
-    <Resource Include="Images\player.png" />
-    <Resource Include="Images\player2.png" />
-    <Resource Include="Images\plumpnet.png" />
-    <Resource Include="Images\timer0.png" />
-    <Resource Include="Images\timer1.png" />
-    <Resource Include="Images\timer2.png" />
-    <Resource Include="Images\timer3.png" />
-    <Resource Include="Images\tube.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\testball.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\glove.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\helper.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Dial.png" />
+    <Resource Include="football.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,6 +16,8 @@ namespace StartConnector
 {
 	public partial class FlyingBall : UserControl
 	{
+
+        public static bool keepCombo = false;
         /********** DATA MEMBER **************/
         //public Image img = football1;
         public bool isClosed;
@@ -24,6 +26,7 @@ namespace StartConnector
         public double yV; // y dir velocity
         public BallState state;
         Storyboard action;
+        public bool hasGotScore;
         /********** DATA MEMBER **************/
 		public FlyingBall()
 		{
@@ -38,13 +41,30 @@ namespace StartConnector
 
         public void CalcScore()
         {
-            //if (eId == 2)
-            //{
             TimeSpan ts = this.action.GetCurrentTime();
-            if (ts.TotalSeconds >= 1.28 && ts.TotalSeconds < 1.4 && eId==GameWindow.playerAngle)
+            if (!hasGotScore && ts.TotalSeconds > 1.7 && 
+                ts.TotalSeconds < 1.9)
             {
-                GameKernel.getScore += 1;
+                if (eId == GameWindow.playerAngle)
+                {
+                    GameKernel.getScore += 1;
+                    if (keepCombo)
+                    {
+                        GameKernel.comboCount++;
+                    }
+                    keepCombo = true;
+                    hasGotScore = true;
+                }
+                else
+                {
+                    keepCombo = false;
+                    GameKernel.maxComboCount =
+                        (GameKernel.maxComboCount < GameKernel.comboCount)
+                        ? GameKernel.comboCount : GameKernel.maxComboCount;
+                }
+                
             }
+            
         }
         public void MoveBall()
         {
@@ -54,6 +74,7 @@ namespace StartConnector
                 CalcScore();
                 return;
             }
+            hasGotScore = false;
             switch(eId)
             {
                 case 0:
