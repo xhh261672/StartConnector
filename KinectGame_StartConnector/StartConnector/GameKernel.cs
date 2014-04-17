@@ -79,6 +79,9 @@ namespace StartConnector
         };
 
         public static Point playerPoint = new Point(600, 340);
+        public static Point zeroPoint = new Point(30, 120);
+        public static Point middleEnd = new Point(30, 430);
+        
 
         public static int totalCount = 0;
         public static int getScore = 0;

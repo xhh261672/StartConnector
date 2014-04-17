@@ -5,16 +5,17 @@
         xmlns:extern="clr-namespace:BallTrackPath"
         
         Title="MainWindow" 
-        Height="720" Width="1350"
+        Height="750" Width="1350"
         Loaded="Window_Loaded" Closing="Window_Closed"
         KeyDown="controlPlayerAngle"
         >
     <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3" 
             Background="Transparent">
+        <local:ResultMenu Canvas.Left="1184" Canvas.Top="-12" x:Name="ResultPanel"></local:ResultMenu>
         <Image x:Name="BackgroundImg"  
                Source="Images/background.png"
                Stretch="Fill" 
-               Height="410" Width="1000" 
+               Height="410" Width="1000" Canvas.Left="-27" Canvas.Top="207" 
                >
         </Image>
 
@@ -23,29 +24,18 @@
                ToolTipService.ToolTip="test"  
                Height="220" Width="295"
                RenderTransformOrigin="1,1"
-               Canvas.Left="350" 
-               Canvas.Top="90"
+               Canvas.Left="323" 
+               Canvas.Top="297"
                >
         </Image>
         <!--Player Side-->
         <extern:Player   x:Name="Maya"
-                        Canvas.Left="180" Canvas.Top="58" Height="482" Width="642" />
-        <!--<Image x:FieldModifier="public" x:Name="Player" Height="130" Width="195"
-               RenderTransformOrigin="0.5,0.5" Canvas.Left="450" Canvas.Top="290">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform x:Name="rotatePlayer" Angle="0"/>
-                    <TranslateTransform X="-45" Y="15"/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>-->
+                        Canvas.Left="153" Canvas.Top="265" Height="482" Width="642" />
 
         <Image Name="Net"  Height="200" Width="473" 
                Stretch="Fill"
-               Canvas.Left="259" 
-               Canvas.Top="393"
+               Canvas.Left="255" 
+               Canvas.Top="598"
                RenderTransformOrigin="0.5,0.5"
                Source="Images/net.png"
                >
@@ -61,14 +51,14 @@
                  FontStretch="UltraExpanded"
                  FontWeight="ExtraBold"
                  FontFamily="Monaco"
-                 IsReadOnly="True" Canvas.Right="20" Canvas.Top="428" Canvas.Left="719" RenderTransformOrigin="0.486,0.279" 
+                 IsReadOnly="True" Canvas.Right="20" Canvas.Top="635" Canvas.Left="692" RenderTransformOrigin="0.486,0.279" 
                  />
 
-        <local:FlyingBall x:Name="LeftBall"></local:FlyingBall>
-        <local:FlyingBall x:Name="ObliqueLeftBall" Canvas.Left="92" Canvas.Top="-126"></local:FlyingBall>
-        <local:FlyingBall x:Name="MiddleBall" Canvas.Left="480" Canvas.Top="-139"></local:FlyingBall>
-        <local:FlyingBall x:Name="ObliqueRightBall" Canvas.Left="836" Canvas.Top="-126"></local:FlyingBall>
-        <local:FlyingBall x:Name="RightBall" Canvas.Left="930"></local:FlyingBall>
+        <local:FlyingBall x:Name="LeftBall" Canvas.Top="251"/>
+        <local:FlyingBall x:Name="ObliqueLeftBall" Canvas.Left="69" Canvas.Top="155"></local:FlyingBall>
+        <local:FlyingBall x:Name="MiddleBall" Canvas.Left="453" Canvas.Top="86"></local:FlyingBall>
+        <local:FlyingBall x:Name="ObliqueRightBall" Canvas.Left="814" Canvas.Top="186" Height="480" Width="640"></local:FlyingBall>
+        <local:FlyingBall x:Name="RightBall" Canvas.Left="904" Canvas.Top="297"></local:FlyingBall>
 
 
     </Canvas>

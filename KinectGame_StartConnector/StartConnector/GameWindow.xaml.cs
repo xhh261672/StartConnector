@@ -164,7 +164,6 @@ namespace StartConnector
                     
                     GenerateBalls();
 
-                    CheckNetStatus();
 
                     // Move Balls
                     CreateBallMoveAction();
@@ -220,7 +219,7 @@ namespace StartConnector
         {
             while (true)
             {
-                Thread.Sleep(sleepTime);
+                Thread.Sleep(10);
                 isRendering = true;
             }
         }
@@ -466,18 +465,11 @@ namespace StartConnector
                 select ball;
             foreach (FlyingBall ball in dequeBalls)
             {
-                //Console.WriteLine("Create Ball ing...");
                 
                 ball.MoveBall();
-                ball.CalcScore();
+                ball.RotateBall();
             }
         }
-
-
-        //private void LoadPlayerImage()
-        //{
-        //    this.Player.Source = playerLose;
-        //}
 
         private BitmapImage CreateBallImg()
         {
@@ -491,9 +483,6 @@ namespace StartConnector
             bw.DoWork += new DoWorkEventHandler(BackWork);
             bw.RunWorkerAsync();
         }
-
-        //BallTrackPath.Player maya = new Player();
-
 
         // Keyboard control
         private void controlPlayerAngle(object sender, KeyEventArgs e)
@@ -530,6 +519,7 @@ namespace StartConnector
                     break;
                 case Key.Escape:
                     Running = GameStatus.STA_OVER;
+                    ResultPanel.ShowResult();
                     break;
                 default:
                     break;
@@ -567,36 +557,5 @@ namespace StartConnector
                 balls[exitBall.eId].state = BallState.DQUE;
             }
         }
-
-        private void CheckNetStatus()
-        {
-            if (netStatus == false)
-            {
-                Net.Source = net;
-            }
-            else
-            {
-                Net.Source = plumpNet;
-            }
-        }
-
-        //private void CheckPlayerStatus()
-        //{
-        //    if (playerStatus == ScoreStatus.SCO_NULL)
-        //    {
-        //        Player.Source = playerLose;
-        //        CatchStatus.Source = null;
-        //    }
-        //    else if (playerStatus == ScoreStatus.SCO_CATCH)
-        //    {
-        //        Player.Source = playerCatch;
-        //        CatchStatus.Source = catchBall;
-        //    }
-        //    else
-        //    {
-        //        Player.Source = playerLose;
-        //        CatchStatus.Source = loseBall;
-        //    }
-        //}
     }
 }

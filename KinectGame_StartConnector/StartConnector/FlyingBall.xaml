@@ -312,7 +312,7 @@
 			<BeginStoryboard Storyboard="{StaticResource MostRight}"/>
 		</EventTrigger>
 	</UserControl.Triggers>-->
-    <Canvas x:Name="canvas" Width="640" Height="480">
+    <Canvas x:Name="BallCanvas" Width="640" Height="480">
         
 		<Image x:Name="football1" 
                Source="Images/football.png" Stretch="Fill" 
@@ -324,7 +324,7 @@
 					<ScaleTransform/>
 					<SkewTransform/>
                     <RotateTransform x:Name="ChangeFootballAngle" Angle="0"/>
-					<TranslateTransform/>
+					<TranslateTransform />
 				</TransformGroup>
 			</Image.RenderTransform>
 		</Image>
