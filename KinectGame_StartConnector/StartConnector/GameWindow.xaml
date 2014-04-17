@@ -9,9 +9,9 @@
         Loaded="Window_Loaded" Closing="Window_Closed"
         KeyDown="controlPlayerAngle"
         >
-    <Canvas x:Name="canvas" Width="1000" Margin="10,10,6,3" 
+    <Canvas x:Name="GameWindowCanvas" Width="1000" Margin="10,10,6,3" 
             Background="Transparent">
-        <local:ResultMenu Canvas.Left="1184" Canvas.Top="-12" x:Name="ResultPanel"></local:ResultMenu>
+        <local:ResultMenu Panel.ZIndex="1" Canvas.Left="1184" Canvas.Top="-12" x:Name="ResultPanel"></local:ResultMenu>
         <Image x:Name="BackgroundImg"  
                Source="Images/background.png"
                Stretch="Fill" 

@@ -27,10 +27,10 @@ namespace StartConnector
         public void ShowResult()
         {
             //对静态数据进行修改
-            this.BestScoreNumber.Content=100;
-            this.YourScoreNumber.Content=100;
-            this.BestCombosNumber.Content=100;
-            this.YourCombosNumber.Content=100;
+            this.BestScoreNumber.Content = 100;
+            this.YourScoreNumber.Content = 100;
+            this.BestCombosNumber.Content = 100;
+            this.YourCombosNumber.Content = 100;
             Storyboard sb = (Storyboard)Resources["ShowResult"];
             //更改Rate的动画
             DoubleAnimationUsingKeyFrames yRate = sb.Children[0] as DoubleAnimationUsingKeyFrames;
@@ -68,10 +68,10 @@ namespace StartConnector
             DoubleAnimationUsingKeyFrames yCombosLocation = sb.Children[8] as DoubleAnimationUsingKeyFrames;
             yCombosLocation.KeyFrames[1].Value = -277;//value=(yourScore/bestScore)*(-277.833)
 
-            DoubleAnimationUsingKeyFrames yCombosNumber = sb.Children[12] as DoubleAnimationUsingKeyFrames;
+            DoubleAnimationUsingKeyFrames yCombosNumber = sb.Children[11] as DoubleAnimationUsingKeyFrames;
             yCombosNumber.KeyFrames[1].Value = -279;//value=(yourScore/bestScore)*(-277.833)
 
-            DoubleAnimationUsingKeyFrames yCombosFont = sb.Children[13] as DoubleAnimationUsingKeyFrames;
+            DoubleAnimationUsingKeyFrames yCombosFont = sb.Children[12] as DoubleAnimationUsingKeyFrames;
             yCombosFont.KeyFrames[1].Value = -576;//value=(yourScore/bestScore)*(-576)
 
             //播放showRate的动画

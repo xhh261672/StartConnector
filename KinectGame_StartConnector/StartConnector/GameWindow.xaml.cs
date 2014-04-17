@@ -264,7 +264,7 @@ namespace StartConnector
                          select s).FirstOrDefault();
                     if (null != skeleton)
                     {
-                        canvas.Visibility = Visibility.Visible;
+                        GameWindowCanvas.Visibility = Visibility.Visible;
                         ProcessGesture(skeleton);
                     }
                 }
