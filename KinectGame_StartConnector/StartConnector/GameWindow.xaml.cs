@@ -61,8 +61,7 @@ namespace StartConnector
         public static int playerAngle = 2;
         //public static int sleepTime = 100;
 
-        KinectSensor kinect;
-        Skeleton[] skeletonData;
+        
 
         Timer countDownTimer;
 
@@ -210,19 +209,26 @@ namespace StartConnector
                 isRendering = true;
             }
         }
+
+        public static KinectSensor kinect;
+        public static Skeleton[] skeletonData;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            kinect = (from sensor in KinectSensor.KinectSensors
-                      where sensor.Status == KinectStatus.Connected
-                      select sensor
-                      ).FirstOrDefault();
-            if (null != kinect)
+            if(kinect == null)
             {
-                kinect.SkeletonStream.Enable();
+                kinect = (from sensor in KinectSensor.KinectSensors
+                          where sensor.Status == KinectStatus.Connected
+                          select sensor
+                          ).FirstOrDefault();
+            }            
+            else
+            {
+                //kinect.SkeletonStream.Enable();
                 kinect.SkeletonFrameReady +=
                     new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
-                kinect.Start();
+                //kinect.Start();
             }
+
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -244,7 +250,7 @@ namespace StartConnector
                     skeletonData =
                         new Skeleton[
                             kinect.SkeletonStream.FrameSkeletonArrayLength];
-                    skeletonFrame.CopySkeletonDataTo(this.skeletonData);
+                    skeletonFrame.CopySkeletonDataTo(skeletonData);
                     Skeleton skeleton =
                         (from s in skeletonData
                          where s.TrackingState == SkeletonTrackingState.Tracked
@@ -673,6 +679,6 @@ namespace StartConnector
                 dequeCount = 8;
                 balls[exitBall.eId].MoveBall();
             }
-        }
+        } 
     }
 }

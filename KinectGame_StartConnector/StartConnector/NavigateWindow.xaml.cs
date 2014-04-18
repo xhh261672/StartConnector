@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 
 namespace StartConnector
 {
+    using Microsoft.Kinect;
 
     using System.Windows.Media.Animation;
     using System.Windows.Navigation;
@@ -25,12 +26,7 @@ namespace StartConnector
         {
             InitializeComponent();
         }
-        //public void SwitchToStartWindow(object sender, RoutedEventArgs ke)
-        //{
-        //    Console.WriteLine("shit");
-        //    WindowsList.ChangeToAnother();
-        //    this.Close();
-        //}
+       
         private void NavigationWindow_Navigating(object sender, NavigatingCancelEventArgs e)
         {
             if (Content != null && !_allowDirectNavigation)
@@ -90,14 +86,83 @@ namespace StartConnector
             {
                 // start game
                 case Key.Right:
+                    GameWindow.kinect.SkeletonFrameReady -= 
+                        new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                     GameWindow gameWindow = new GameWindow();
                     gameWindow.Show();
                     (this as Window).Close();
                     break;
                 // keep munaul
                 default:
-                    Console.WriteLine("BUG");
+                    //Console.WriteLine("BUG");
                     break;
+            }
+        }
+
+        private void Menual_Loaded(object sender, RoutedEventArgs e)
+        {
+            GameWindow.kinect = (from sensor in KinectSensor.KinectSensors
+                                 where sensor.Status == KinectStatus.Connected
+                                 select sensor
+                      ).FirstOrDefault();
+            if (null != GameWindow.kinect)
+            {
+                GameWindow.kinect.SkeletonStream.Enable();
+                GameWindow.kinect.SkeletonFrameReady +=
+                    new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
+                GameWindow.kinect.Start();
+            }
+        }
+
+        private void SkeletonFrame_Ready(object sender,
+            SkeletonFrameReadyEventArgs e)
+        {
+            using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame())
+            {
+                if (null != skeletonFrame)
+                {
+                    // playing game
+                    GameWindow.skeletonData =
+                        new Skeleton[
+                            GameWindow.kinect.SkeletonStream.FrameSkeletonArrayLength];
+                    skeletonFrame.CopySkeletonDataTo(GameWindow.skeletonData);
+                    Skeleton skeleton =
+                        (from s in GameWindow.skeletonData
+                         where s.TrackingState == SkeletonTrackingState.Tracked
+                         select s).FirstOrDefault();
+                    if (null != skeleton)
+                    {
+                        //GameWindowCanvas.Visibility = Visibility.Visible;
+                        ProcessGesture(skeleton);
+                    }
+                }
+            }
+        }
+
+        private void ProcessGesture(Skeleton s)
+        {
+            // Recognize Joints
+            Joint leftHand = (from j in s.Joints
+                              where j.JointType == JointType.HandLeft
+                              select j).FirstOrDefault();
+            Joint rightHand = (from j in s.Joints
+                               where j.JointType == JointType.HandRight
+                               select j).FirstOrDefault();
+            Joint head = (from j in s.Joints
+                          where j.JointType == JointType.Head
+                          select j).FirstOrDefault();
+            Joint hipCenter = (from j in s.Joints
+                               where j.JointType == JointType.HipCenter
+                               select j).FirstOrDefault();
+            Console.WriteLine((rightHand.Position.X > 0.2 + leftHand.Position.X));
+            if (rightHand.Position.X > leftHand.Position.X + 0.3)
+            {
+                GameWindow.kinect.SkeletonFrameReady -=
+                        new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
+                GameWindow gameWindow = new GameWindow();
+                gameWindow.Show();
+                (this as Window).Close();
+
             }
         }
 
