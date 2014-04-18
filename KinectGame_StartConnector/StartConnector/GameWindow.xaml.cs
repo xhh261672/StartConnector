@@ -145,7 +145,7 @@ namespace StartConnector
 
         private void Rendering(object sender, EventArgs e)
         {
-            Console.WriteLine("Rendering");
+            //Console.WriteLine("Rendering");
             if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
@@ -258,6 +258,124 @@ namespace StartConnector
             }
         }
 
+        /* Hand Guesture Variables 
+         *****************************/
+        static public List<GesturePoint> gesturePoints = new List<GesturePoint>();
+        bool gesturePointTrackingEnabled = true;
+        double swipeLength = 1.00, swipeDeviation = 0.30;
+        int swipeTime = 1000;
+        /******************************
+         * Hand Guesture Variables */
+
+
+        /********************************* Swipe Event ****************************************/
+        //public void GesturePointTrackingInitialize(double swipeLength, double swipeDeviation,
+        //    int swipeTime)
+        //{
+        //    this.swipeLength = swipeLength; this.swipeDeviation = swipeDeviation;
+        //    this.swipeTime = swipeTime;
+        //    //this.xOutOfBoundsLength = xOutOfBounds;
+        //}
+
+        //public void GesturePointTrackingStart()
+        //{
+        //    if (swipeLength + swipeDeviation + swipeTime == 0)
+        //        throw new InvalidOperationException("SBBBBBBBB!!!!!!!!!!!!!!!");
+        //    gesturePointTrackingEnabled = true;
+        //}
+
+        //public void GesturePointTrackingStop()
+        //{
+        //    //xOutOfBoundsLength = 0;
+        //    gesturePointTrackingEnabled = false;
+        //    gesturePoints.Clear();
+        //}
+
+        public bool GesturePointTrackingEnabled
+        {
+            get { return gesturePointTrackingEnabled; }
+        }
+
+        private void ResetGesturePoint(GesturePoint point)
+        {
+            bool startRemoving = false;
+            for (int i = gesturePoints.Count - 1; i >= 0; i--)
+            {
+                if (startRemoving)
+                    gesturePoints.RemoveAt(i);
+                else
+                    if (gesturePoints[i].Equals(point))
+                        startRemoving = true;
+            }
+        }
+
+        private void ResetGesturePoint(int point)
+        {
+            if (point < 1)
+                return;
+            for (int i = point - 1; i >= 0; i--)
+            {
+                gesturePoints.RemoveAt(i);
+            }
+        }
+
+
+        private void HandleGestureTracking(float x, float y, float z)
+        {
+            if (!gesturePointTrackingEnabled)
+                return;
+            // check to see if xOutOfBounds is being used
+            //if (xOutOfBoundsLength != 0 && initialSwipeX == 0)
+            //{
+            //    initialSwipeX = x;
+            //}
+
+            GesturePoint newPoint = new GesturePoint() { X = x, Y = y, Z = z, T = DateTime.Now };
+            gesturePoints.Add(newPoint);
+
+            GesturePoint startPoint = gesturePoints[0];
+            var point = new Point(x, y);
+
+
+            //check for deviation
+            if (Math.Abs(newPoint.Y - startPoint.Y) > swipeDeviation)
+            {
+                // OUT OF BOUND
+                //Debug.WriteLine("Y out of bounds");
+                //if (swipeOutofBoundDetected != null)
+                //    swipeOutofBoundDetected(this, new KinectCursorEventArgs(point)
+                //{ Z = z, Cursor = cursorAdorner });
+                ScoreText.Text = "OUT OF BOUND!";
+                ResetGesturePoint(gesturePoints.Count);
+                return;
+            }
+            if ((newPoint.T - startPoint.T).Milliseconds > swipeTime) //check time
+            {
+                gesturePoints.RemoveAt(0);
+                startPoint = gesturePoints[0];
+            }
+            if ((swipeLength < 0 && newPoint.X - startPoint.X < swipeLength) // check to see if distance has been achieved swipe left
+                || (swipeLength > 0 && newPoint.X - startPoint.X > swipeLength)) // check to see if distance has been achieved swipe right
+            {
+                gesturePoints.Clear();
+                // OKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOK
+                // SWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPE
+                ScoreText.Text = "OKOKOKOKOK";
+
+                //throw local event
+                //if (swipeDetected != null)
+                //    swipeDetected(this, new KinectCursorEventArgs(point) { Z = z, Cursor = cursorAdorner });
+                return;
+            }
+            //if ((xOutOfBoundsLength < 0 && newPoint.X - initialSwipeX < xOutOfBoundsLength) // check to see if distance has been achieved swipe left
+            //    || (xOutOfBoundsLength > 0 && newPoint.X - initialSwipeX > xOutOfBoundsLength))
+            //{
+            //    if (swipeOutofBoundDetected != null)
+            //        swipeOutofBoundDetected(this, new KinectCursorEventArgs(point) { Z = z, Cursor = cursorAdorner });
+            //}
+        }
+
+        /********************************* Swipe Event ****************************************/
         private void ProcessGesture(Skeleton s)
         {
             // Recognize Joints
@@ -277,6 +395,7 @@ namespace StartConnector
             /* Body Control */
             // Start game
             if (
+       
                    Math.Abs(rightHand.Position.Y - leftHand.Position.Y) < 0.3
                 && Math.Abs(rightHand.Position.Z - leftHand.Position.Z) < 0.3
                 && rightHand.Position.X - leftHand.Position.X > 1.3
@@ -358,14 +477,14 @@ namespace StartConnector
                 isBackGestureActive = false;
             }
 
-            // Center direction
+            // Middle direction
             if (
                 (leftHand.Position.X > head.Position.X - 0.4)
                 && (leftHand.Position.X < head.Position.X)
                 && (rightHand.Position.X < head.Position.X + 0.4)
                 && (rightHand.Position.X > head.Position.X)
-                && (rightHand.Position.X > head.Position.X + 0.15)
-                && (leftHand.Position.X < head.Position.X - 0.15)
+                && (rightHand.Position.Y > head.Position.Y + 0.15)
+                && (leftHand.Position.Y > head.Position.Y + 0.15)
                 )
             {
                 if (!isCenterGestureActive)
@@ -511,7 +630,7 @@ namespace StartConnector
                 EId = rand.Next(0, 20) % 6;
                 //objId.Enqueue(EId);
 
-                Console.WriteLine(EId);
+                //Console.WriteLine(EId);
                 #region GenerateBall
                 if (EId != 5)
                 {
