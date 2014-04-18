@@ -59,6 +59,9 @@
     <Compile Include="FlyingBall.xaml.cs">
       <DependentUpon>FlyingBall.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlyingBottle.xaml.cs">
+      <DependentUpon>FlyingBottle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NavigateWindow.xaml.cs">
       <DependentUpon>NavigateWindow.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
     <Page Include="FlyingBall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlyingBottle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -160,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Dial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bottle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

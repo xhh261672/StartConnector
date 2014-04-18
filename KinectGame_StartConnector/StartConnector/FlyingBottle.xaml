@@ -1,0 +1,208 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="StartConnector.FlyingBottle"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480" Width="1000" Height="445">
+	<UserControl.Resources>
+		<Storyboard x:Key="BottleMiddle">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="3"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="3"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="3"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="3"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-34.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-76.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-109.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-144"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-124.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-69"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-6"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="40.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="106.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="166.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="225"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="291"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1.35"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1.4"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1.35"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1.4"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Key="BottleMostLeft">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-19.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-40.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-63"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-84"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-109.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-138"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-171"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-198"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-231"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-276"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-312"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-354"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="-399"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="-442.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-25.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-42"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-54"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-48"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-28.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="36"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="60"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="93"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="136.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="175.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="219"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="258"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="315"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Key="BottleObliqueLeft">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-10.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-31.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-54"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-78"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-106.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-126"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-156"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-174"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-186"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-205.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-229.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-28.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-49.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-57"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-64.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-40.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-1.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="36"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="81"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="130.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="169.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="208.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="258"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Key="BottleObliqueRight">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="22.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="51"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="75"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="93"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="118.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="141"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="162"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="186"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="213"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="234"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="253.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="274.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-24"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-49.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-34.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-7.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="24"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="67.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="115.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="168"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="226.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="267"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="310.5"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Key="BottleMostRight">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="30"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="64.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="99"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="133.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="175.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="207"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="241.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="268.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="295.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="327"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="361.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="403.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="447"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-21"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-49.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-64.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-54"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-21"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="16.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="61.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="114"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="165"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="216"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="279"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="331.5"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<!--<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource Middle}"/>
+			<BeginStoryboard Storyboard="{StaticResource MostLeft}"/>
+			<BeginStoryboard Storyboard="{StaticResource ObliqueLeft}"/>
+			<BeginStoryboard Storyboard="{StaticResource ObliqueRight}"/>
+			<BeginStoryboard Storyboard="{StaticResource MostRight}"/>
+		</EventTrigger>
+	</UserControl.Triggers>-->
+
+	<Canvas x:Name="LayoutRoot" Height="445" Width="1000" >
+		<Image x:Name="image" Height="100" Canvas.Left="470" Source="Images/bottle.png" Stretch="Fill" Width="60" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+                    <RotateTransform x:Name="ChangeBottleAngle"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+	</Canvas>
+</UserControl>

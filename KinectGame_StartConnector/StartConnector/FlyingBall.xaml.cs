@@ -20,17 +20,18 @@ namespace StartConnector
         public static bool keepCombo = false;
         /********** DATA MEMBER **************/
         //public Image img = football1;
-        public bool isClosed;
+        //public bool isClosed;
         public int eId;   // queue id
-        public double xV; // x dir velocity 
-        public double yV; // y dir velocity
+        //public double xV; // x dir velocity 
+        //public double yV; // y dir velocity
         public BallState state;
-        Storyboard action;
-        public bool hasGotScore;
+        public Storyboard action;
+     //   public bool hasGotScore;
         /********** DATA MEMBER **************/
 		public FlyingBall()
 		{
 			this.InitializeComponent();
+           // hasGotScore = false;
 		}
 
         public void RotateBall()
@@ -42,18 +43,22 @@ namespace StartConnector
         public void CalcScore()
         {
             TimeSpan ts = this.action.GetCurrentTime();
-            if (!hasGotScore && ts.TotalSeconds > 1.7 && 
-                ts.TotalSeconds < 1.9)
+            if (state==BallState.DQUE && ts.TotalSeconds > 1.65 && 
+                ts.TotalSeconds < 1.8)
             {
+                state = BallState.NONE;
+                //this.action.Stop();
+                Console.WriteLine("eId: " + eId);
                 if (eId == GameWindow.playerAngle)
                 {
                     GameKernel.getScore += 1;
+                    GameWindow.playerAngle = 2;
                     if (keepCombo)
                     {
                         GameKernel.comboCount++;
                     }
                     keepCombo = true;
-                    hasGotScore = true;
+                    //hasGotScore = true;
                 }
                 else
                 {
@@ -64,17 +69,14 @@ namespace StartConnector
                 }
                 
             }
-            
         }
         public void MoveBall()
         {
-
             if (action!=null && action.GetCurrentState()==ClockState.Active)
             {
-                CalcScore();
                 return;
             }
-            hasGotScore = false;
+            //hasGotScore = false;
             switch(eId)
             {
                 case 0:

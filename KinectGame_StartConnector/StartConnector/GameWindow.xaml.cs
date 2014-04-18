@@ -40,10 +40,11 @@ namespace StartConnector
 
         int timerImgCount = 3;
         Queue<FlyingBall> enqueBalls = new Queue<FlyingBall>();
+        //Queue<int> objId = new Queue<int>();
+        List<FlyingBall> balls = new List<FlyingBall>(5);
+        List<FlyingBottle> bottles = new List<FlyingBottle>(3);
         
-        List<FlyingBall> balls = new List<FlyingBall>();
         static Random rand = new Random();
-        static int generateClock = 0;
         static int startGameCount = 31;
 
         public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
@@ -57,8 +58,8 @@ namespace StartConnector
         static BitmapImage gameOverImg = new BitmapImage(new Uri(@"Images/gameover.png", UriKind.Relative));
 
 
-        public static int playerAngle = 2; // middle direction
-        public static int sleepTime = 100;
+        public static int playerAngle = 2;
+        //public static int sleepTime = 100;
 
         KinectSensor kinect;
         Skeleton[] skeletonData;
@@ -69,8 +70,7 @@ namespace StartConnector
         {
             InitializeComponent();
 
-            // Initialization
-            InitBallsData();
+            InitObjectsData();
 
             // Count down befoe start game
             countDownTimer = new Timer(
@@ -145,26 +145,18 @@ namespace StartConnector
 
         private void Rendering(object sender, EventArgs e)
         {
-            
+            Console.WriteLine("Rendering");
             if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
 
                 // Timer : wait 3 seconds to start game
                 if (startGameCount <= 30)
-                {
-                    startGameCount += 1;
-                }
+                    startGameCount++;
                 else
                 {
-                    // Calculate Generating Time
-                    generateClock += 1;
-                    
-                    GenerateBalls();
-
-
-                    // Move Balls
-                    CreateBallMoveAction();
+                    GenerateObject();
+                    RotateAllBalls();
 
                     string scoreStr = GameKernel.getScore.ToString();
                     string totalStr = GameKernel.totalCount.ToString();
@@ -180,13 +172,10 @@ namespace StartConnector
                         = scoreStr
                         + "/"
                         + totalStr;
-
-                    DequeueBalls();
-                    
                 }
                 
             }
-            else if (GameStatus.STA_OVER == Running)
+            else if (Running == GameStatus.STA_OVER)
             {
                 TimerImage.Source = gameOverImg;
                 TimerImage.Opacity = 1;
@@ -217,7 +206,7 @@ namespace StartConnector
         {
             while (true)
             {
-                Thread.Sleep(10);
+                Thread.Sleep(100);
                 isRendering = true;
             }
         }
@@ -423,56 +412,46 @@ namespace StartConnector
                     System.Windows.Forms.SendKeys.SendWait("{S}");
                 }
             }
-
         }
 
 
-        private void InitBallsData()
+        private void InitObjectsData()
         {
-            //rfb = FlyingBall5;
-            //rfb.img = FlyingBall5.FlyingBallImageSource;
-            //rfb.xV = GameKernel.velocities[4].X;
-            //rfb.yV = GameKernel.velocities[4].Y;
-            //rfb.eId = 4;
-               
-
+              
             //balls.
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
                 balls.Add(new FlyingBall());
+            for (int i = 0; i < 3; i++)
+            {
+                bottles.Add(new FlyingBottle());
+                bottles[i].bId = -1;
+            }
+
+            bottles[0] = bottle1;
+            bottles[1] = bottle2;
+            bottles[2] = bottle3;
 
             balls[0] = LeftBall;
             balls[1] = ObliqueLeftBall;
             balls[2] = MiddleBall;
             balls[3] = ObliqueRightBall;
             balls[4] = RightBall;
-
-            // set velocities
-            for (int i = 0; i < 5; i++)
-            {
-                balls[i].xV = GameKernel.velocities[i].X;
-                balls[i].yV = GameKernel.velocities[i].Y;
-            }
         }
 
-        private void CreateBallMoveAction()
+        private void RotateAllBalls()
         {
-            
             var dequeBalls =
                 from ball in balls
                 where (ball.state == BallState.DQUE)
                 select ball;
             foreach (FlyingBall ball in dequeBalls)
             {
-                
-                ball.MoveBall();
+                ball.CalcScore();
                 ball.RotateBall();
             }
-        }
 
-        //private BitmapImage CreateBallImg()
-        //{
-        //    return new BitmapImage(new Uri(@"Images/FlyingBall.png", UriKind.Relative));
-        //}
+
+        }
 
 
         private void RunBackWorker()
@@ -488,27 +467,22 @@ namespace StartConnector
             switch (e.Key)
             {
                 case Key.A:
-                    //rotatePlayer.Angle = GameKernel.Angles[0].Item1;
                     Maya.ControlAction(1);
                     playerAngle = 0;
                     break;
                 case Key.S:
-                    //rotatePlayer.Angle = GameKernel.Angles[1].Item1;
                     Maya.ControlAction(2);
                     playerAngle = 1;
                     break;
                 case Key.D:
-                    //rotatePlayer.Angle = GameKernel.Angles[2].Item1;
                     Maya.ControlAction(3);
                     playerAngle = 2;
                     break;
                 case Key.F:
-                    //rotatePlayer.Angle = GameKernel.Angles[3].Item1;
                     Maya.ControlAction(4);
                     playerAngle = 3;
                     break;
                 case Key.G:
-                    //rotatePlayer.Angle = GameKernel.Angles[4].Item1;
                     Maya.ControlAction(5);
                     playerAngle = 4;
                     break;
@@ -526,35 +500,59 @@ namespace StartConnector
             }
         }
 
-        private void GenerateBalls()
+        static int dequeCount = 8;
+        private void GenerateObject()
         {
-            if (generateClock == 12)
+            if (dequeCount == 0)
             {
-                GameKernel.totalCount += 1;
+                ++GameKernel.totalCount;
 
-                FlyingBall theBall = new FlyingBall();
-                int EId = rand.Next(0, 5);
-                theBall.eId = EId;
-                theBall.isClosed = false;
-                balls[EId].eId = EId;
-                //balls[EId].img.Source = CreateBallImg();
-                theBall.state = BallState.EQUE;
-                theBall.xV = GameKernel.velocities[EId].X;
-                theBall.yV = GameKernel.velocities[EId].Y;
+                int EId;
+                EId = rand.Next(0, 20) % 6;
+                //objId.Enqueue(EId);
 
-                enqueBalls.Enqueue(theBall);
+                Console.WriteLine(EId);
+                #region GenerateBall
+                if (EId != 5)
+                {
+                    FlyingBall theBall = new FlyingBall();
+                    theBall.eId = EId;
+                    //theBall.isClosed = false;
+                    balls[EId].eId = EId;
+                    //balls[EId].img.Source = CreateBallImg();
+                    theBall.state = BallState.EQUE;
+                    //theBall.xV = GameKernel.velocities[EId].X;
+                    //theBall.yV = GameKernel.velocities[EId].Y;
 
-                // set defualt clock
-                generateClock = 0;
+                    enqueBalls.Enqueue(theBall);
+
+                    // set defualt clock
+                    DequeueBalls();                
+                }
+                #endregion
+                #region GenerateBottles
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        bottles[i].bId = rand.Next(0, 5);
+                        bottles[i].MoveBottle();
+                    }
+                    return;
+                }
+                #endregion
             }
+            dequeCount--;
         }
-
         private void DequeueBalls()
         {
-            if (enqueBalls.Count > 0)
+            // dequeCount can't be less than 0
+            if (dequeCount<=0 && enqueBalls.Count>0)
             {
                 FlyingBall exitBall = enqueBalls.Dequeue();
                 balls[exitBall.eId].state = BallState.DQUE;
+                dequeCount = 8;
+                balls[exitBall.eId].MoveBall();
             }
         }
     }
