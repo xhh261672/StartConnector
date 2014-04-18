@@ -5,20 +5,19 @@
         xmlns:extern="clr-namespace:BallTrackPath"
         
         Title="MainWindow" 
-        Height="750" Width="1350"
+        Height="720" Width="1200"
         Loaded="Window_Loaded" Closing="Window_Closed"
         KeyDown="controlPlayerAngle"
         >
-    <Canvas x:Name="GameWindowCanvas" Width="1000" Margin="10,10,6,3" 
-            Background="Transparent">
+    <Window.Background>
+        <ImageBrush x:Name="BackgroundImg" 
+                        ImageSource="Images/background.png" Stretch="Fill"></ImageBrush>
+    </Window.Background>
+    <Canvas x:Name="GameWindowCanvas" Width="1000" Margin="10,10,6,3">
+        
         <local:ResultMenu Panel.ZIndex="1" Canvas.Left="1184" Canvas.Top="-12" x:Name="ResultPanel"></local:ResultMenu>
-        <Image x:Name="BackgroundImg"  
-               Source="Images/background.png"
-               Stretch="Fill" 
-               Height="410" Width="1000" Canvas.Left="-27" Canvas.Top="207" 
-               >
-        </Image>
 
+        <!---->
         <Image x:Name="TimerImage" 
                Stretch="Fill" 
                ToolTipService.ToolTip="test"  
