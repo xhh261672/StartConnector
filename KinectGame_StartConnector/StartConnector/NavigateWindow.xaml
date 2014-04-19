@@ -2,12 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NavigateWindow" Height="720" Width="1200"
-        ShowsNavigationUI="False" 
-        Navigating="NavigationWindow_Navigating"
-        Source="Menual.xaml"  ResizeMode="NoResize"
-        Loaded="Menual_Loaded"
-        KeyDown="SwitchStartGame"
-        x:Name="Navigator">
+                ShowsNavigationUI="False"
+                WindowState="Maximized"
+                Navigating="NavigationWindow_Navigating"
+                Source="Menual.xaml"  ResizeMode="NoResize"
+                Loaded="Menual_Loaded"
+                KeyDown="SwitchStartGame"
+                x:Name="Navigator">
     
     <!--<Canvas>
         <Canvas.Resources>
