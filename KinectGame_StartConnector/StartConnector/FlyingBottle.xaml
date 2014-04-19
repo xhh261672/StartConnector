@@ -194,7 +194,7 @@
 	</UserControl.Triggers>-->
 
 	<Canvas x:Name="LayoutRoot" Height="445" Width="1000" >
-		<Image x:Name="image" Height="100" Canvas.Left="470" Source="Images/bottle.png" Stretch="Fill" Width="60" RenderTransformOrigin="0.5,0.5">
+		<Image x:Name="image" Height="100" Canvas.Left="470"  Stretch="Fill" Width="60" RenderTransformOrigin="0.5,0.5">
 			<Image.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>

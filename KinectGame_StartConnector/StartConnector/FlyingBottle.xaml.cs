@@ -85,21 +85,34 @@ namespace StartConnector
             ChangeBottleAngle.Angle = (ChangeBottleAngle.Angle + 10) % 360;
         }
 
+        private void reduceScore()
+        {
+            --Kernel.getScore;
+        }
+
+        public void updateBottleState()
+        {
+            image.Source = null;
+            state = BallState.NONE;
+        }
 
         public void CalcScore()
         {
             TimeSpan ts = this.action.GetCurrentTime();
-            if (state == BallState.DQUE && ts.TotalSeconds > 1.8)
+            if (state == BallState.DQUE && Kernel.inCatchScope(ts))
             {
-                state = BallState.NONE;
-                //this.action.Stop();
+                updateBottleState();
                 //Console.WriteLine("eId: " + eId);
                 if (bId == GameWindow.playerAngle)
                 {
-                    --Kernel.getScore;
+                    reduceScore();
                     GameWindow.playerAngle = 2;
                     bId = -1;
                 }
+            }
+            else if (state == BallState.DQUE && Kernel.timeLimitExsit(ts))
+            {
+                updateBottleState();
             }
         }
 	}

@@ -40,17 +40,21 @@ namespace StartConnector
         }
        
 
+        private void increaseScore()
+        {
+            ++Kernel.getScore;
+        }
+
         public void CalcScore()
         {
             TimeSpan ts = this.action.GetCurrentTime();
-            if (state==BallState.DQUE && ts.TotalSeconds > 1.65 && 
-                ts.TotalSeconds < 1.8)
+            if (state == BallState.DQUE && Kernel.inCatchScope(ts))
             {
-                state = BallState.NONE;
+                updateBallState();
                 //this.action.Stop();
                 if (eId == GameWindow.playerAngle)
                 {
-                    Kernel.getScore += 1;
+                    increaseScore();
                     GameWindow.playerAngle = 2;
                     if (keepCombo)
                     {
@@ -67,7 +71,19 @@ namespace StartConnector
                 }
                 
             }
+            else if (state == BallState.DQUE &&  Kernel.timeLimitExsit(ts))
+            {
+                updateBallState();
+            }
+
         }
+
+        private void updateBallState()
+        {
+            image.Source = null;
+            state = BallState.NONE;
+        }
+
         public void MoveBall()
         {
             if (action!=null && action.GetCurrentState()==ClockState.Active)

@@ -50,8 +50,8 @@ namespace StartConnector
 
         public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
         public static bool netStatus = false;
-        static BitmapImage bottleImg = new BitmapImage(new Uri(@"Images/bottle.png", UriKind.Relative));
-        static BitmapImage newBall = new BitmapImage(new Uri(@"Images/newBall.png", UriKind.Relative));
+        static BitmapImage bottleImage = new BitmapImage(new Uri(@"Images/bottle.png", UriKind.Relative));
+        static BitmapImage ballImage = new BitmapImage(new Uri(@"Images/newBall.png", UriKind.Relative));
         //static BitmapImage catchBall = new BitmapImage(new Uri(@"Images/get.png", UriKind.Relative));
         //static BitmapImage loseBall = new BitmapImage(new Uri(@"Images/miss.png", UriKind.Relative));
         //static BitmapImage playerLose = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
@@ -69,7 +69,7 @@ namespace StartConnector
         public GameWindow()
         {
             InitializeComponent();
-
+            this.
             InitObjectsData();
 
             // Count down befoe start game
@@ -94,7 +94,7 @@ namespace StartConnector
             this.Dispatcher.BeginInvoke(
              (Action)delegate()
              {
-                 //ChangeTimerImage();
+                 ChangeTimerImage();
              });
         }
 
@@ -131,7 +131,7 @@ namespace StartConnector
             {
                 TimerImage.Source = new BitmapImage(
                     new Uri(@"Images/timer" + timerImgCount + ".png", UriKind.Relative));
-                timerImgCount -= 1;
+                --timerImgCount;
             }
             else
             {
@@ -156,7 +156,7 @@ namespace StartConnector
                 else
                 {
                     GenerateObject();
-                    RotateAllBalls();
+                    UpdateScore_and_RotateObjects();
 
                     string scoreStr = Kernel.getScore.ToString();
                     string totalStr = Kernel.totalCount.ToString();
@@ -178,21 +178,21 @@ namespace StartConnector
             else if (Running == GameStatus.STA_OVER)
             {
                 TimerImage.Source = gameOverImg;
-                TimerImage.Opacity = 1;
-                double hitRate = 0;
+                TimerImage.Opacity = 1.0;
+                Kernel.hitRate = 0.0;
                 if (Kernel.totalCount != 0)
                 {
-                    hitRate = Math.Round(((double)Kernel.getScore
+                    Kernel.hitRate = Math.Round(((double)Kernel.getScore
                         * 100
                         / (double)Kernel.totalCount),
                         1);
                 }
-                string hitRateStr = hitRate.ToString();
+                string hitRateStr = Kernel.hitRate.ToString();
                 string scoreStr = Kernel.getScore.ToString();
-                if (Double.IsNaN(hitRate))
-                {
-                    hitRateStr = "??";
-                }
+                //if (Double.IsNaN(Kernel.hitRate))
+                //{
+                //    hitRateStr = "??";
+                //}
                 this.ScoreText.Text
                         = scoreStr
                         + ", "
@@ -242,6 +242,8 @@ namespace StartConnector
             }
             TurnOffBackWorker();
             this.Close();
+            Application.Current.Shutdown();
+            
         }
 
         private void SkeletonFrame_Ready(object sender,
@@ -317,6 +319,7 @@ namespace StartConnector
                        )
                     {
                         startGesture = currentGesture;
+                        removeAllBottles();
                         Console.WriteLine("TEAH!!!!!!!!!");
                     }
                 }
@@ -520,7 +523,7 @@ namespace StartConnector
             balls[4] = RightBall;
         }
 
-        private void RotateAllBalls()
+        private void UpdateScore_and_RotateObjects()
         {
             var dequeBalls =
                 from ball in balls
@@ -532,7 +535,15 @@ namespace StartConnector
                 ball.RotateBall();
             }
 
-
+            var generateBottles =
+                from bottle in bottles
+                where (bottle.state == BallState.DQUE)
+                select bottle;
+            foreach (FlyingBottle bottle in generateBottles)
+            {
+                bottle.CalcScore();
+                bottle.RotateBottle();
+            }
         }
 
 
@@ -592,6 +603,19 @@ namespace StartConnector
             }
         }
 
+        public void removeAllBottles()
+        {
+            var bottleCollection = (from bottle in bottles
+                                    where bottle.state == BallState.DQUE
+                                    select bottle);
+            foreach (FlyingBottle bottle in bottleCollection)
+            {
+                bottle.updateBottleState();
+                bottle.action.Stop();
+                
+            }
+        }
+
         static int dequeCount = 8;
         private void GenerateObject()
         {
@@ -608,16 +632,13 @@ namespace StartConnector
                 {
                     FlyingBall theBall = new FlyingBall();
                     theBall.eId = EId;
-                    //theBall.isClosed = false;
+                    
                     balls[EId].eId = EId;
-                    //balls[EId].img.Source = CreateBallImg();
+                    balls[EId].image.Source = ballImage;
                     theBall.state = BallState.EQUE;
-                    //theBall.xV = GameKernel.velocities[EId].X;
-                    //theBall.yV = GameKernel.velocities[EId].Y;
 
                     enqueBalls.Enqueue(theBall);
 
-                    // set defualt clock
                     DequeueBalls();                
                 }
                 #endregion
@@ -627,6 +648,8 @@ namespace StartConnector
                     for (int i = 0; i < 3; i++)
                     {
                         bottles[i].bId = rand.Next(0, 5);
+                        bottles[i].state = BallState.DQUE;
+                        bottles[i].image.Source = bottleImage;
                         bottles[i].MoveBottle();
                     }
                     return;

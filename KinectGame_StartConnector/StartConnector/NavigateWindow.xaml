@@ -6,7 +6,8 @@
         Navigating="NavigationWindow_Navigating"
         Source="Menual.xaml"  ResizeMode="NoResize"
         Loaded="Menual_Loaded"
-        KeyDown="SwitchStartGame">
+        KeyDown="SwitchStartGame"
+        x:Name="Navigator">
     
     <!--<Canvas>
         <Canvas.Resources>

@@ -60,6 +60,17 @@ namespace StartConnector
             return Math.Sqrt((From.X - To.X) * (From.X - To.X)
                 + (From.Y - To.Y) * (From.Y - To.Y));
         }
+
+        public static bool inCatchScope(TimeSpan ts)
+        {
+            return (ts.TotalSeconds > 1.65 && ts.TotalSeconds < 1.83);
+        }
+
+        public static bool timeLimitExsit(TimeSpan ts)
+        {
+            return (ts.TotalSeconds >= 2.2);
+        }
+
         public static void Clock(int seconds)
         {
             int endTickCount = System.Environment.TickCount + (seconds * 1000);

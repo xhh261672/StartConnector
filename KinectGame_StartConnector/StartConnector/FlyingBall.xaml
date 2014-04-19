@@ -227,7 +227,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Canvas.RenderTransform>
-        <Image x:Name="image" Height="60" Canvas.Left="470" Source="Images/newBall.png" Stretch="Fill" Width="60" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="image" Height="60" Canvas.Left="470"  Stretch="Fill" Width="60" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
