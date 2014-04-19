@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace StartConnector
 {
-    //using Microsoft.Kinect;
+    using Microsoft.Kinect;
 
 
     public struct GesturePoint
@@ -27,7 +27,6 @@ namespace StartConnector
         }
     }
     
-    //int s=3;
 
     public enum BallState
     {
@@ -51,9 +50,10 @@ namespace StartConnector
     };
 
 
-    class GameKernel
+    class Kernel
     {
         //public static KinectSensor sensor;
+        public static Joint leftHand, rightHand, head, hipCenter, spine, shoulderCenter, elbowLeft, elbowRight;
 
         public static double CalcDistance(Point From, Point To)
         {

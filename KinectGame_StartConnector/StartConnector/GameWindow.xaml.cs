@@ -157,13 +157,13 @@ namespace StartConnector
                     GenerateObject();
                     RotateAllBalls();
 
-                    string scoreStr = GameKernel.getScore.ToString();
-                    string totalStr = GameKernel.totalCount.ToString();
-                    if (GameKernel.getScore >= 0 && GameKernel.getScore < 10)
+                    string scoreStr = Kernel.getScore.ToString();
+                    string totalStr = Kernel.totalCount.ToString();
+                    if (Kernel.getScore >= 0 && Kernel.getScore < 10)
                     {
                         scoreStr = " " + scoreStr;
                     }
-                    if (GameKernel.totalCount >= 0 && GameKernel.totalCount < 10)
+                    if (Kernel.totalCount >= 0 && Kernel.totalCount < 10)
                     {
                         totalStr = " " + totalStr;
                     }
@@ -179,15 +179,15 @@ namespace StartConnector
                 TimerImage.Source = gameOverImg;
                 TimerImage.Opacity = 1;
                 double hitRate = 0;
-                if (GameKernel.totalCount != 0)
+                if (Kernel.totalCount != 0)
                 {
-                    hitRate = Math.Round(((double)GameKernel.getScore
+                    hitRate = Math.Round(((double)Kernel.getScore
                         * 100
-                        / (double)GameKernel.totalCount),
+                        / (double)Kernel.totalCount),
                         1);
                 }
                 string hitRateStr = hitRate.ToString();
-                string scoreStr = GameKernel.getScore.ToString();
+                string scoreStr = Kernel.getScore.ToString();
                 if (Double.IsNaN(hitRate))
                 {
                     hitRateStr = "??";
@@ -235,8 +235,11 @@ namespace StartConnector
         {
             if (kinect != null)
             {
+                kinect.SkeletonFrameReady
+                    -= new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                 kinect.Stop();
             }
+            this.Close();
         }
 
         private void SkeletonFrame_Ready(object sender,
@@ -259,6 +262,7 @@ namespace StartConnector
                     {
                         GameWindowCanvas.Visibility = Visibility.Visible;
                         ProcessGesture(skeleton);
+
                     }
                 }
             }
@@ -266,145 +270,96 @@ namespace StartConnector
 
         /* Hand Guesture Variables 
          *****************************/
-        static public List<GesturePoint> gesturePoints = new List<GesturePoint>();
-        bool gesturePointTrackingEnabled = true;
-        double swipeLength = 1.00, swipeDeviation = 0.30;
+        //static public List<GesturePoint> gesturePoints = new List<GesturePoint>();
+        //bool gesturePointTrackingEnabled = true;
+        GesturePoint startGesture, currentGesture;
+        //double swipeLength = 1.2, swipeDeviation = 0.3;
         int swipeTime = 1000;
         /******************************
          * Hand Guesture Variables */
 
 
+
         /********************************* Swipe Event ****************************************/
-        //public void GesturePointTrackingInitialize(double swipeLength, double swipeDeviation,
-        //    int swipeTime)
-        //{
-        //    this.swipeLength = swipeLength; this.swipeDeviation = swipeDeviation;
-        //    this.swipeTime = swipeTime;
-        //    //this.xOutOfBoundsLength = xOutOfBounds;
-        //}
 
-        //public void GesturePointTrackingStart()
-        //{
-        //    if (swipeLength + swipeDeviation + swipeTime == 0)
-        //        throw new InvalidOperationException("SBBBBBBBB!!!!!!!!!!!!!!!");
-        //    gesturePointTrackingEnabled = true;
-        //}
-
-        //public void GesturePointTrackingStop()
-        //{
-        //    //xOutOfBoundsLength = 0;
-        //    gesturePointTrackingEnabled = false;
-        //    gesturePoints.Clear();
-        //}
-
-        public bool GesturePointTrackingEnabled
+        public void TrackingSwipeGesture(SkeletonPoint currentPoint)
         {
-            get { return gesturePointTrackingEnabled; }
-        }
-
-        private void ResetGesturePoint(GesturePoint point)
-        {
-            bool startRemoving = false;
-            for (int i = gesturePoints.Count - 1; i >= 0; i--)
+            //get current
+            currentGesture = new GesturePoint()
             {
-                if (startRemoving)
-                    gesturePoints.RemoveAt(i);
-                else
-                    if (gesturePoints[i].Equals(point))
-                        startRemoving = true;
-            }
-        }
-
-        private void ResetGesturePoint(int point)
-        {
-            if (point < 1)
-                return;
-            for (int i = point - 1; i >= 0; i--)
+                X = currentPoint.X,
+                Y = currentPoint.Y,
+                Z = currentPoint.Z,
+                T = DateTime.Now
+            };
+            // if curr.x is less than spine.x - 0.1
+            // assign start point
+            if ((currentGesture.Z < Kernel.spine.Position.Z - 0.7 && currentGesture.Z > Kernel.spine.Position.Z) ||
+                (currentGesture.X < Kernel.spine.Position.X - 0.1)
+                )
             {
-                gesturePoints.RemoveAt(i);
-            }
-        }
-
-
-        private void HandleGestureTracking(float x, float y, float z)
-        {
-            if (!gesturePointTrackingEnabled)
-                return;
-            // check to see if xOutOfBounds is being used
-            //if (xOutOfBoundsLength != 0 && initialSwipeX == 0)
-            //{
-            //    initialSwipeX = x;
-            //}
-
-            GesturePoint newPoint = new GesturePoint() { X = x, Y = y, Z = z, T = DateTime.Now };
-            gesturePoints.Add(newPoint);
-
-            GesturePoint startPoint = gesturePoints[0];
-            var point = new Point(x, y);
-
-
-            //check for deviation
-            if (Math.Abs(newPoint.Y - startPoint.Y) > swipeDeviation)
-            {
-                // OUT OF BOUND
-                //Debug.WriteLine("Y out of bounds");
-                //if (swipeOutofBoundDetected != null)
-                //    swipeOutofBoundDetected(this, new KinectCursorEventArgs(point)
-                //{ Z = z, Cursor = cursorAdorner });
-                ScoreText.Text = "OUT OF BOUND!";
-                ResetGesturePoint(gesturePoints.Count);
+                startGesture = currentGesture;
                 return;
             }
-            if ((newPoint.T - startPoint.T).Milliseconds > swipeTime) //check time
+            if (((currentGesture.Y > Kernel.hipCenter.Position.Y && currentGesture.Y < Kernel.head.Position.Y))
+            && (currentGesture.Z > Kernel.spine.Position.Z - 0.5 && currentGesture.Z < Kernel.spine.Position.Z)
+            && (currentGesture.X > Kernel.spine.Position.X - 0.4 || currentGesture.X < Kernel.spine.Position.X + 0.1))
             {
-                gesturePoints.RemoveAt(0);
-                startPoint = gesturePoints[0];
+                if ((currentGesture.T - startGesture.T).Milliseconds <= swipeTime)
+                {
+                    //judge gesture
+                    // seccussful gesture
+                    if ((currentGesture.X - startGesture.X < 1 && currentGesture.X - startGesture.X > 0.6)
+                        && (Math.Abs(currentGesture.Y - startGesture.Y) < 0.3)
+                        && (Math.Abs(currentGesture.Z - startGesture.Z) < 0.2)
+                       )
+                    {
+                        startGesture = currentGesture;
+                        Console.WriteLine("TEAH!!!!!!!!!");
+                    }
+                }
             }
-            if ((swipeLength < 0 && newPoint.X - startPoint.X < swipeLength) // check to see if distance has been achieved swipe left
-                || (swipeLength > 0 && newPoint.X - startPoint.X > swipeLength)) // check to see if distance has been achieved swipe right
-            {
-                gesturePoints.Clear();
-                // OKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOK
-                // SWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPESWIPE
-                ScoreText.Text = "OKOKOKOKOK";
-
-                //throw local event
-                //if (swipeDetected != null)
-                //    swipeDetected(this, new KinectCursorEventArgs(point) { Z = z, Cursor = cursorAdorner });
-                return;
-            }
-            //if ((xOutOfBoundsLength < 0 && newPoint.X - initialSwipeX < xOutOfBoundsLength) // check to see if distance has been achieved swipe left
-            //    || (xOutOfBoundsLength > 0 && newPoint.X - initialSwipeX > xOutOfBoundsLength))
-            //{
-            //    if (swipeOutofBoundDetected != null)
-            //        swipeOutofBoundDetected(this, new KinectCursorEventArgs(point) { Z = z, Cursor = cursorAdorner });
-            //}
         }
 
         /********************************* Swipe Event ****************************************/
         private void ProcessGesture(Skeleton s)
         {
             // Recognize Joints
-            Joint leftHand = (from j in s.Joints
+            Kernel.leftHand = (from j in s.Joints
                               where j.JointType == JointType.HandLeft
                               select j).FirstOrDefault();
-            Joint rightHand = (from j in s.Joints
+            Kernel.rightHand = (from j in s.Joints
                                where j.JointType == JointType.HandRight
                                select j).FirstOrDefault();
-            Joint head = (from j in s.Joints
+            Kernel.head = (from j in s.Joints
                           where j.JointType == JointType.Head
                           select j).FirstOrDefault();
-            Joint hipCenter = (from j in s.Joints
+            Kernel.hipCenter = (from j in s.Joints
                                where j.JointType == JointType.HipCenter
                                select j).FirstOrDefault();
+            Kernel.spine = (from j in s.Joints
+                           where j.JointType == JointType.Spine
+                           select j).FirstOrDefault();
+            Kernel.shoulderCenter = (from j in s.Joints
+                           where j.JointType == JointType.ShoulderCenter
+                           select j).FirstOrDefault();
+            Kernel.elbowLeft = (from j in s.Joints
+                                    where j.JointType == JointType.ElbowLeft
+                                    select j).FirstOrDefault();
+            Kernel.elbowRight = (from j in s.Joints
+                                    where j.JointType == JointType.ElbowRight
+                                    select j).FirstOrDefault();
 
             /* Body Control */
+            //HandleGestureTracking(rightHand.Position);
+            TrackingSwipeGesture(Kernel.rightHand.Position);
             // Start game
+
             if (
-       
-                   Math.Abs(rightHand.Position.Y - leftHand.Position.Y) < 0.3
-                && Math.Abs(rightHand.Position.Z - leftHand.Position.Z) < 0.3
-                && rightHand.Position.X - leftHand.Position.X > 1.3
+
+                   Math.Abs(Kernel.rightHand.Position.Y - Kernel.leftHand.Position.Y) < 0.3
+                && Math.Abs(Kernel.rightHand.Position.Z - Kernel.leftHand.Position.Z) < 0.3
+                && Kernel.rightHand.Position.X - Kernel.leftHand.Position.X > 1.3
                 && !firstStart
                 )
             {
@@ -412,26 +367,26 @@ namespace StartConnector
                 TimerImage.Source = null;
                 
                 Running = GameStatus.STA_START;
-                GameKernel.totalCount = 0;
-                GameKernel.getScore = 0;
+                Kernel.totalCount = 0;
+                Kernel.getScore = 0;
             }
 
             // End game
             if (
-                   (rightHand.Position.Y < head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y - 0.15)
-                && (leftHand.Position.Y < head.Position.Y)
-                && (leftHand.Position.Y > head.Position.Y - 0.15)
+                   (Kernel.rightHand.Position.Y < Kernel.head.Position.Y)
+                && (Kernel.rightHand.Position.Y > Kernel.head.Position.Y - 0.15)
+                && (Kernel.leftHand.Position.Y < Kernel.head.Position.Y)
+                && (Kernel.leftHand.Position.Y > Kernel.head.Position.Y - 0.15)
 
-                && (rightHand.Position.X > head.Position.X)
-                && (rightHand.Position.X < head.Position.X + 0.15)
-                && (leftHand.Position.X < head.Position.X)
-                && (leftHand.Position.X > head.Position.X - 0.15)
+                && (Kernel.rightHand.Position.X > Kernel.head.Position.X)
+                && (Kernel.rightHand.Position.X < Kernel.head.Position.X + 0.15)
+                && (Kernel.leftHand.Position.X < Kernel.head.Position.X)
+                && (Kernel.leftHand.Position.X > Kernel.head.Position.X - 0.15)
 
-                && (rightHand.Position.Z < head.Position.Z)
-                && (rightHand.Position.Z > head.Position.Z - 0.2)
-                && (leftHand.Position.Z < head.Position.Z)
-                && (leftHand.Position.Z > head.Position.Z - 0.2)
+                && (Kernel.rightHand.Position.Z < Kernel.head.Position.Z)
+                && (Kernel.rightHand.Position.Z > Kernel.head.Position.Z - 0.2)
+                && (Kernel.leftHand.Position.Z < Kernel.head.Position.Z)
+                && (Kernel.leftHand.Position.Z > Kernel.head.Position.Z - 0.2)
 
                 )
             {
@@ -441,13 +396,13 @@ namespace StartConnector
 
             // most right and left
             if (
-                (rightHand.Position.X - hipCenter.Position.X > 0.35)
-                && Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1
-                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
-                && (rightHand.Position.Y < head.Position.Y)
-                && ((head.Position.X - hipCenter.Position.X) > 0.1)
-                && (head.Position.Y > rightHand.Position.Y)
+                (Kernel.rightHand.Position.X - Kernel.hipCenter.Position.X > 0.35)
+                && Math.Abs(Kernel.leftHand.Position.X - Kernel.rightHand.Position.X) < 1
+                && Math.Abs(Kernel.leftHand.Position.Y - Kernel.rightHand.Position.Y) < 1
+                && Math.Abs(Kernel.leftHand.Position.Z - Kernel.rightHand.Position.Z) < 0.5
+                && (Kernel.rightHand.Position.Y < Kernel.head.Position.Y)
+                && ((Kernel.head.Position.X - Kernel.hipCenter.Position.X) > 0.1)
+                && (Kernel.head.Position.Y > Kernel.rightHand.Position.Y)
                 )
             {
 
@@ -463,13 +418,13 @@ namespace StartConnector
             }
 
             if (
-                 (leftHand.Position.X - hipCenter.Position.X < -0.35)
-                && Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1
-                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
-                && (leftHand.Position.Y < head.Position.Y)
-                && (head.Position.X - hipCenter.Position.X < -0.1)
-                && (head.Position.Y > leftHand.Position.Y)
+                 (Kernel.leftHand.Position.X - Kernel.hipCenter.Position.X < -0.35)
+                && Math.Abs(Kernel.leftHand.Position.X - Kernel.rightHand.Position.X) < 1
+                && Math.Abs(Kernel.leftHand.Position.Y - Kernel.rightHand.Position.Y) < 1
+                && Math.Abs(Kernel.leftHand.Position.Z - Kernel.rightHand.Position.Z) < 0.5
+                && (Kernel.leftHand.Position.Y < Kernel.head.Position.Y)
+                && (Kernel.head.Position.X - Kernel.hipCenter.Position.X < -0.1)
+                && (Kernel.head.Position.Y > Kernel.leftHand.Position.Y)
                 )
             {
                 if (!isBackGestureActive && !isForwardGestureActive)
@@ -485,12 +440,12 @@ namespace StartConnector
 
             // Middle direction
             if (
-                (leftHand.Position.X > head.Position.X - 0.4)
-                && (leftHand.Position.X < head.Position.X)
-                && (rightHand.Position.X < head.Position.X + 0.4)
-                && (rightHand.Position.X > head.Position.X)
-                && (rightHand.Position.Y > head.Position.Y + 0.15)
-                && (leftHand.Position.Y > head.Position.Y + 0.15)
+                (Kernel.leftHand.Position.X > Kernel.head.Position.X - 0.4)
+                && (Kernel.leftHand.Position.X < Kernel.head.Position.X)
+                && (Kernel.rightHand.Position.X < Kernel.head.Position.X + 0.4)
+                && (Kernel.rightHand.Position.X > Kernel.head.Position.X)
+                && (Kernel.rightHand.Position.Y > Kernel.head.Position.Y + 0.15)
+                && (Kernel.leftHand.Position.Y > Kernel.head.Position.Y + 0.15)
                 )
             {
                 if (!isCenterGestureActive)
@@ -506,12 +461,12 @@ namespace StartConnector
 
             // Oblique direction
             // oblique right
-            if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
-                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
-                && (leftHand.Position.Y > head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y)
-                && ((head.Position.X - hipCenter.Position.X) > 0.1)
+            if ((Math.Abs(Kernel.leftHand.Position.X - Kernel.rightHand.Position.X) < 1)
+                && Math.Abs(Kernel.leftHand.Position.Y - Kernel.rightHand.Position.Y) < 1
+                && Math.Abs(Kernel.leftHand.Position.Z - Kernel.rightHand.Position.Z) < 0.5
+                && (Kernel.leftHand.Position.Y > Kernel.head.Position.Y)
+                && (Kernel.rightHand.Position.Y > Kernel.head.Position.Y)
+                && ((Kernel.head.Position.X - Kernel.hipCenter.Position.X) > 0.1)
                 )
             {
                 if (!isObliqueLeft && !isObliqueRight)
@@ -522,13 +477,13 @@ namespace StartConnector
             }
 
             // oblique left
-            if ((Math.Abs(leftHand.Position.X - rightHand.Position.X) < 1)
-                && Math.Abs(leftHand.Position.Y - rightHand.Position.Y) < 1
-                && Math.Abs(leftHand.Position.Z - rightHand.Position.Z) < 0.5
-                && (leftHand.Position.Y > head.Position.Y)
-                && (rightHand.Position.Y > head.Position.Y)
-                && (hipCenter.Position.X - head.Position.X > 0.1)
-                && (hipCenter.Position.X - head.Position.X < 0.3)
+            if ((Math.Abs(Kernel.leftHand.Position.X - Kernel.rightHand.Position.X) < 1)
+                && Math.Abs(Kernel.leftHand.Position.Y - Kernel.rightHand.Position.Y) < 1
+                && Math.Abs(Kernel.leftHand.Position.Z - Kernel.rightHand.Position.Z) < 0.5
+                && (Kernel.leftHand.Position.Y > Kernel.head.Position.Y)
+                && (Kernel.rightHand.Position.Y > Kernel.head.Position.Y)
+                && (Kernel.hipCenter.Position.X - Kernel.head.Position.X > 0.1)
+                && (Kernel.hipCenter.Position.X - Kernel.head.Position.X < 0.3)
                 )
             {
                 if (!isObliqueLeft && !isObliqueRight)
@@ -630,13 +585,12 @@ namespace StartConnector
         {
             if (dequeCount == 0)
             {
-                ++GameKernel.totalCount;
+                ++Kernel.totalCount;
 
                 int EId;
                 EId = rand.Next(0, 20) % 6;
                 //objId.Enqueue(EId);
 
-                //Console.WriteLine(EId);
                 #region GenerateBall
                 if (EId != 5)
                 {

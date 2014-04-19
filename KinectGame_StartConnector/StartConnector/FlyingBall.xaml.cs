@@ -48,24 +48,22 @@ namespace StartConnector
             {
                 state = BallState.NONE;
                 //this.action.Stop();
-                Console.WriteLine("eId: " + eId);
                 if (eId == GameWindow.playerAngle)
                 {
-                    GameKernel.getScore += 1;
+                    Kernel.getScore += 1;
                     GameWindow.playerAngle = 2;
                     if (keepCombo)
                     {
-                        GameKernel.comboCount++;
+                        Kernel.comboCount++;
                     }
                     keepCombo = true;
-                    //hasGotScore = true;
                 }
                 else
                 {
                     keepCombo = false;
-                    GameKernel.maxComboCount =
-                        (GameKernel.maxComboCount < GameKernel.comboCount)
-                        ? GameKernel.comboCount : GameKernel.maxComboCount;
+                    Kernel.maxComboCount =
+                        (Kernel.maxComboCount < Kernel.comboCount)
+                        ? Kernel.comboCount : Kernel.maxComboCount;
                 }
                 
             }
@@ -76,7 +74,6 @@ namespace StartConnector
             {
                 return;
             }
-            //hasGotScore = false;
             switch(eId)
             {
                 case 0:

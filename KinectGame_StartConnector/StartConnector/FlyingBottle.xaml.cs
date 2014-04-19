@@ -96,7 +96,7 @@ namespace StartConnector
                 //Console.WriteLine("eId: " + eId);
                 if (bId == GameWindow.playerAngle)
                 {
-                    --GameKernel.getScore;
+                    --Kernel.getScore;
                     GameWindow.playerAngle = 2;
                     bId = -1;
                 }
