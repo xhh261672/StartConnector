@@ -20,5 +20,14 @@ namespace StartConnector
         {
             InitializeComponent();
         }
+
+        //public static readonly DependencyProperty ImageSourceProperty
+        //    = DependencyProperty.RegisterAttached("imgSource", typeof(ImageSource), typeof(MTextBlock));
+        //public ImageSource ImgSource
+        //{
+        //    get { return (ImageSource)GetValue(ImageSourceProperty); }
+        //    set { SetValue(ImageSourceProperty, value); }
+        //}
+
     }
 }

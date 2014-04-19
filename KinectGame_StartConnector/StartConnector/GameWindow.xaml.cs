@@ -33,12 +33,12 @@ namespace StartConnector
         bool isCenterGestureActive = false;
         bool isObliqueRight = false;
         bool isObliqueLeft = false;
-        bool timerImgZomIn = false;
+        //bool timerImgZomIn = false;
         bool firstStart = false;
         bool hashPlayerd = false;
         bool runBackWorker = true;
 
-        int timerImgCount = 3;
+        //int timerImgCount = 3;
         Queue<FlyingBall> enqueBalls = new Queue<FlyingBall>();
         BackgroundWorker bw;
         List<FlyingBall> balls = new List<FlyingBall>(5);
@@ -61,24 +61,23 @@ namespace StartConnector
         public static int playerAngle = 2;
         //public static int sleepTime = 100;
 
-        
 
-        Timer countDownTimer;
+        public static ShakingBall skb = new ShakingBall();
+        //Timer countDownTimer;
 
         public GameWindow()
         {
             InitializeComponent();
-            this.
             InitObjectsData();
 
             // Count down befoe start game
-            countDownTimer = new Timer(
-                new TimerCallback(
-                    countDownTimerDelegate), 
-                    null,
-                    20,
-                    60
-                    );
+            //countDownTimer = new Timer(
+            //    new TimerCallback(
+            //        countDownTimerDelegate), 
+            //        null,
+            //        20,
+            //        60
+            //        );
             // Background worker
             CompositionTarget.Rendering += new EventHandler(Rendering);
 
@@ -86,59 +85,91 @@ namespace StartConnector
 
             // regist keydown event to control angle of player's orientation
             //this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
+            //CountDown.SignalLight();
         }
 
-        private void countDownTimerDelegate(object sender)
-        {
-            this.Dispatcher.BeginInvoke(
-             (Action)delegate()
-             {
-                 ChangeTimerImage();
-             });
-        }
+        
 
-        private void ChangeTimerImage()
+        private void InitObjectsData()
         {
-            if (Running == GameStatus.STA_START)
+            ScoreBlock.Content.Text = "Score: ";
+            ScoreBlock.Number.Text = "0";
+            CombosBlock.Content.Text = "Combo: ";
+            CombosBlock.Number.Text = "0";
+            SkillBlock.Content.Text = "Skill: ";
+            SkillBlock.Number.Text = "0";
+            skb = GetPoint;
+            //balls.
+            for (int i = 0; i < 5; i++)
+                balls.Add(new FlyingBall());
+            for (int i = 0; i < 3; i++)
             {
-                if (TimerImage.Opacity > 1.0)
-                {
-                    timerImgZomIn = false;
-                    TimerImage.Opacity = 1.0;
-                }
-                if (TimerImage.Opacity <= 0.1)
-                {
-                    timerImgZomIn = true;
-                    TimerImage.Opacity = 0.1;
-                    LoadTimerImage();
-                }
-
-                if (timerImgZomIn)
-                {
-                    TimerImage.Opacity += 0.1;
-                }
-                else
-                {
-                    TimerImage.Opacity -= 0.1;
-                }
-            }
-        }
-
-        private void LoadTimerImage()
-        {
-            if (timerImgCount >= 0)
-            {
-                TimerImage.Source = new BitmapImage(
-                    new Uri(@"Images/timer" + timerImgCount + ".png", UriKind.Relative));
-                --timerImgCount;
-            }
-            else
-            {
-                this.TimerImage.Source = null;
-                countDownTimer.Dispose();
+                bottles.Add(new FlyingBottle());
+                bottles[i].bId = -1;
             }
 
+            bottles[0] = bottle1;
+            bottles[1] = bottle2;
+            bottles[2] = bottle3;
+
+            balls[0] = LeftBall;
+            balls[1] = ObliqueLeftBall;
+            balls[2] = MiddleBall;
+            balls[3] = ObliqueRightBall;
+            balls[4] = RightBall;
         }
+
+        //private void countDownTimerDelegate(object sender)
+        //{
+        //    this.Dispatcher.BeginInvoke(
+        //     (Action)delegate()
+        //     {
+        //         ChangeTimerImage();
+        //     });
+        //}
+
+        //private void ChangeTimerImage()
+        //{
+        //    if (Running == GameStatus.STA_START)
+        //    {
+        //        if (TimerImage.Opacity > 1.0)
+        //        {
+        //            timerImgZomIn = false;
+        //            TimerImage.Opacity = 1.0;
+        //        }
+        //        if (TimerImage.Opacity <= 0.1)
+        //        {
+        //            timerImgZomIn = true;
+        //            TimerImage.Opacity = 0.1;
+        //            LoadTimerImage();
+        //        }
+
+        //        if (timerImgZomIn)
+        //        {
+        //            TimerImage.Opacity += 0.1;
+        //        }
+        //        else
+        //        {
+        //            TimerImage.Opacity -= 0.1;
+        //        }
+        //    }
+        //}
+
+        //private void LoadTimerImage()
+        //{
+        //    if (timerImgCount >= 0)
+        //    {
+        //        TimerImage.Source = new BitmapImage(
+        //            new Uri(@"Images/timer" + timerImgCount + ".png", UriKind.Relative));
+        //        --timerImgCount;
+        //    }
+        //    else
+        //    {
+        //        this.TimerImage.Source = null;
+        //        countDownTimer.Dispose();
+        //    }
+
+        //}
 
 
         private void SetBlockText()
@@ -157,8 +188,9 @@ namespace StartConnector
                 isRendering = false;
 
                 // Timer : wait 3 seconds to start game
-                if (startGameCount <= 30)
+                if (startGameCount < 30)
                     startGameCount++;
+                
                 else
                 {
                     GenerateObject();
@@ -183,8 +215,11 @@ namespace StartConnector
             }
             else if (Running == GameStatus.STA_OVER)
             {
-                TimerImage.Source = gameOverImg;
-                TimerImage.Opacity = 1.0;
+                ScoreBlock.Number.Text = Kernel.getScore.ToString();
+                CombosBlock.Number.Text = Kernel.maxComboCount.ToString();
+
+                //TimerImage.Source = gameOverImg;
+                //TimerImage.Opacity = 1.0;
                 //Kernel.hitRate = 0.0;
                 //if (Kernel.totalCount != 0)
                 //{
@@ -323,7 +358,7 @@ namespace StartConnector
                     {
                         startGesture = currentGesture;
                         removeAllBottles();
-                        Console.WriteLine("TEAH!!!!!!!!!");
+                        //Console.WriteLine("TEAH!!!!!!!!!");
                     }
                 }
             }
@@ -372,7 +407,7 @@ namespace StartConnector
                 )
             {
                 firstStart = true;
-                TimerImage.Source = null;
+                //TimerImage.Source = null;
                 
                 Running = GameStatus.STA_START;
                 Kernel.totalCount = 0;
@@ -503,28 +538,7 @@ namespace StartConnector
         }
 
 
-        private void InitObjectsData()
-        {
-              
-            //balls.
-            for (int i = 0; i < 5; i++)
-                balls.Add(new FlyingBall());
-            for (int i = 0; i < 3; i++)
-            {
-                bottles.Add(new FlyingBottle());
-                bottles[i].bId = -1;
-            }
-
-            bottles[0] = bottle1;
-            bottles[1] = bottle2;
-            bottles[2] = bottle3;
-
-            balls[0] = LeftBall;
-            balls[1] = ObliqueLeftBall;
-            balls[2] = MiddleBall;
-            balls[3] = ObliqueRightBall;
-            balls[4] = RightBall;
-        }
+        
 
         private void UpdateScore_and_RotateObjects()
         {
@@ -560,7 +574,7 @@ namespace StartConnector
 
         private void TurnOffBackWorker()
         {
-            Console.WriteLine("CLOSED");
+            //Console.WriteLine("CLOSED");
             runBackWorker = false;
             CompositionTarget.Rendering -= new EventHandler(Rendering);
             bw.DoWork -= new DoWorkEventHandler(BackWork);
@@ -593,6 +607,7 @@ namespace StartConnector
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;
+                    CountDown.SignalLight();
                     hashPlayerd = true;
                     break;
                 case Key.Escape:
@@ -671,7 +686,5 @@ namespace StartConnector
                 balls[exitBall.eId].MoveBall();
             }
         }
-
-
     }
 }

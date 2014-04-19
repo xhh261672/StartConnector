@@ -15,6 +15,7 @@ namespace StartConnector
 {
 	public partial class ShakingBall : UserControl
 	{
+        Storyboard sb;
 		public ShakingBall()
 		{
 			this.InitializeComponent();
@@ -22,7 +23,9 @@ namespace StartConnector
 
         public void Shake()
         {
-            Storyboard sb = (Storyboard)Resources["shaking"];
+            if (sb != null && sb.GetCurrentState() == ClockState.Active)
+                return;
+            sb = (Storyboard)Resources["shaking"];
             sb.Begin();
         }
 	}

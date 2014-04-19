@@ -35,7 +35,7 @@
 		</EventTrigger>
 	</UserControl.Triggers>-->
 
-    <Canvas x:Name="LayoutRoot" RenderTransformOrigin="0.478,0.456">
+    <Canvas x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
         <Ellipse x:Name="ellipse" Fill="#FFCB0E0E" Height="95"  
                  Stroke="Black" Canvas.Top="55" Width="95" Canvas.Left="57" Visibility="Hidden" />
         <Ellipse x:Name="ellipse1" Fill="#FF0ECB17" Height="95"  Stroke="Black" 

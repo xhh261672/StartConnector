@@ -42,6 +42,7 @@ namespace StartConnector
 
         private void increaseScore()
         {
+            GameWindow.skb.Shake();
             ++Kernel.getScore;
         }
 

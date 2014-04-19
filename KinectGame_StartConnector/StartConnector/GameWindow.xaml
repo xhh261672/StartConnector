@@ -14,10 +14,10 @@
     <Canvas x:Name="GameWindowCanvas" Width="1000" Margin="10,10,6,3">
 
         <local:ResultMenu Panel.ZIndex="1" Canvas.Left="1259" Canvas.Top="-13" x:Name="ResultPanel">
-            
+
         </local:ResultMenu>
 
-        <Image x:Name="TimerImage" 
+        <!--<Image x:Name="TimerImage" 
                Stretch="Fill" 
                ToolTipService.ToolTip="test"  
                Height="220" Width="295"
@@ -25,24 +25,26 @@
                Canvas.Left="323" 
                Canvas.Top="297"
                >
-        </Image>
+        </Image>-->
         <!--Player Side-->
+
+
         <local:Player x:Name="Maya" Canvas.Left="122" Canvas.Top="266" Height="482" Width="642" />
 
         <local:FlyingBottle x:Name="bottle1" Canvas.Top="185" Canvas.Left="-40"></local:FlyingBottle>
         <local:FlyingBottle x:Name="bottle2" Canvas.Top="203" Canvas.Left="-40"></local:FlyingBottle>
         <local:FlyingBottle x:Name="bottle3" Canvas.Top="221" Canvas.Left="-40"></local:FlyingBottle>
 
-        <!--<local:MTextBlock x:Name="CombosBlock" 
-                          Height="89" Canvas.Left="774" Canvas.Top="635">
+        <local:MTextBlock x:Name="CombosBlock" 
+                          Height="89" Canvas.Left="774" Canvas.Top="610">
         </local:MTextBlock>
-        <local:MTextBlock x:Name="ScoreBlock" Canvas.Left="292" Canvas.Top="635" Height="89" ></local:MTextBlock>
-        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="635" Height="89" ></local:MTextBlock>-->
-        <!--<local:ShakingBall x:Name="GetPoint" ></local:ShakingBall>-->
-        <local:CountingDown x:Name="ct" Background="Red">
-            
-        </local:CountingDown>
-        <TextBox x:Name="ScoreText"
+        <local:MTextBlock x:Name="ScoreBlock" Canvas.Left="292" Canvas.Top="610" Height="89" ></local:MTextBlock>
+        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="610" Height="89" ></local:MTextBlock>
+        <local:ShakingBall x:Name="GetPoint" Canvas.Left="1100" Canvas.Top="659" ></local:ShakingBall>
+        <local:CountingDown x:Name="CountDown" Height="200" Width="200"  Canvas.Left="358" Canvas.Top="185"/>
+
+
+        <!--<TextBox x:Name="ScoreText"
                  Text=" 0/ 0"
                  Background="Transparent"
                  BorderThickness="0"
@@ -53,7 +55,7 @@
                  FontWeight="ExtraBold"
                  FontFamily="Monaco"
                  IsReadOnly="True" Canvas.Right="20" Canvas.Top="635" Canvas.Left="692" RenderTransformOrigin="0.486,0.279" 
-                 />
+                 />-->
 
         <local:FlyingBall x:Name="LeftBall" Canvas.Top="221" Canvas.Left="-40"/>
         <local:FlyingBall x:Name="ObliqueLeftBall" Canvas.Top="221" Canvas.Left="-40"/>
