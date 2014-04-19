@@ -141,6 +141,13 @@ namespace StartConnector
         }
 
 
+        private void SetBlockText()
+        {
+            ScoreBlock.Content.Text = "Score: ";
+            ScoreBlock.Content.Text = "Score: ";
+            ScoreBlock.Content.Text = "Score: ";
+
+        }
 
         private void Rendering(object sender, EventArgs e)
         {
@@ -157,20 +164,20 @@ namespace StartConnector
                     GenerateObject();
                     UpdateScore_and_RotateObjects();
 
-                    string scoreStr = Kernel.getScore.ToString();
-                    string totalStr = Kernel.totalCount.ToString();
-                    if (Kernel.getScore >= 0 && Kernel.getScore < 10)
-                    {
-                        scoreStr = " " + scoreStr;
-                    }
-                    if (Kernel.totalCount >= 0 && Kernel.totalCount < 10)
-                    {
-                        totalStr = " " + totalStr;
-                    }
-                    this.ScoreText.Text
-                        = scoreStr
-                        + "/"
-                        + totalStr;
+                    //string scoreStr = Kernel.getScore.ToString();
+                    //string totalStr = Kernel.totalCount.ToString();
+                    //if (Kernel.getScore >= 0 && Kernel.getScore < 10)
+                    //{
+                    //    scoreStr = " " + scoreStr;
+                    //}
+                    //if (Kernel.totalCount >= 0 && Kernel.totalCount < 10)
+                    //{
+                    //    totalStr = " " + totalStr;
+                    //}
+                    //this.ScoreText.Text
+                    //    = scoreStr
+                    //    + "/"
+                    //    + totalStr;
                 }
                 
             }
@@ -178,25 +185,22 @@ namespace StartConnector
             {
                 TimerImage.Source = gameOverImg;
                 TimerImage.Opacity = 1.0;
-                Kernel.hitRate = 0.0;
-                if (Kernel.totalCount != 0)
-                {
-                    Kernel.hitRate = Math.Round(((double)Kernel.getScore
-                        * 100
-                        / (double)Kernel.totalCount),
-                        1);
-                }
-                string hitRateStr = Kernel.hitRate.ToString();
-                string scoreStr = Kernel.getScore.ToString();
-                //if (Double.IsNaN(Kernel.hitRate))
+                //Kernel.hitRate = 0.0;
+                //if (Kernel.totalCount != 0)
                 //{
-                //    hitRateStr = "??";
+                //    Kernel.hitRate = Math.Round(((double)Kernel.getScore
+                //        * 100
+                //        / (double)Kernel.totalCount),
+                //        1);
                 //}
-                this.ScoreText.Text
-                        = scoreStr
-                        + ", "
-                        + hitRateStr
-                        + "%";
+                //string hitRateStr = Kernel.hitRate.ToString();
+                //string scoreStr = Kernel.getScore.ToString();
+                 
+                //this.ScoreText.Text
+                //        = scoreStr
+                //        + ", "
+                //        + hitRateStr
+                //        + "%";
             }
             
         }

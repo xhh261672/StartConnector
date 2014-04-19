@@ -111,11 +111,34 @@ namespace StartConnector
         public static Point middleEnd = new Point(30, 430);
 
 
-        public static int comboCount = 0;
-        public static int maxComboCount = 0;
-        public static double hitRate = 0.0;
-        public static int totalCount = 0;
-        public static int getScore = 0;
 
+        public static double CalcRate()
+        {
+            return CalcPercentage(getBallCount, totalCount);
+        }
+        public static double CalcPercentage(double dividend, double divisor)
+        {
+            return Math.Round(dividend * 100 / divisor, 1);
+        }
+
+        public static double CalcPercentage(double number)
+        {
+            return Math.Round(number, 1);
+        }
+
+        //public static double yourRate = 0.0;
+        
+        public static int bestScore = 0;
+        //public static int bestCombos = 0;
+        
+        public static int getScore = 0;
+        public static int getCombos = 0;
+
+        public static int comboCount = 0; // current combo
+        public static int maxComboCount = 0; // best combo in current game
+        public static int bestCombos = 0;// best combo in history
+
+        public static int totalCount = 0;
+        public static int getBallCount = 0;
     }
 }

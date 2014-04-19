@@ -56,17 +56,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CountingDown.xaml.cs">
+      <DependentUpon>CountingDown.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FlyingBall.xaml.cs">
       <DependentUpon>FlyingBall.xaml</DependentUpon>
     </Compile>
     <Compile Include="FlyingBottle.xaml.cs">
       <DependentUpon>FlyingBottle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavigateWindow.xaml.cs">
-      <DependentUpon>NavigateWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Menual.xaml.cs">
       <DependentUpon>Menual.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MTextBlock.xaml.cs">
+      <DependentUpon>MTextBlock.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NavigateWindow.xaml.cs">
+      <DependentUpon>NavigateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
@@ -75,6 +83,13 @@
       <SubType>Code</SubType>
       <DependentUpon>ResultMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShakingBall.xaml.cs">
+      <DependentUpon>ShakingBall.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CountingDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FlyingBall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,19 +111,27 @@
       <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NavigateWindow.xaml">
+    <Page Include="Menual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Menual.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="MTextBlock.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NavigateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Player.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ResultMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShakingBall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

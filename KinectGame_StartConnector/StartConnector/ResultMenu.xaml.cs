@@ -22,57 +22,67 @@ namespace StartConnector
 		{
 			this.InitializeComponent();
 		}
+
         public void ShowResult()
         {
-            //对静态数据进行修改
-            this.BestScoreNumber.Content = 100;
-            this.YourScoreNumber.Content = 100;
-            this.BestCombosNumber.Content = 100;
-            this.YourCombosNumber.Content = 100;
-            Storyboard sb = (Storyboard)Resources["ShowResult"];
-            //更改Rate的动画
-            DoubleAnimationUsingKeyFrames yRate = sb.Children[0] as DoubleAnimationUsingKeyFrames;
-            yRate.KeyFrames[1].Value = 1217.482;/*value = 1023.594+(yourRate/105)*293.888*/
+            // static game data
+            double yourRate = Kernel.CalcRate();
+            int yourScore = Kernel.getScore;
+            int bestScore = Kernel.bestScore;
+            int yourCombos = Kernel.maxComboCount;
+            int bestCombos = Kernel.bestCombos;
 
-            //更改Score动画
-            DoubleAnimationUsingKeyFrames yScoreFornt = sb.Children[1] as DoubleAnimationUsingKeyFrames;
-            yScoreFornt.KeyFrames[1].Value = -279;/*value=(yourScore/bestScore)*(-558)*/
+            this.YourScoreNumber.Content = yourScore;
+            this.YourCombosNumber.Content = yourCombos;
+
+            this.BestScoreNumber.Content = (bestScore == 0) ? yourScore : bestScore;
+            this.BestCombosNumber.Content = (bestCombos == 0) ? yourCombos : bestCombos;
+
+
+            Storyboard sb = (Storyboard)Resources["ShowResult"];
+            
+            // Rate animation
+            DoubleAnimationUsingKeyFrames yRate = sb.Children[0] as DoubleAnimationUsingKeyFrames;
+            yRate.KeyFrames[1].Value = Kernel.CalcPercentage(1023.594 + (yourRate / 105.0) * 293.888);
+
+            // Score animation
+            DoubleAnimationUsingKeyFrames yScoreMoveFront = sb.Children[1] as DoubleAnimationUsingKeyFrames;
+            yScoreMoveFront.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (-558));
             
             DoubleAnimationUsingKeyFrames yScorePoint = sb.Children[3] as DoubleAnimationUsingKeyFrames;
-            yScorePoint.KeyFrames[1].Value = -279;/*value=(yourScore/bestScore)*(-558)*/
+            yScorePoint.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (-558));
             
             DoubleAnimationUsingKeyFrames yScore = sb.Children[5] as DoubleAnimationUsingKeyFrames;
-            yScore.KeyFrames[1].Value = 69.771;/*value=(yourScore/bestScore)*(139.917)*/
+            yScore.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (139.917));
             
             DoubleAnimationUsingKeyFrames yScoreLocation = sb.Children[6] as DoubleAnimationUsingKeyFrames;
-            yScoreLocation.KeyFrames[1].Value = -138.541;//value=(yourScore/bestScore)*(-277.833)
+            yScoreLocation.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (-277.833));
             
             DoubleAnimationUsingKeyFrames yScoreNumber = sb.Children[9] as DoubleAnimationUsingKeyFrames;
-            yScoreNumber.KeyFrames[1].Value = -279;//value=(yourScore/bestScore)*(-277.833)
+            yScoreNumber.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (-277.833));
 
             DoubleAnimationUsingKeyFrames yScoreFont = sb.Children[10] as DoubleAnimationUsingKeyFrames;
-            yScoreFont.KeyFrames[1].Value = -576;//value=(yourScore/bestScore)*(-576)
+            yScoreFont.KeyFrames[1].Value = Kernel.CalcPercentage((yourScore / bestScore) * (-576));
             
-            //更改combos动画
+            // Combos animation
             DoubleAnimationUsingKeyFrames yCombosFornt = sb.Children[2] as DoubleAnimationUsingKeyFrames;
-            yCombosFornt.KeyFrames[1].Value = -558;//value=(yourScore/bestScore)*(-558)
+            yCombosFornt.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (-558));
             
             DoubleAnimationUsingKeyFrames yCombosPoint = sb.Children[4] as DoubleAnimationUsingKeyFrames;
-            yCombosPoint.KeyFrames[1].Value = -558;//value=(yourScore/bestScore)*(-558)
+            yCombosPoint.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (-558));
             
             DoubleAnimationUsingKeyFrames yCombos = sb.Children[7] as DoubleAnimationUsingKeyFrames;
-            yCombos.KeyFrames[1].Value = -139.917;//value=(yourScore/bestScore)*(139.917)
+            yCombos.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (139.917));
             
             DoubleAnimationUsingKeyFrames yCombosLocation = sb.Children[8] as DoubleAnimationUsingKeyFrames;
-            yCombosLocation.KeyFrames[1].Value = -277;//value=(yourScore/bestScore)*(-277.833)
+            yCombosLocation.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (-277.833));
 
             DoubleAnimationUsingKeyFrames yCombosNumber = sb.Children[11] as DoubleAnimationUsingKeyFrames;
-            yCombosNumber.KeyFrames[1].Value = -279;//value=(yourScore/bestScore)*(-277.833)
+            yCombosNumber.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (-277.833));
 
             DoubleAnimationUsingKeyFrames yCombosFont = sb.Children[12] as DoubleAnimationUsingKeyFrames;
-            yCombosFont.KeyFrames[1].Value = -576;//value=(yourScore/bestScore)*(-576)
+            yCombosFont.KeyFrames[1].Value = Kernel.CalcPercentage((yourCombos / bestCombos) * (-576));
 
-            //播放showRate的动画
             sb.Begin();
 		}
 	}

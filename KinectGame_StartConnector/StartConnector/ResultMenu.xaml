@@ -14,11 +14,11 @@
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ScoreFornt">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yScoreFornt" Value="-279"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yScoreFront" Value="-279"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CombosFornt">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yCombosFornt" Value="-558"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yCombosFront" Value="-558"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="YourScorePoint">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
@@ -117,7 +117,7 @@
         		</TransformGroup>
         	</Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="ScoreFornt" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="363" Width="4" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="ScoreFront" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="363" Width="4" RenderTransformOrigin="0.5,0.5">
         	<Rectangle.RenderTransform>
         		<TransformGroup>
         			<ScaleTransform/>
@@ -127,7 +127,7 @@
         		</TransformGroup>
         	</Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="CombosFornt" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="488.5" Width="4" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="CombosFront" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="488.5" Width="4" RenderTransformOrigin="0.5,0.5">
         	<Rectangle.RenderTransform>
         		<TransformGroup>
         			<ScaleTransform/>
