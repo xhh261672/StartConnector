@@ -145,19 +145,12 @@
     <Resource Include="Images\football.png" />
     <Resource Include="Images\gameover.png" />
     <Resource Include="Images\get.png" />
-    <Resource Include="Images\miss.png" />
     <Resource Include="Images\net.png" />
-    <Resource Include="Images\player.png" />
-    <Resource Include="Images\player2.png" />
-    <Resource Include="Images\plumpnet.png" />
     <Resource Include="Images\timer0.png" />
     <Resource Include="Images\timer1.png" />
     <Resource Include="Images\timer2.png" />
     <Resource Include="Images\timer3.png" />
     <Resource Include="Images\tube.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\testball.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\glove.png" />
@@ -170,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\bottle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\newBall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,10 +37,11 @@ namespace StartConnector
         bool timerImgZomIn = false;
         bool firstStart = false;
         bool hashPlayerd = false;
+        bool runBackWorker = true;
 
         int timerImgCount = 3;
         Queue<FlyingBall> enqueBalls = new Queue<FlyingBall>();
-        //Queue<int> objId = new Queue<int>();
+        BackgroundWorker bw;
         List<FlyingBall> balls = new List<FlyingBall>(5);
         List<FlyingBottle> bottles = new List<FlyingBottle>(3);
         
@@ -49,12 +50,12 @@ namespace StartConnector
 
         public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
         public static bool netStatus = false;
-        static BitmapImage net = new BitmapImage(new Uri(@"Images/net.png", UriKind.Relative));
-        static BitmapImage plumpNet = new BitmapImage(new Uri(@"Images/plumpnet.png", UriKind.Relative));
-        static BitmapImage catchBall = new BitmapImage(new Uri(@"Images/get.png", UriKind.Relative));
-        static BitmapImage loseBall = new BitmapImage(new Uri(@"Images/miss.png", UriKind.Relative));
-        static BitmapImage playerLose = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
-        static BitmapImage playerCatch = new BitmapImage(new Uri(@"Images/player2.png", UriKind.Relative));
+        static BitmapImage bottleImg = new BitmapImage(new Uri(@"Images/bottle.png", UriKind.Relative));
+        static BitmapImage newBall = new BitmapImage(new Uri(@"Images/newBall.png", UriKind.Relative));
+        //static BitmapImage catchBall = new BitmapImage(new Uri(@"Images/get.png", UriKind.Relative));
+        //static BitmapImage loseBall = new BitmapImage(new Uri(@"Images/miss.png", UriKind.Relative));
+        //static BitmapImage playerLose = new BitmapImage(new Uri(@"Images/player.png", UriKind.Relative));
+        //static BitmapImage playerCatch = new BitmapImage(new Uri(@"Images/player2.png", UriKind.Relative));
         static BitmapImage gameOverImg = new BitmapImage(new Uri(@"Images/gameover.png", UriKind.Relative));
 
 
@@ -203,7 +204,7 @@ namespace StartConnector
 
         private void BackWork(object sender, DoWorkEventArgs e)
         {
-            while (true)
+            while (runBackWorker)
             {
                 Thread.Sleep(100);
                 isRendering = true;
@@ -239,6 +240,7 @@ namespace StartConnector
                     -= new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                 kinect.Stop();
             }
+            TurnOffBackWorker();
             this.Close();
         }
 
@@ -536,9 +538,19 @@ namespace StartConnector
 
         private void RunBackWorker()
         {
-            BackgroundWorker bw = new BackgroundWorker();
+            bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(BackWork);
             bw.RunWorkerAsync();
+            
+        }
+
+        private void TurnOffBackWorker()
+        {
+            Console.WriteLine("CLOSED");
+            runBackWorker = false;
+            CompositionTarget.Rendering -= new EventHandler(Rendering);
+            bw.DoWork -= new DoWorkEventHandler(BackWork);
+            bw.Dispose();
         }
 
         // Keyboard control
@@ -633,6 +645,8 @@ namespace StartConnector
                 dequeCount = 8;
                 balls[exitBall.eId].MoveBall();
             }
-        } 
+        }
+
+
     }
 }

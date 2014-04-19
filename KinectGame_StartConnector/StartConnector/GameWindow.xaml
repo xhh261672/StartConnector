@@ -6,8 +6,8 @@
         
         Title="MainWindow" 
         Height="720" Width="1200"
-        Loaded="Window_Loaded" Closing="Window_Closed"
-        KeyDown="controlPlayerAngle"
+        Loaded="Window_Loaded"
+        KeyDown="controlPlayerAngle" Closed="Window_Closed"
         >
     <Window.Background>
         <ImageBrush x:Name="BackgroundImg" 
@@ -30,15 +30,7 @@
         <!--Player Side-->
         <extern:Player   x:Name="Maya"
                         Canvas.Left="122" Canvas.Top="266" Height="482" Width="642" />
-
-        <!--<Image Name="Net"  Height="200" Width="473" 
-               Stretch="Fill"
-               Canvas.Left="255" 
-               Canvas.Top="598"
-               RenderTransformOrigin="0.5,0.5"
-               Source="Images/net.png"
-               >
-        </Image>-->
+       
 
         <local:FlyingBottle x:Name="bottle1" Canvas.Top="185" Canvas.Left="-40"></local:FlyingBottle>
         <local:FlyingBottle x:Name="bottle2" Canvas.Top="203" Canvas.Left="-40"></local:FlyingBottle>
