@@ -45,7 +45,7 @@ namespace StartConnector
         List<FlyingBottle> bottles = new List<FlyingBottle>(3);
         
         static Random rand = new Random();
-        static int startGameCount = 31;
+        static int startGameCount = 0;
 
         public static ScoreStatus playerStatus = ScoreStatus.SCO_NULL;
         public static bool netStatus = false;

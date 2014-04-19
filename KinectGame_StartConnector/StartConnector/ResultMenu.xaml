@@ -77,7 +77,9 @@
 			<BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
 		</EventTrigger>
 	</UserControl.Triggers>-->
-    <Canvas x:Name="Result" Background="#e8e8e8" Height="720px" Width="860px" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Margin="0,0,-868,0">
+    <Canvas x:Name="Result" Background="#e8e8e8" Opacity="0.9"
+            Height="720px" Width="860px" HorizontalAlignment="Right"
+            RenderTransformOrigin="0.5,0.5" Margin="0,0,-868,0">
     	<Canvas.RenderTransform>
     		<TransformGroup>
     			<ScaleTransform/>
