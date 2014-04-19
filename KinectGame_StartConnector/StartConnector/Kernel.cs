@@ -61,31 +61,31 @@ namespace StartConnector
                 + (From.Y - To.Y) * (From.Y - To.Y));
         }
 
-        public static bool inCatchScope(TimeSpan ts)
+        public static bool InCatchScope(TimeSpan ts, double lowerBound, double upperBound)
         {
-            return (ts.TotalSeconds > 1.65 && ts.TotalSeconds < 1.83);
+            return (ts.TotalSeconds > lowerBound && ts.TotalSeconds < upperBound);
         }
 
-        public static bool timeLimitExsit(TimeSpan ts)
+        public static bool TimeLimitExsit(TimeSpan ts, double limit)
         {
-            return (ts.TotalSeconds >= 2.2);
+            return (ts.TotalSeconds >= limit);
         }
 
-        public static void Clock(int seconds)
-        {
-            int endTickCount = System.Environment.TickCount + (seconds * 1000);
-            while (System.Environment.TickCount < endTickCount) ;
-        }
+        //public static void Clock(int seconds)
+        //{
+        //    int endTickCount = System.Environment.TickCount + (seconds * 1000);
+        //    while (System.Environment.TickCount < endTickCount) ;
+        //}
 
-        public static Point[] velocities = new Point[]
-        {
-            new Point(10,  4),
-            new Point(8,   8),
-            new Point(0,   7),
-            new Point(-6,  6),
-            new Point(-10, 4),
+        //public static Point[] velocities = new Point[]
+        //{
+        //    new Point(10,  4),
+        //    new Point(8,   8),
+        //    new Point(0,   7),
+        //    new Point(-6,  6),
+        //    new Point(-10, 4),
 
-        };
+        //};
 
         //public static Point[] startPoint = new Point[]
         //{

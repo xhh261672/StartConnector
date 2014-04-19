@@ -86,7 +86,8 @@ namespace StartConnector
             {
                 // start game
                 case Key.Right:
-                    GameWindow.kinect.SkeletonFrameReady -= 
+                    if (null != GameWindow.kinect)
+                        GameWindow.kinect.SkeletonFrameReady -= 
                         new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                     GameWindow gameWindow = new GameWindow();
                     gameWindow.Show();
@@ -169,7 +170,5 @@ namespace StartConnector
         private bool _allowDirectNavigation = false;
         private NavigatingCancelEventArgs _navArgs = null;
 
-
     }
-
 }

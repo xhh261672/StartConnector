@@ -13,53 +13,48 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 
 
-namespace BallTrackPath
+namespace StartConnector
 {
-
 	public partial class Player : UserControl
 	{
-        //bool DoingAction = false;
         Storyboard Action;
 		public Player()
 		{
-			this.InitializeComponent();
-		}
+            InitializeComponent();
+        }
 
         public void ControlAction(int key)
         {
             //DoingAction && 
             if (Action!=null && (Action.GetCurrentState()==ClockState.Active))
-            {
-                //Action.Stop();
-                //DoingAction = false;
                 return;
-            }
+            
+            GameWindow.playerAngle = key;
             
             switch(key)
             {
-                case 1:
-                    //DoingAction = true;
+                case 0:
                     Action = (Storyboard)Resources["CatchMostLeft"];
                     Action.Begin();
                     break;
-                case 2:
-                    //DoingAction = true;
+                case 1:
                     Action = (Storyboard)Resources["CatchObliqueLeft"];
                     Action.Begin();
                     break;
-                case 3:
-                    //DoingAction = true;
+                case 2:
                     Action = (Storyboard)Resources["CatchMiddle"];
                     Action.Begin();
                     break;
-                case 4:
-                    //DoingAction = true;
+                case 3:
                     Action = (Storyboard)Resources["CatchObliqueRight"];
                     Action.Begin();
                     break;
-                case 5:
-                    //DoingAction = true;
+                case 4:
                     Action = (Storyboard)Resources["CatchMostRight"];
+                    Action.Begin();
+                    break;
+                case 5:
+                    Action = (Storyboard)Resources["SwipeRightHand"];
                     Action.Begin();
                     break;
                 default:

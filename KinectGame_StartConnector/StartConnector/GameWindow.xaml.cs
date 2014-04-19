@@ -17,7 +17,6 @@ using System.Windows.Shapes;
 namespace StartConnector
 {
     using System.Media;
-    using BallTrackPath;
     using System.Diagnostics;
     using System.Windows.Threading;
     using System.Collections.ObjectModel;
@@ -565,29 +564,28 @@ namespace StartConnector
         }
 
         // Keyboard control
-        private void controlPlayerAngle(object sender, KeyEventArgs e)
+        private void controlPlayer(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.A:
-                    Maya.ControlAction(1);
-                    playerAngle = 0;
+                    Maya.ControlAction(0);
                     break;
                 case Key.S:
-                    Maya.ControlAction(2);
-                    playerAngle = 1;
+                    Maya.ControlAction(1);
                     break;
                 case Key.D:
-                    Maya.ControlAction(3);
-                    playerAngle = 2;
+                    Maya.ControlAction(2);
                     break;
                 case Key.F:
-                    Maya.ControlAction(4);
-                    playerAngle = 3;
+                    Maya.ControlAction(3);
                     break;
                 case Key.G:
+                    Maya.ControlAction(4);
+                    break;
+                case Key.C:
                     Maya.ControlAction(5);
-                    playerAngle = 4;
+                    removeAllBottles();
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;

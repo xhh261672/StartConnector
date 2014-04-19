@@ -150,7 +150,6 @@
     <Resource Include="Images\timer1.png" />
     <Resource Include="Images\timer2.png" />
     <Resource Include="Images\timer3.png" />
-    <Resource Include="Images\tube.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\glove.png" />

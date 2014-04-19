@@ -13,7 +13,7 @@
     </Window.Background>
     <Canvas x:Name="GameWindowCanvas" Width="1000" Margin="10,10,6,3">
 
-        <local:ResultMenu Panel.ZIndex="1" Canvas.Left="1184" Canvas.Top="-12" x:Name="ResultPanel"></local:ResultMenu>
+        <local:ResultMenu Panel.ZIndex="1" Canvas.Left="1093" Canvas.Top="-13" x:Name="ResultPanel"></local:ResultMenu>
 
         <Image x:Name="TimerImage" 
                Stretch="Fill" 

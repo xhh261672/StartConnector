@@ -15,9 +15,7 @@ using System.Linq;
 
 namespace StartConnector
 {
-	/// <summary>
-	/// ResultMenu.xaml 的交互逻辑
-	/// </summary>
+	
 	public partial class ResultMenu : UserControl
 	{
 		public ResultMenu()

@@ -98,11 +98,10 @@ namespace StartConnector
 
         public void CalcScore()
         {
-            TimeSpan ts = this.action.GetCurrentTime();
-            if (state == BallState.DQUE && Kernel.inCatchScope(ts))
+            TimeSpan actionCurTime = this.action.GetCurrentTime();
+            if (state == BallState.DQUE && Kernel.InCatchScope(actionCurTime, 2.0, 2.2))
             {
                 updateBottleState();
-                //Console.WriteLine("eId: " + eId);
                 if (bId == GameWindow.playerAngle)
                 {
                     reduceScore();
@@ -110,7 +109,7 @@ namespace StartConnector
                     bId = -1;
                 }
             }
-            else if (state == BallState.DQUE && Kernel.timeLimitExsit(ts))
+            else if (state == BallState.DQUE && Kernel.TimeLimitExsit(actionCurTime, 2.4))
             {
                 updateBottleState();
             }

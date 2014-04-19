@@ -47,8 +47,8 @@ namespace StartConnector
 
         public void CalcScore()
         {
-            TimeSpan ts = this.action.GetCurrentTime();
-            if (state == BallState.DQUE && Kernel.inCatchScope(ts))
+            TimeSpan actionCurTime = this.action.GetCurrentTime();
+            if (state == BallState.DQUE && Kernel.InCatchScope(actionCurTime, 1.68, 1.85))
             {
                 updateBallState();
                 //this.action.Stop();
@@ -71,7 +71,7 @@ namespace StartConnector
                 }
                 
             }
-            else if (state == BallState.DQUE &&  Kernel.timeLimitExsit(ts))
+            else if (state == BallState.DQUE && Kernel.TimeLimitExsit(actionCurTime, 2.4))
             {
                 updateBallState();
             }

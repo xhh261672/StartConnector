@@ -4,1148 +4,1186 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="BallTrackPath.Player"
-	x:Name="UserControl"
+	x:Class="StartConnector.Player"
 	d:DesignWidth="640" d:DesignHeight="480" RenderTransformOrigin="0.5,0.5">
     <UserControl.Resources>
         <Storyboard x:Key="CatchMiddle" AutoReverse="True">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="lefthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="97.63"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="97.63"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="140.649"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="188.746"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="140.649"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="188.746"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-43"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-34"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-20"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="86"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-34"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="86"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-60"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-102"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-178"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-284"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-102"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-178"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-284"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="132.735689744783,184.301014966271"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="141.031833791388,146.735207011648"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="137.695845876501,119.644403029114"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="192.383537465038,48.7203297741161"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="141.031833791388,146.735207011648"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="137.695845876501,119.644403029114"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="192.383537465038,48.7203297741161"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="79.5343187766588,167.247814550467"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="117.133689269355,70.75494767905"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="226.437205678295,3.00000059749921"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="117.133689269355,70.75494767905"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="226.437205678295,3.00000059749921"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="60"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="32"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-71"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="32"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-71"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-53"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-166"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-278"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-166"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-278"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="84.22"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="46.16"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-3.656"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="46.16"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-3.656"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="207.114152281877,159.902390650957"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="209.445633979431,158.541291171803"/>
                 <EasingPointKeyFrame KeyTime="0:0:0.3" Value="209.445633979431,158.541291171803"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="209.445633979431,158.541291171803"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="152.485616370019,194.198991781106"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="141.738959482843,169.57158091944"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="137.838483190171,141.185205936179"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="155.242492722438,105.04519414591"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="141.738959482843,169.57158091944"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="137.838483190171,141.185205936179"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="155.242492722438,105.04519414591"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.896"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.896"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-367.279"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-367.279"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-99.283"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-99.283"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.89"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.89"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftleg">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-21.063"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-19.524"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-19.524"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftleg">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.922"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.544"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.544"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-36.802"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-36.802"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-35.681"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-35.681"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="195.36877108255,13.7212795005637"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="195.36877108255,13.7212795005637"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="182.192522256438,20.8655925456246"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="182.192522256438,20.8655925456246"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="163.437094931119,31.0350000814336"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="163.437094931119,31.0350000814336"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="164.525592412188,11.823814873063"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="164.525592412188,11.823814873063"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="164.566790779406,13.7958088185902"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="164.566790779406,13.7958088185902"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="165.977168571755,81.3047091767747"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="165.977168571755,81.3047091767747"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="164.566790779406,13.7958088185902"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="164.566790779406,13.7958088185902"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="120.044281762038,17.3832686208559"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="120.044281762038,17.3832686208559"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="116.463064583402,16.9459394055078"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="116.463064583402,16.9459394055078"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="114.312715553277,16.6833442019331"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="114.312715553277,16.6833442019331"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="103.282546367693,188.357124687272"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="103.282546367693,188.357124687272"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="127.540671603279,199.695282987884"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="127.540671603279,199.695282987884"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-29.62"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-29.62"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="31.008"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="31.008"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-4.833"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-4.833"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-7.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-7.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftfoot">
                 <EasingDoubleKeyFrame KeyTime="0" Value="4.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.333"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.333"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftfoot">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-3"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-10"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.007"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.007"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="36.8529116319497,-1.26236394660637"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="36.8529116319497,-1.26236394660637"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="22.0628046448947,19.3990096592546"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="22.0628046448947,19.3990096592546"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="8.6706669924397,-0.651726244448906"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="8.6706669924397,-0.651726244448906"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="23.3904145214814,20.0262569455528"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="23.3904145214814,20.0262569455528"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="12.2565762875777,4.38568163088589"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="12.2565762875777,4.38568163088589"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="12.2565762875777,4.38568163088589"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="12.2565762875777,4.38568163088589"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.1203811707415,97.6205678055922"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.1203811707415,97.6205678055922"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.1203811707415,140.740800994427"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.1203811707415,140.740800994427"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightarm">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-1.089"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="2.911"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="2.911"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightarm">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-1.189"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.189"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.189"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="124.705313586081,232.067610771885"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="182.652855565098,160.165846924325"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="187.83940819264,124.733826452889"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="130.089,33.1950000000001"/>
+                <EasingPointKeyFrame KeyTime="0" Value="180.784134768332,232.067610771885"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="238.731676747349,160.165846924325"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="243.918229374891,124.733826452889"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="186.167821182251,33.1950000000001"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="154.70368081552,239.91368813904"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="192.152039179818,149.088655078118"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="187.089,104.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="119.089,3.19453894042971"/>
+                <EasingPointKeyFrame KeyTime="0" Value="210.782501997771,239.91368813904"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="248.230860362069,149.088655078118"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="243.167821182251,104.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="175.167821182251,3.19453894042971"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="80.2124660227728,182.225073647874"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="111.089,171.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="105.422932016356,145.311710437515"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="113.422333333333,115.528333333333"/>
+                <EasingPointKeyFrame KeyTime="0" Value="136.291287205024,182.225073647874"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="167.167821182251,171.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="161.501753198607,145.311710437515"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="169.501154515584,115.528333333333"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="97.5678783463843,205.903484057407"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="123.106771690106,167.75192038424"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="112.089,149.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="114.089,112.195"/>
+                <EasingPointKeyFrame KeyTime="0" Value="153.646699528635,205.903484057407"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="179.185592872357,167.75192038424"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="168.167821182251,149.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="170.167821182251,112.195"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="113.447422178876,227.568331251523"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="136.399952967603,172.973536115612"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="124.089,146.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="116.173743112749,101.771284436256"/>
+                <EasingPointKeyFrame KeyTime="0" Value="169.526243361127,227.568331251523"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="192.478774149854,172.973536115612"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="180.167821182251,146.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="172.252564295,101.771284436256"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="73.874028135328,172.845322418766"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="81.981514067664,163.020161209383"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="86.035257033832,158.107580604691"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="90.089,153.195"/>
+                <EasingPointKeyFrame KeyTime="0" Value="129.952849317579,172.845322418766"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="138.060335249915,163.020161209383"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="142.114078216083,158.107580604691"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="146.167821182251,153.195"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="4"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="32.1085662140145,5.36535641275346"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="32.1085662140145,5.36535641275346"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="115.411608985486,194.026203837578"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="115.411608985486,194.026203837578"/>
             </PointAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CatchMostLeft" AutoReverse="False">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-405.883"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-369.95897238344344"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-405.883"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-369.95897238344344"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-104.665"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-95.297535116885072"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-104.665"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-95.297535116885072"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-32.897"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-22.3266987453829"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-32.897"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-22.3266987453829"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="7.422"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="8.2362100183616178"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="7.422"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="8.2362100183616178"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="150.611661770031,21.8519451673483"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="166.067155032562,15.3340195531557"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="150.611661770031,21.8519451673483"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="166.067155032562,15.3340195531557"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="156.607254232468,26.4167363950163"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="172.062747494999,19.8988107808237"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="156.607254232468,26.4167363950163"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="172.062747494999,19.8988107808237"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="123.697970560317,179.994950468778"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="152.592608978194,205.777328919099"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="123.697970560317,179.994950468778"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="152.592608978194,205.777328919099"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="118.759740488531,174.568650885668"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="159.908561408988,205.222636718035"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="118.759740488531,174.568650885668"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="159.908561408988,205.222636718035"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="2.80822528340357,47.1570784250605"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="167.224513828839,204.66794451697"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="2.80822528340357,47.1570784250605"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="167.224513828839,204.66794451697"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-14.3991478523352,117.676556040911"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="165.793406755852,82.857096015721"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-14.3991478523352,117.676556040911"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="165.793406755852,82.857096015721"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="150.611661770031,21.8519451673483"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="166.067155032562,15.3340195531557"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="150.611661770031,21.8519451673483"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="166.067155032562,15.3340195531557"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="121.76463577648,-9.02444490766293"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="130.632314536113,24.7638839807361"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="121.76463577648,-9.02444490766293"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="130.632314536113,24.7638839807361"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="113.934380308773,4.78883808827841"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="115.66514552056,19.4626068256149"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="113.934380308773,4.78883808827841"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="115.66514552056,19.4626068256149"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="106.717567368532,17.5199526583497"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="102.786715914996,14.9011486242428"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="106.717567368532,17.5199526583497"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="102.786715914996,14.9011486242428"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="102.929218322537,195.799687354061"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="104.878060481496,195.35022741206"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="102.929218322537,195.799687354061"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="104.878060481496,195.35022741206"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="111.513924667568,194.92512372158"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="113.462766826527,194.475663779579"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="111.513924667568,194.92512372158"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="113.462766826527,194.475663779579"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="120.098630258767,194.050560089099"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="122.047472417726,193.601100147098"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="120.098630258767,194.050560089099"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="122.047472417726,193.601100147098"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-35.574"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-40.129209002803549"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-35.574"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-40.129209002803549"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-73.634"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-30.665920436653821"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-73.634"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-30.665920436653821"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-145"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-145"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-82"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-82"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-13"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-24.79"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37.485"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-37.485"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-7.917"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-8.878"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-14.449"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-14.449"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="105.88"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="71.686"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="105.88"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="71.686"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="107.921"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="128.27"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="107.921"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="128.27"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107.921"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="159.572994195156,208.645042324526"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="43.0998596753681,136.236510156528"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="159.572994195156,208.645042324526"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="43.0998596753681,136.236510156528"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="159.572994195156,208.645042324526"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="101.114709973413,215.123156469011"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="3.00000000382495,109.759365422274"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="101.114709973413,215.123156469011"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="3.00000000382495,109.759365422274"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="101.114709973413,215.123156469011"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-83.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-83.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="10"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="96.449602984797,36.508656510764"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="62.0242908898241,11.2776742593256"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="96.449602984797,36.508656510764"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="62.0242908898241,11.2776742593256"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="72.3786172974991,34.1614325938648"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="37.8420733256129,10.9006255206434"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="72.3786172974991,34.1614325938648"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="37.8420733256129,10.9006255206434"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="55.3931330349062,32.5051342013021"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="13.6598550668211,10.5235767819612"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="55.3931330349062,32.5051342013021"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="13.6598550668211,10.5235767819612"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="44.7087139194396,20.1181615989929"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="10.0571131030815,10.9006255206434"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="44.7087139194396,20.1181615989929"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="10.0571131030815,10.9006255206434"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="22.6771515826979,16.3232903881868"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="-12.298116131427,10.7148504498702"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="22.6771515826979,16.3232903881868"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="-12.298116131427,10.7148504498702"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="66.1755775306823,23.8157651306658"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="32.4123423375899,11.0864005914167"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="66.1755775306823,23.8157651306658"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="32.4123423375899,11.0864005914167"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="44.7087139194396,20.1181615989929"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="10.0571131030815,10.9006255206434"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="44.7087139194396,20.1181615989929"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="10.0571131030815,10.9006255206434"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="201.36856292417,156.828755160609"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="196.576766278125,155.735610570672"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="164.964608266867,143.235270329816"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="207.114152281877,159.902390650957"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="196.576766278125,155.735610570672"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="164.964608266867,143.235270329816"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="207.114152281877,159.902390650957"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftarm">
                 <EasingPointKeyFrame KeyTime="0:0:0.1" Value="150.53419333218,209.852398497532"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="145.742396686135,208.759253907595"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="76.2174405415527,159.974153827076"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="168.917382067662,225.020953934435"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="145.742396686135,208.759253907595"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="76.2174405415527,159.974153827076"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="168.917382067662,225.020953934435"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="6.25133476889854,160.270368502711"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="10.0571131030815,140.261326064678"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="6.25133476889854,160.270368502711"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="10.0571131030815,140.261326064678"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="6.25133476889854,117.150135313877"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="10.0571131030815,97.1410928758436"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="6.25133476889854,117.150135313877"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="10.0571131030815,97.1410928758436"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.1188718480975,99.4411098036937"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="37.8420733256129,97.1410928758436"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.1188718480975,99.4411098036937"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="37.8420733256129,97.1410928758436"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.1188718480975,142.561342992528"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="37.8420733256129,140.261326064678"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.1188718480975,142.561342992528"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="37.8420733256129,140.261326064678"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="169.651626162718,32.7523233770423"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="201.05432029886,43.9214760722033"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="169.651626162718,32.7523233770423"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="201.05432029886,43.9214760722033"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="163.267516781276,36.0384613779997"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="184.984672017358,29.8876138007892"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="163.267516781276,36.0384613779997"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="184.984672017358,29.8876138007892"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="48.7317745316373,94.9942581205316"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="168.91502428298,15.8537502743867"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="48.7317745316373,94.9942581205316"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="168.91502428298,15.8537502743867"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-5.73584878919937,52.027213788063"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="172.378555623118,208.844571302481"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-5.73584878919937,52.027213788063"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="172.378555623118,208.844571302481"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="135.159672852307,175.46077983319"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="194.809149449187,207.025700118598"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="135.159672852307,175.46077983319"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="194.809149449187,207.025700118598"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="129.658335261141,170.641253215278"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="183.59385291914,207.935135710539"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="129.658335261141,170.641253215278"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="183.59385291914,207.935135710539"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-62.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-62.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-34.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-14.365"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-14.365"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-48.034"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-12.987"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-48.034"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-12.987"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="94.9208414311084,10.9448240705496"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="99.7440635582116,12.3698918652122"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="94.9208414311084,10.9448240705496"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="99.7440635582116,12.3698918652122"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="99.510144628833,15.3345800537576"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="104.333366755936,16.7596478484202"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="99.510144628833,15.3345800537576"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="104.333366755936,16.7596478484202"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="94.8670523743657,69.1732636506011"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="99.6902745014688,70.5983314452637"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="94.8670523743657,69.1732636506011"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="99.6902745014688,70.5983314452637"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="94.9208414311084,10.9448240705496"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="99.7440635582116,12.3698918652122"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="94.9208414311084,10.9448240705496"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="99.7440635582116,12.3698918652122"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="84.9129017583087,230.186361307366"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="88.7175926698078,194.684451660059"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="84.9129017583087,230.186361307366"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="88.7175926698078,194.684451660059"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="90.5128694068968,229.652938566305"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="94.3175603183959,194.151028918998"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="90.5128694068968,229.652938566305"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="94.3175603183959,194.151028918998"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="97.4311981895563,227.342764730237"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="101.235889101055,191.84085508293"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="97.4311981895563,227.342764730237"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="101.235889101055,191.84085508293"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="55"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-2.2504591932772371"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="55"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-2.2504591932772371"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-40"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-0.68844246159518008"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-0.68844246159518008"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftarm">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="6.124350813059209"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34.437"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-23.354"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="6.124350813059209"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-34.437"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-23.354"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="6.124350813059209"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftarm">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-46.592854074937193"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-41.662"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-38.579"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-46.592854074937193"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-41.662"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-38.579"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-46.592854074937193"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="3.78891062364136,144.099295013368"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="72.2962734081127,145.097361608427"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="59.8677318058923,144.099295013368"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="128.375094590364,145.097361608427"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="49,156.00553894043"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="73.874028135328,172.845322418766"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="105.078821182251,156.00553894043"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="129.952849317579,172.845322418766"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="78.6445876763885,142.327128530896"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="80.2124660227728,182.225073647874"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="134.72340885864,142.327128530896"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="136.291287205024,182.225073647874"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="96,166.00553894043"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="97.5678783463843,205.903484057407"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="152.078821182251,166.00553894043"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="153.646699528635,205.903484057407"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="111.879543832492,187.670386134546"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="113.447422178876,227.568331251523"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="167.958365014743,187.670386134546"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="169.526243361127,227.568331251523"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="112,183.00553894043"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="124.705313586081,232.067610771885"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="168.078821182251,183.00553894043"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="180.784134768332,232.067610771885"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="122,206.00553894043"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.8" Value="154.70368081552,239.91368813904"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="178.078821182251,206.00553894043"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.6" Value="210.782501997771,239.91368813904"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="righthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-1.021"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.925"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.077"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-1.021"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.077"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-1.021"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-400"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CatchMostRight" AutoReverse="True">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="181"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="181"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-98.333"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-98.333"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="119"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="119"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="23.387"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="23.387"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-283.377"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-283.377"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-123.065"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-123.065"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="7.0143334798688,16.632254676178"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="7.0143334798688,16.632254676178"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-15.3408957546397,16.4464796054047"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-15.3408957546397,16.4464796054047"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="29.3695627143772,16.8180297469513"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="29.3695627143772,16.8180297469513"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="7.0143334798688,16.632254676178"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="7.0143334798688,16.632254676178"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="53.7868436950512,10.5077120488898"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="53.7868436950512,10.5077120488898"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="31.6760857966743,20.3075180282726"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="31.6760857966743,20.3075180282726"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="20.8931844799229,25.0866550114853"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="20.8931844799229,25.0866550114853"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="89.724"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="89.724"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="303.998094659676,191.346492112896"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="303.998094659676,191.346492112896"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="212.664101600144,139.393612387116"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="212.664101600144,139.393612387116"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="194.753296897471,154.924326308334"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="194.753296897471,154.924326308334"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="147.43102429909,187.918303275721"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="147.43102429909,187.918303275721"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="47.776"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="47.776"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12.032"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="25.031"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="56.51"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="12.032"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.075" Value="25.031"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="56.51"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-12.599"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-5.194"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-27.342"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="-12.599"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.075" Value="-5.194"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-27.342"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-0.773"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.696"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.092"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.773"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.075" Value="0.696"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.092"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.048"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.048"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="22.304"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="22.304"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-42.178"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-42.178"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="96.2659923230711,23.3042612858737"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="96.2659923230711,23.3042612858737"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="100.855295520796,27.6940172690817"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="100.855295520796,27.6940172690817"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-98.5270145945026,128.843367069727"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-98.5270145945026,128.843367069727"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="96.2659923230711,23.3042612858737"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="96.2659923230711,23.3042612858737"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="128.701680816273,22.9239203734306"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="128.701680816273,22.9239203734306"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="114.104029304749,29.1711804259372"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="114.104029304749,29.1711804259372"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-80.5859457535073,112.49135715743"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-80.5859457535073,112.49135715743"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="77.167"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="77.167"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-8.167"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-8.167"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="267.639369532976,2.09259672295545"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="267.639369532976,2.09259672295545"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="244.513366375164,9.32440763419665"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="244.513366375164,9.32440763419665"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="224.15075832266,15.692067886188"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="224.15075832266,15.692067886188"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="224.457199630727,0.500000219082226"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="224.457199630727,0.500000219082226"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="230.452792093164,5.06479144675026"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="230.452792093164,5.06479144675026"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="157.814141201143,87.2979583556037"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="157.814141201143,87.2979583556037"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="224.457199630727,0.500000219082226"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="224.457199630727,0.500000219082226"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="174.030677415436,68.6461211435245"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="174.030677415436,68.6461211435245"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="175.963796197497,199.769748348725"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="175.963796197497,199.769748348725"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="5.12337261289159,136.826924568906"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="5.12337261289159,136.826924568906"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="15.9404995349425,95.0192858644631"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="15.9404995349425,95.0192858644631"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.5548624164842,111.502610354019"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.5548624164842,111.502610354019"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.5548624164842,154.622843542853"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.5548624164842,154.622843542853"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="175.726361287403,183.664516261822"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="175.726361287403,183.664516261822"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="145.229630839972,191.122217266543"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="145.229630839972,191.122217266543"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="152.545583270766,190.567525065479"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="152.545583270766,190.567525065479"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="159.861535690617,190.012832864414"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="159.861535690617,190.012832864414"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-17.827"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-24.327"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-17.827"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24.327"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="7.236"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="6.903"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="7.236"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.903"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="85.7901584081635,188.598940174222"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="85.7901584081635,188.598940174222"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="94.3748647531945,187.724376541741"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="94.3748647531945,187.724376541741"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="102.959570344394,186.84981290926"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="102.959570344394,186.84981290926"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="70.7103565364961,194.191684404911"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="70.7103565364961,194.191684404911"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="76.3103241850842,193.65826166385"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="76.3103241850842,193.65826166385"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="83.2286529677437,191.348087827782"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="83.2286529677437,191.348087827782"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-0.922"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.922"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.075" Value="-1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightarm">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-1.089"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="110.368"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="131.187"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="110.368"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="131.187"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightarm">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-7.189"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-35.138"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-46.621"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-35.138"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-46.621"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rightarm">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-44.291"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-44.291"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rightarm">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.175"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.175"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rightarm">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.233"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.233"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="81.9398255081779,193.055018945839"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="87.4291253565849,175.671711591044"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="83.3972241096383,179.400286341923"/>
+                <EasingPointKeyFrame KeyTime="0" Value="138.018646690429,193.055018945839"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="143.507946538836,175.671711591044"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="139.476045291889,179.400286341923"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="103.089,213.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="108.578299848407,195.811692645206"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="105.810985990864,198.360790944294"/>
+                <EasingPointKeyFrame KeyTime="0" Value="159.167821182251,213.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="164.657121030658,195.811692645206"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="161.889807173115,198.360790944294"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="124.81688593511,233.633261291015"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="130.306185783517,216.249953936221"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="129.488319293513,218.390190267609"/>
+                <EasingPointKeyFrame KeyTime="0" Value="180.895707117361,233.633261291015"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="186.385006965768,216.249953936221"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="185.567140475764,218.390190267609"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="130.721599667136,220.669761232638"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="186.800420849387,220.669761232638"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="158.640250584893,238.693438738429"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="214.719071767144,238.693438738429"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="73.089,155.195"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="32.3396088322626,117.818123955144"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="31.4046407223677,110.924233296899"/>
+                <EasingPointKeyFrame KeyTime="0" Value="129.167821182251,155.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="88.4184300145136,117.818123955144"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="87.4834619046187,110.924233296899"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0" Value="74.6667547272154,182.942960810339"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="33.9173635594779,145.566084765483"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="32.982395449583,138.672194107238"/>
+                <EasingPointKeyFrame KeyTime="0" Value="130.745575909466,182.942960810339"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="89.9961847417289,145.566084765483"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="89.061216631834,138.672194107238"/>
             </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="400"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CatchObliqueLeft" AutoReverse="True">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-37"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-25"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-173.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-173.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-4"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-118.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-118.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-129.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-254.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-129.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-254.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="145.969"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="145.969"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="41.648"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-44.706"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="41.648"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-44.706"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="86.2643938551256,12.111679484072"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="86.2643938551256,12.111679484072"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="62.0821762909144,11.7346307453898"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="62.0821762909144,11.7346307453898"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="37.8999580321226,11.3575820067076"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="37.8999580321226,11.3575820067076"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="35.1752959522631,1.48671435026344"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="35.1752959522631,1.48671435026344"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="12.8200667177546,1.30093927949024"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="12.8200667177546,1.30093927949024"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="57.5305251867715,1.67248942103674"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="57.5305251867715,1.67248942103674"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="35.1752959522631,1.48671435026344"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="35.1752959522631,1.48671435026344"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="112.698859860017,116.280835750848"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="112.698859860017,116.280835750848"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="101.516163887974,81.8142242145101"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="101.516163887974,81.8142242145101"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="191.359615775205,147.147249194124"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="191.359615775205,147.147249194124"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="120.435025227605,177.325096295189"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="120.435025227605,177.325096295189"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="52.089,145.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="108.167821182251,145.195"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="79.089,142.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="135.167821182251,142.195"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="104.445060391776,116.568840508994"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="160.523881574027,116.568840508994"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="112.089,86.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="168.167821182251,86.195"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="116.716565549066,67.8069769207724"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="172.795386731317,67.8069769207724"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="149.589816385281,144.438627983089"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="123.089,34.5283333333334"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="205.668637567532,144.438627983089"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="179.167821182251,34.5283333333334"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="148.589,133.695"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="91.089,5.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="204.667821182251,133.695"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="147.167821182251,5.195"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="87.6155795277702,89.868246945253"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="87.6155795277702,89.868246945253"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="121.771909026231,46.8729707205"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="121.771909026231,46.8729707205"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="129.539913132319,55.5120211366091"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="129.539913132319,55.5120211366091"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="94.1619285295689,92.430875284774"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="94.1619285295689,92.430875284774"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-34.287"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34.287"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-34"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-18"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="112.467140324318,169.737879871883"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="112.467140324318,169.737879871883"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="119.783092755112,169.183187670819"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="119.783092755112,169.183187670819"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="143.327667274828,172.861532000335"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="143.327667274828,172.861532000335"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="137.257661859809,174.866268461869"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="137.257661859809,174.866268461869"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="138.78614331494,27.5107030956446"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="138.78614331494,27.5107030956446"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="123.818974299387,22.2094259405234"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="123.818974299387,22.2094259405234"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="110.940544693823,17.6479677391514"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="110.940544693823,17.6479677391514"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="34.019"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="34.019"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightfoot">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="59.5301974409735,39.8797650784465"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="59.5301974409735,39.8797650784465"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightfoot">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="39.3718033894698,39.8797650784465"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="39.3718033894698,39.8797650784465"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightfoot">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="19.2134103379661,39.8797650784465"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="19.2134103379661,39.8797650784465"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="24.108"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="24.108"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="3.224"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.224"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="51.5240062965697,193.598072665248"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="51.5240062965697,193.598072665248"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="49.6009224079136,188.226173195531"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="49.6009224079136,188.226173195531"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="60.5340845547485,85.8988643912488"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="60.5340845547485,85.8988643912488"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="50.8124275326718,37.1741645361696"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="50.8124275326718,37.1741645361696"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="68.9186042505027,187.481671617505"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="68.9186042505027,187.481671617505"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="70.0412250353207,196.801051086364"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="70.0412250353207,196.801051086364"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="43.7433296391339,60.090032208404"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="43.7433296391339,60.090032208404"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-20.327"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-20.327"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="16.236"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="16.236"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-45.796"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-45.796"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-21.666"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-21.666"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.089"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.089"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.003"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.003"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="rightfoot">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="0.652,1.154"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="0.652,1.154"/>
             </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-200"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CatchObliqueRight" AutoReverse="True">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="28.667"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="28.667"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-167.167"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-167.167"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lefthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="25.375"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="46.417"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="91.958"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="157.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="91.958"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="157.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lefthand">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-89.75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-158.833"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-210.916"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-231"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-210.916"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-231"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="46.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="46.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="head">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="lefthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="239.356"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="239.356"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="24.336"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="24.336"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="16.592"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="16.592"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-353.733"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-353.733"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="body">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-115.555"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-115.555"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="158.8934509907,123.190342848151"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="173.285224059224,81.003241673768"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="200.155872618826,72.7171385153461"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="158.8934509907,123.190342848151"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="173.285224059224,81.003241673768"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="200.155872618826,72.7171385153461"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="162.08648587709,114.981586209547"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="207.30391849968,65.451049643619"/>
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="265.000226613349,49.8215110936521"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="162.08648587709,114.981586209547"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.2" Value="207.30391849968,65.451049643619"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="265.000226613349,49.8215110936521"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="229.997790210803,177.348101438462"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="229.997790210803,177.348101438462"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="leftarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="168.50582611274,145.162114574163"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="168.50582611274,145.162114574163"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="190.422333333333,137.861666666667"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="246.501154515584,137.861666666667"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="195.089,114.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="251.167821182251,114.195"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftarm">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="6.124"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.124"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftarm">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-48.093"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-48.093"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="96.3522892116195,155.055063226579"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="152.431110393871,155.055063226579"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="139.589,164.445"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="195.667821182251,164.445"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="153.839,167.278333333333"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="209.917821182251,167.278333333333"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="159.172333333334,163.528333333334"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="215.251154515585,163.528333333334"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightarm">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="173.846275675297,153.210717624144"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="229.925096857548,153.210717624144"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="104.861781722838,184.104176456111"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="104.861781722838,184.104176456111"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="99.61081474654,167.958671019184"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="99.61081474654,167.958671019184"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="67.3960853669524,68.9058507110273"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="67.3960853669524,68.9058507110273"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="60.4911646303676,71.0699164985173"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="60.4911646303676,71.0699164985173"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="123.304004009356,174.560644026899"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="123.304004009356,174.560644026899"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="129.142188610452,184.179664242924"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="129.142188610452,184.179664242924"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="200.608247116727,2.84517416592958"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="200.608247116727,2.84517416592958"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="184.143559600735,16.4134073281706"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="184.143559600735,16.4134073281706"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="127.093564274142,63.4272141644149"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="127.093564274142,63.4272141644149"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="leftleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="93.8631254811386,84.7723496189178"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="93.8631254811386,84.7723496189178"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-57"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-57"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-20.667"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-20.667"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="leftfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-34.589"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34.589"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="47.1094522755275,78.214230375142"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="47.1094522755275,78.214230375142"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="125.822328782099,17.8148780578672"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="125.822328782099,17.8148780578672"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="62.1137556488828,46.8832829478646"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="62.1137556488828,46.8832829478646"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="8.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="8.75"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-3.688"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-3.688"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rightfoot">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="14.39"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="14.39"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37.129"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-37.129"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-37.666"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-37.666"/>
             </DoubleAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="rightleg">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="115.974084275382,22.3083511447362"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="115.974084275382,22.3083511447362"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="32.000794938367,109.075638465988"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="32.000794938367,109.075638465988"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="19.4547420498509,92.8160463832719"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="19.4547420498509,92.8160463832719"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="4.50997153509774,18.1026512210686"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="4.50997153509774,18.1026512210686"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="-17.8452576994108,17.9168761502954"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="-17.8452576994108,17.9168761502954"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="26.8652007696061,18.2884262918419"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="26.8652007696061,18.2884262918419"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="4.50997153509774,18.1026512210686"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="4.50997153509774,18.1026512210686"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point2)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="61.6621262796384,17.5228747207481"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="61.6621262796384,17.5228747207481"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(BezierSegment.Point3)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="37.4799087154272,17.145825982066"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="37.4799087154272,17.145825982066"/>
             </PointAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point1)" Storyboard.TargetName="body">
-                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="13.2976904566354,16.7687772433838"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="13.2976904566354,16.7687772433838"/>
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-18.327"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-18.327"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="leftleg">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4.903"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="4.903"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SwipeRightHand" AutoReverse="False">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="righthand">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-238"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-46"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="58"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="righthand">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-142.222"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-182.223"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-146.667"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="righthand">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-47.207"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="2.072"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="34.479"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="107.921"/>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point2)" Storyboard.TargetName="rightarm">
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="6.16963277056096,120.348922632845"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="194.168,139.306111111111"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="240.168,181.528333333334"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.5" Value="180.784134768332,232.067610771885"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(BezierSegment.Point3)" Storyboard.TargetName="rightarm">
+                <EasingPointKeyFrame KeyTime="0:0:0.1" Value="36.168,128.195"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.3" Value="194.168,101.528333333333"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.4" Value="272.168,137.083888888889"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.5" Value="210.782501997771,239.91368813904"/>
+            </PointAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
     <UserControl.RenderTransform>
@@ -1156,21 +1194,60 @@
             <TranslateTransform/>
         </TransformGroup>
     </UserControl.RenderTransform>
-    <UserControl.Triggers>
-        <!-- <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+    <!--  <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard x:Name="CatchMiddle_BeginStoryboard" Storyboard="{StaticResource CatchMiddle}"/>
 			<BeginStoryboard Storyboard="{StaticResource CatchMostLeft}"/>
 			<BeginStoryboard Storyboard="{StaticResource CatchMostRight}"/>
 			<BeginStoryboard Storyboard="{StaticResource CatchObliqueLeft}"/>
 			<BeginStoryboard Storyboard="{StaticResource CatchObliqueRight}"/>
-		</EventTrigger> -->
-    </UserControl.Triggers>
+		</EventTrigger>
+    	<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+    		<BeginStoryboard x:Name="CleanAllBottleas_BeginStoryboard" Storyboard="{StaticResource CleanAllBottleas}"/>
+    	</EventTrigger>
+    </UserControl.Triggers> -->
 
-    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="640*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Image x:Name="righthand" Margin="420.877,188.348,148.573,201.33" Source="Images/glove.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1.021" ScaleY="0.979"/>
+                    <SkewTransform AngleX="-0.793"/>
+                    <RotateTransform Angle="107.921"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Path x:Name="rightarm" HorizontalAlignment="Left" Height="243.006" Margin="220.921,-7.006,0,0" Stroke="Black" StrokeThickness="6" VerticalAlignment="Top" Width="311.168" RenderTransformOrigin="0.5,0.5" Fill="{x:Null}">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="128.375094590364,145.097361608427">
+                        <BezierSegment Point3="153.646699528635,205.903484057407" Point2="136.291287205024,182.225073647874" Point1="129.952849317579,172.845322418766"/>
+                        <BezierSegment Point3="210.782501997771,239.91368813904" Point2="180.784134768332,232.067610771885" Point1="169.526243361127,227.568331251523"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.91100000000000136" Y="-1.188999999999993"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
         <Path x:Name="head" Data="M75.451,43.56 C75.451,67.341381 58.672647,86.62 37.9755,86.62 C17.278353,86.62 0.5,67.341381 0.5,43.56 C0.5,19.778619 17.278353,0.5 37.9755,0.5 C58.672647,0.5 75.451,19.778619 75.451,43.56 z" HorizontalAlignment="Left" Height="87.12" Margin="307.361,46.444,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="75.951" RenderTransformOrigin="0.5,0.5" Fill="Black">
             <Path.RenderTransform>
                 <TransformGroup>
@@ -1288,40 +1365,12 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="rightarm" HorizontalAlignment="Left" Height="243.006" Margin="277,-7.006,0,0" Stroke="Black" StrokeThickness="6" VerticalAlignment="Top" Width="242.589" RenderTransformOrigin="0.5,0.5">
-            <Path.Data>
-                <PathGeometry>
-                    <PathFigure StartPoint="72.2962734081127,145.097361608427">
-                        <BezierSegment Point3="97.5678783463843,205.903484057407" Point2="80.2124660227728,182.225073647874" Point1="73.874028135328,172.845322418766"/>
-                        <BezierSegment Point3="154.70368081552,239.91368813904" Point2="124.705313586081,232.067610771885" Point1="113.447422178876,227.568331251523"/>
-                    </PathFigure>
-                </PathGeometry>
-            </Path.Data>
-            <Path.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0.91100000000000136" Y="-1.188999999999993"/>
-                </TransformGroup>
-            </Path.RenderTransform>
-        </Path>
         <Image x:Name="lefthand" Margin="195.474,194.348,372.995,195.33" Source="Images/glove.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Width="76">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1" ScaleY="-1"/>
                     <SkewTransform/>
                     <RotateTransform Angle="71.686"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="righthand" Margin="420.877,188.348,148.573,201.33" Source="Images/glove.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1.021" ScaleY="0.979"/>
-                    <SkewTransform AngleX="-0.793"/>
-                    <RotateTransform Angle="107.921"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Image.RenderTransform>
