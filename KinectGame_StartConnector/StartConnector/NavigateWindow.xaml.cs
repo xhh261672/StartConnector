@@ -19,9 +19,99 @@ namespace StartConnector
     using System.Windows.Navigation;
     using System.Windows.Threading;
     using System.Threading;
-
+    //using Microsoft.Speech.AudioFormat;
+    //using Microsoft.Speech.Recognition;
+    using System.IO;
     public partial class NavigateWindow : NavigationWindow
     {
+        KinectAudioSource audioSource;
+        
+        
+        /*
+        private void InitAudio()
+        {
+            if (GameWindow.kinect != null)
+            {
+                
+                audioSource = GameWindow.kinect.AudioSource;
+            
+                audioSource.EchoCancellationMode = EchoCancellationMode.None;
+                audioSource.AutomaticGainControlEnabled = false;
+
+                RecognizerInfo recognizerInfo = GetKinectRecognizer();
+
+                using (var speechRecognitionEngine = new SpeechRecognitionEngine(recognizerInfo.Id))
+                {
+                    var commands = new Choices();
+                    commands.Add("go");
+                    commands.Add("stop");
+
+                    var grammarBuilder = new GrammarBuilder { Culture = recognizerInfo.Culture };
+                    grammarBuilder.Append(commands);
+                    var g = new Grammar(grammarBuilder);
+
+                    speechRecognitionEngine.LoadGrammar(g);
+                    speechRecognitionEngine.SpeechRecognized += CommandRecived;
+                    speechRecognitionEngine.SpeechHypothesized += f1;
+                    speechRecognitionEngine.SpeechRecognitionRejected += f2;
+
+                    using (Stream s = audioSource.Start())
+                    {
+                        speechRecognitionEngine.SetInputToAudioStream(
+                            s, new SpeechAudioFormatInfo(EncodingFormat.Pcm,
+                                16000, 16, 1, 32000, 2, null));
+                        speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                        Console.ReadLine();
+                        speechRecognitionEngine.RecognizeAsyncStop();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("BUG RECO");
+                return;
+            }
+        }
+
+        private static void f1(object sender, SpeechHypothesizedEventArgs e)
+        {
+            Console.WriteLine("f1");
+        }
+
+        private static void f2(object sender, SpeechRecognitionRejectedEventArgs e)
+        {
+            Console.WriteLine("reject");
+        }
+        
+        private static void CommandRecived(object sender, SpeechRecognizedEventArgs e)
+        {
+            Console.WriteLine("GO!!!");
+
+            if (e.Result.Confidence >= 5.0)
+            {
+                if (e.Result.Equals("go"))
+                {
+                    System.Windows.Forms.SendKeys.SendWait("{R}");
+                    Console.WriteLine("GO!!!");
+                }
+            }
+        }
+
+        private static RecognizerInfo GetKinectRecognizer()
+        {
+            Func<RecognizerInfo, bool> matchingFunc = r =>
+            {
+                string value;
+                r.AdditionalInfo.TryGetValue("Kinect", out value);
+                return "True".Equals(value, StringComparison.InvariantCultureIgnoreCase)
+                    && "en-US".Equals(r.Culture.Name,
+                    StringComparison.InvariantCultureIgnoreCase);
+            };
+            return SpeechRecognitionEngine.InstalledRecognizers().Where(matchingFunc).FirstOrDefault();
+        }
+         * */
+
+        
         public NavigateWindow()
         {
             InitializeComponent();
@@ -85,7 +175,7 @@ namespace StartConnector
             switch (e.Key)
             {
                 // start game
-                case Key.Right:
+                case Key.R:
                     if (null != GameWindow.kinect)
                         GameWindow.kinect.SkeletonFrameReady -= 
                         new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
@@ -112,6 +202,8 @@ namespace StartConnector
                 GameWindow.kinect.SkeletonFrameReady +=
                     new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
                 GameWindow.kinect.Start();
+                //InitAudio();
+
             }
         }
 
@@ -130,13 +222,13 @@ namespace StartConnector
             };
             // if curr.x is less than spine.x - 0.1
             // assign start point
-            Console.WriteLine("x: " + currentGesture.X + "z: " + currentGesture.Z);
-            Console.WriteLine("spine: " + Kernel.spine.Position.Z);
+            //Console.WriteLine("x: " + currentGesture.X + "z: " + currentGesture.Z);
+            //Console.WriteLine("spine: " + Kernel.spine.Position.Z);
             if ((currentGesture.Z < Kernel.spine.Position.Z - 0.7 && currentGesture.Z > Kernel.spine.Position.Z) ||
                 (currentGesture.X > Kernel.spine.Position.X + 0.1)
                 )
             {
-                Console.WriteLine("start point");
+                //Console.WriteLine("start point");
                 startGesture = currentGesture;
                 return;
             }
@@ -159,7 +251,7 @@ namespace StartConnector
                         && (Math.Abs(currentGesture.Z - startGesture.Z) < 0.2)
                        )
                     {
-                        Console.WriteLine("ohyeah");
+                        //Console.WriteLine("ohyeah");
                         // assign current gesture to start
                         startGesture = currentGesture;
 

@@ -407,9 +407,9 @@ namespace StartConnector
                 //firstStart = true;
                 //TimerImage.Source = null;
                 
-                Running = GameStatus.STA_START;
-                Kernel.totalCount = 0;
-                Kernel.getScore = 0;
+                //Running = GameStatus.STA_START;
+                System.Windows.Forms.SendKeys.SendWait("{F1}");
+                
             }
 
             // End game
@@ -431,7 +431,8 @@ namespace StartConnector
 
                 )
             {
-                Running = GameStatus.STA_OVER;
+               // Running = GameStatus.STA_OVER;
+                System.Windows.Forms.SendKeys.SendWait("{V}");
                 //firstStart = false;
             }
 
@@ -605,15 +606,20 @@ namespace StartConnector
                     break;
                 case Key.F1:
                     Running = GameStatus.STA_START;
-                    CountDown.SignalLight();
+                    Kernel.totalCount = 0;
+                    Kernel.getScore = 0;
+                    if (!hashPlayed)
+                        CountDown.SignalLight();
+                    if (hashPlayed && ResultMenu.hasShowed)
+                        ResultPanel.CloseMenu();
                     hashPlayed = true;
                     break;
-                case Key.Escape:
+                case Key.V:
                     Running = GameStatus.STA_OVER;
                     if (hashPlayed && !ResultMenu.hasShowed)
                         ResultPanel.ShowResult();
-                    else if (hashPlayed && ResultMenu.hasShowed)
-                        ResultPanel.CloseMenu();
+                    //else if (hashPlayed && ResultMenu.hasShowed)
+                    //    ResultPanel.CloseMenu();
                     break;
                 default:
                     break;

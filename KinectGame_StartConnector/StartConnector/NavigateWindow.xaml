@@ -6,6 +6,7 @@
                 Navigating="NavigationWindow_Navigating"
                 Source="Menual.xaml"  ResizeMode="NoResize"
                 Loaded="Menual_Loaded"
+                WindowState="Maximized"
                 KeyDown="SwitchStartGame"
                 x:Name="Navigator">
 </NavigationWindow>

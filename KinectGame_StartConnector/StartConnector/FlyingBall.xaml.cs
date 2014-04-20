@@ -44,6 +44,7 @@ namespace StartConnector
         {
             GameWindow.skb.Shake();
             ++Kernel.getScore;
+            ++Kernel.getBallCount;
             GameWindow.scoreText.Content = Kernel.getScore.ToString();
         }
 
