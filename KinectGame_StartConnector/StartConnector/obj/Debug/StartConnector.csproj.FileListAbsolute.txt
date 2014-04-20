@@ -25,8 +25,6 @@ D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\ResultMenu.g.cs
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBottle.baml
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBottle.g.cs
-D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\MTextBlock.baml
-D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\MTextBlock.g.cs
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\CountingDown.baml
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\ShakingBall.baml
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\CountingDown.g.cs

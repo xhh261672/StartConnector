@@ -30,12 +30,14 @@ namespace StartConnector
             hasShowed = true;
             //对静态数据进行修改
 
-            double yourRate = 0.33;
-            double yourScore = 4;
-            double bestScore = 30;
-            double bestCombos = 10;
-            double yourCombos = 3;
-            
+            double yourRate = Kernel.CalcRate();
+            double yourScore = Kernel.getScore;
+            double bestScore = Kernel.bestScore;
+            double bestCombos = Kernel.bestCombos;
+            double yourCombos = Kernel.maxComboCount;
+
+
+            // Content and Text setting
             this.BestScoreNumber.Content = bestScore;
             this.YourScoreNumber.Content = yourScore;
             this.BestCombosNumber.Content = bestCombos;
@@ -44,11 +46,11 @@ namespace StartConnector
 
 
             Storyboard sb = (Storyboard)Resources["ShowResult"];
-            //更改Rate的动画
+            // Rate
             DoubleAnimationUsingKeyFrames yRate = sb.Children[0] as DoubleAnimationUsingKeyFrames;
             yRate.KeyFrames[1].Value = 1023.594 + (yourRate / 1.05) * 293.888;//1217.482;/*value = 
 
-            //更改Score动画
+            // Score
             DoubleAnimationUsingKeyFrames yScoreFornt = sb.Children[1] as DoubleAnimationUsingKeyFrames;
             yScoreFornt.KeyFrames[1].Value = (yourScore / bestScore) * (-558);//-279;/*value=;
             
@@ -67,7 +69,7 @@ namespace StartConnector
             DoubleAnimationUsingKeyFrames yScoreFont = sb.Children[10] as DoubleAnimationUsingKeyFrames;
             yScoreFont.KeyFrames[1].Value = (yourScore / bestScore) * (-576);
             
-            //更改combos动画
+            // Combos
             DoubleAnimationUsingKeyFrames yCombosFornt = sb.Children[2] as DoubleAnimationUsingKeyFrames;
             yCombosFornt.KeyFrames[1].Value = (yourCombos / bestCombos) * (-558);
             
@@ -86,7 +88,7 @@ namespace StartConnector
             DoubleAnimationUsingKeyFrames yCombosFont = sb.Children[12] as DoubleAnimationUsingKeyFrames;
             yCombosFont.KeyFrames[1].Value = (yourCombos / bestCombos) * (-576);
 
-            //播放showRate的动画
+            // ShowRate
             sb.Begin();
 		}
         public void CloseMenu()

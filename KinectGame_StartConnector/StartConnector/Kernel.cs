@@ -114,7 +114,10 @@ namespace StartConnector
 
         public static double CalcRate()
         {
-            return CalcPercentage(getBallCount, totalCount);
+            double rate = CalcPercentage(getBallCount, totalCount);
+            if (Double.IsNaN(rate))
+                rate = 0.0;
+            return rate;
         }
         public static double CalcPercentage(double dividend, double divisor)
         {

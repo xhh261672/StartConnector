@@ -35,25 +35,14 @@
         <local:FlyingBottle x:Name="bottle2" Canvas.Top="203" Canvas.Left="-40"></local:FlyingBottle>
         <local:FlyingBottle x:Name="bottle3" Canvas.Top="221" Canvas.Left="-40"></local:FlyingBottle>
 
-        <local:MTextBlock x:Name="CombosBlock" Height="89" Canvas.Left="774" Canvas.Top="610"/>
+        <!--<local:MTextBlock x:Name="CombosBlock" Height="89" Canvas.Left="774" Canvas.Top="610"/>
         <local:MTextBlock x:Name="ScoreBlock" Canvas.Left="292" Canvas.Top="610" Height="89" />
-        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="610" Height="89" />
-        <local:ShakingBall x:Name="GetPoint" Canvas.Left="1100" Canvas.Top="659" ></local:ShakingBall>
+        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="610" Height="89" />-->
+        <local:ShakingBall x:Name="GetPoint" Canvas.Left="902" Height="74" Width="74" />
         <local:CountingDown x:Name="CountDown" Height="200" Width="200"  Canvas.Left="358" Canvas.Top="185"/>
+        <Label x:Name="ScoreText" x:FieldModifier="public" Content="0" FontSize="54px" FontWeight="Bold" Height="78" Width="127" Canvas.Left="1002" Canvas.Top="-13"></Label>
 
-
-        <!--<TextBox x:Name="ScoreText"
-                 Text=" 0/ 0"
-                 Background="Transparent"
-                 BorderThickness="0"
-                 Width="281" 
-                 Height="96" 
-                 FontSize="60"
-                 FontStretch="UltraExpanded"
-                 FontWeight="ExtraBold"
-                 FontFamily="Monaco"
-                 IsReadOnly="True" Canvas.Right="20" Canvas.Top="635" Canvas.Left="692" RenderTransformOrigin="0.486,0.279" 
-                 />-->
+        
 
         <local:FlyingBall x:Name="LeftBall" Canvas.Top="221" Canvas.Left="-40"/>
         <local:FlyingBall x:Name="ObliqueLeftBall" Canvas.Top="221" Canvas.Left="-40"/>

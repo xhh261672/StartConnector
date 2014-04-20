@@ -3,30 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NavigateWindow" Height="720" Width="1200"
                 ShowsNavigationUI="False"
-                WindowState="Maximized"
                 Navigating="NavigationWindow_Navigating"
                 Source="Menual.xaml"  ResizeMode="NoResize"
                 Loaded="Menual_Loaded"
                 KeyDown="SwitchStartGame"
                 x:Name="Navigator">
-    
-    <!--<Canvas>
-        <Canvas.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Height" Value="60"></Setter>
-                <Setter Property="Width" Value="180"></Setter>
-                <Setter Property="FontFamily" Value="Microsoft Yahei"></Setter>
-                <Setter Property="Background" Value="White"></Setter>
-                <Setter Property="BorderBrush" Value="Black"></Setter>
-                <Setter Property="BorderThickness" Value="6"></Setter>
-                <Setter Property="FontSize" Value="32"></Setter>
-                <Setter Property="FontWeight" Value="ExtraBold"></Setter>
-            </Style>
-        </Canvas.Resources>
-        <Button x:Name="Help"  Content="Help" Canvas.Left="759" Canvas.Top="515"
-                ></Button>
-        <Button x:Name="Start" Content="Start" Canvas.Left="264" Canvas.Top="515"
-                Click="SwitchToStartWindow"></Button>
-
-    </Canvas>-->
 </NavigationWindow>

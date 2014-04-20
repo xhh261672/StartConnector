@@ -115,6 +115,65 @@ namespace StartConnector
             }
         }
 
+        GesturePoint currentGesture, startGesture;
+        int swipeTime = 1000;
+
+        public void TrackingSwipeGesture(SkeletonPoint currentPoint)
+        {
+            //get current
+            currentGesture = new GesturePoint()
+            {
+                X = currentPoint.X,
+                Y = currentPoint.Y,
+                Z = currentPoint.Z,
+                T = DateTime.Now
+            };
+            // if curr.x is less than spine.x - 0.1
+            // assign start point
+            Console.WriteLine("x: " + currentGesture.X + "z: " + currentGesture.Z);
+            Console.WriteLine("spine: " + Kernel.spine.Position.Z);
+            if ((currentGesture.Z < Kernel.spine.Position.Z - 0.7 && currentGesture.Z > Kernel.spine.Position.Z) ||
+                (currentGesture.X > Kernel.spine.Position.X + 0.1)
+                )
+            {
+                Console.WriteLine("start point");
+                startGesture = currentGesture;
+                return;
+            }
+            // valid gesture range
+                //Console.WriteLine("1");
+                //Console.WriteLine("2");
+            if (((currentGesture.Y > Kernel.hipCenter.Position.Y && currentGesture.Y < Kernel.head.Position.Y))
+            && (currentGesture.Z > Kernel.spine.Position.Z - 0.7 && currentGesture.Z < Kernel.spine.Position.Z)
+            && (currentGesture.X < Kernel.spine.Position.X + 0.4 || currentGesture.X > Kernel.spine.Position.X - 0.1))
+            {
+              //  Console.WriteLine("3");
+                // valid time duration
+                if ((currentGesture.T - startGesture.T).Milliseconds <= swipeTime)
+                {
+                    //judge gesture
+                    // seccussful gesture
+                   // Console.WriteLine("ohyeah");
+                    if ((currentGesture.X - startGesture.X > -1 && currentGesture.X - startGesture.X < -0.6)
+                        && (Math.Abs(currentGesture.Y - startGesture.Y) < 0.3)
+                        && (Math.Abs(currentGesture.Z - startGesture.Z) < 0.2)
+                       )
+                    {
+                        Console.WriteLine("ohyeah");
+                        // assign current gesture to start
+                        startGesture = currentGesture;
+
+                        // do things you want
+                        GameWindow.kinect.SkeletonFrameReady -=
+                        new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
+                        GameWindow gameWindow = new GameWindow();
+                        gameWindow.Show();
+                        (this as Window).Close();
+                    }
+                }
+            }
+        }
+
         private void SkeletonFrame_Ready(object sender,
             SkeletonFrameReadyEventArgs e)
         {
@@ -134,37 +193,34 @@ namespace StartConnector
                     if (null != skeleton)
                     {
                         //GameWindowCanvas.Visibility = Visibility.Visible;
-                        ProcessGesture(skeleton);
+                        StartGameGesture(skeleton);
                     }
                 }
             }
         }
 
-        private void ProcessGesture(Skeleton s)
+        private void StartGameGesture(Skeleton s)
         {
             // Recognize Joints
-            Joint leftHand = (from j in s.Joints
+            Kernel.leftHand = (from j in s.Joints
                               where j.JointType == JointType.HandLeft
                               select j).FirstOrDefault();
-            Joint rightHand = (from j in s.Joints
+            Kernel.rightHand = (from j in s.Joints
                                where j.JointType == JointType.HandRight
                                select j).FirstOrDefault();
-            Joint head = (from j in s.Joints
+            Kernel.head = (from j in s.Joints
                           where j.JointType == JointType.Head
                           select j).FirstOrDefault();
-            Joint hipCenter = (from j in s.Joints
-                               where j.JointType == JointType.HipCenter
+            Kernel.spine = (from j in s.Joints
+                            where j.JointType == JointType.Spine
                                select j).FirstOrDefault();
-            Console.WriteLine((rightHand.Position.X > 0.2 + leftHand.Position.X));
-            if (rightHand.Position.X > leftHand.Position.X + 0.3)
-            {
-                GameWindow.kinect.SkeletonFrameReady -=
-                        new EventHandler<SkeletonFrameReadyEventArgs>(SkeletonFrame_Ready);
-                GameWindow gameWindow = new GameWindow();
-                gameWindow.Show();
-                (this as Window).Close();
 
-            }
+            TrackingSwipeGesture(Kernel.leftHand.Position);
+            //Console.WriteLine((Kernel.rightHand.Position.X > 0.2 + Kernel.leftHand.Position.X));
+            //if (Kernel.rightHand.Position.X > Kernel.leftHand.Position.X + 0.3)
+            //{
+                
+            //}
         }
 
         private bool _allowDirectNavigation = false;

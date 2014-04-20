@@ -87,7 +87,9 @@ namespace StartConnector
 
         private void reduceScore()
         {
+            GameWindow.skb.Shake();
             --Kernel.getScore;
+            GameWindow.scoreText.Content = Kernel.getScore.ToString();
         }
 
         public void updateBottleState()

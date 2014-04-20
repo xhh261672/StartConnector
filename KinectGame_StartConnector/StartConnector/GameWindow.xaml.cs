@@ -57,7 +57,7 @@ namespace StartConnector
         //static BitmapImage playerCatch = new BitmapImage(new Uri(@"Images/player2.png", UriKind.Relative));
         static BitmapImage gameOverImg = new BitmapImage(new Uri(@"Images/gameover.png", UriKind.Relative));
 
-
+        public static Label scoreText = new Label();
         public static int playerAngle = 2;
         //public static int sleepTime = 100;
 
@@ -98,6 +98,7 @@ namespace StartConnector
             //CombosBlock.Number.Text = "0";
             //SkillBlock.Content.Text = "Skill: ";
             //SkillBlock.Number.Text = "0";
+            scoreText = ScoreText;
             skb = GetPoint;
             //balls.
             for (int i = 0; i < 5; i++)
@@ -174,9 +175,9 @@ namespace StartConnector
 
         private void SetBlockText()
         {
-            ScoreBlock.Content.Text = "Score: ";
-            ScoreBlock.Content.Text = "Score: ";
-            ScoreBlock.Content.Text = "Score: ";
+            //ScoreBlock.Content.Text = "Score: ";
+            //ScoreBlock.Content.Text = "Score: ";
+            //ScoreBlock.Content.Text = "Score: ";
 
         }
 
@@ -317,7 +318,7 @@ namespace StartConnector
         int swipeTime = 1000;
         /******************************
          * Hand Guesture Variables */
-
+        
 
 
         /********************************* Swipe Event ****************************************/
@@ -356,7 +357,6 @@ namespace StartConnector
                     {
                         startGesture = currentGesture;
                         removeAllBottles();
-                        //Console.WriteLine("TEAH!!!!!!!!!");
                     }
                 }
             }
