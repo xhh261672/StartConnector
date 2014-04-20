@@ -14,11 +14,11 @@
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ScoreFornt">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yScoreFront" Value="-279"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yScoreFornt" Value="-279"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CombosFornt">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yCombosFront" Value="-558"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" x:Name="yCombosFornt" Value="-558"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="YourScorePoint">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
@@ -69,7 +69,18 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-868"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Storyboard x:Key="CloseMenu">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Result">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-868.926"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 	</UserControl.Resources>
+	<!--<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+		</EventTrigger>
+	</UserControl.Triggers>-->
 	<!--<UserControl.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard x:Name="ShowMenu_BeginStoryboard" Storyboard="{StaticResource ShowMenu}"/>
@@ -77,9 +88,7 @@
 			<BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
 		</EventTrigger>
 	</UserControl.Triggers>-->
-    <Canvas x:Name="Result" Background="#e8e8e8" Opacity="0.9"
-            Height="720px" Width="860px" HorizontalAlignment="Right"
-            RenderTransformOrigin="0.5,0.5" Margin="0,0,-868,0">
+    <Canvas x:Name="Result" Background="#e8e8e8" Height="720px" Width="860px" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Margin="0,0,-868,0">
     	<Canvas.RenderTransform>
     		<TransformGroup>
     			<ScaleTransform/>
@@ -117,7 +126,7 @@
         		</TransformGroup>
         	</Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="ScoreFront" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="363" Width="4" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="ScoreFornt" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="363" Width="4" RenderTransformOrigin="0.5,0.5">
         	<Rectangle.RenderTransform>
         		<TransformGroup>
         			<ScaleTransform/>
@@ -127,7 +136,7 @@
         		</TransformGroup>
         	</Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="CombosFront" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="488.5" Width="4" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="CombosFornt" Fill="#e8e8e8" Height="35.96" Canvas.Left="692" Stroke="#e8e8e8" Canvas.Top="488.5" Width="4" RenderTransformOrigin="0.5,0.5">
         	<Rectangle.RenderTransform>
         		<TransformGroup>
         			<ScaleTransform/>
@@ -220,6 +229,6 @@
 			</Path.Fill>
 		</Path>
 		<Label Content="Rate :" Height="40" Canvas.Left="255" Canvas.Top="164.967" Width="86" FontSize="26" Foreground="#939598"/>
-		<Label Content="105%" Height="39" Canvas.Left="331" Canvas.Top="167" Width="76" FontSize="24"/>
+		<Label x:Name="RatValue"  Content="105%" Height="39" Canvas.Left="331" Canvas.Top="167" Width="76" FontSize="24"/>
     </Canvas>
 </UserControl>

@@ -6,8 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="400" Height="100">
     <Canvas x:Name="Layout">
-    	<TextBlock x:Name="Content" x:FieldModifier="public" TextWrapping="Wrap" Height="100" Width="241" FontSize="72"/>
-    	<TextBlock x:Name="Number" x:FieldModifier="public" Canvas.Left="241" TextWrapping="Wrap" Height="100" Width="159" FontSize="72">
+    	<TextBlock x:Name="Content" TextWrapping="Wrap" Height="100" Width="241" FontSize="72"/>
+    	<TextBlock x:Name="Number" Canvas.Left="241" TextWrapping="Wrap" Height="100" Width="159" FontSize="72">
             <Run Language="zh-cn" Text="&#x9;"/>
         </TextBlock>
         <Image x:Name="Icon" x:FieldModifier="public"  Height="100" Width="100"/>

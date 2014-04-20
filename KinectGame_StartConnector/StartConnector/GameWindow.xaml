@@ -35,11 +35,9 @@
         <local:FlyingBottle x:Name="bottle2" Canvas.Top="203" Canvas.Left="-40"></local:FlyingBottle>
         <local:FlyingBottle x:Name="bottle3" Canvas.Top="221" Canvas.Left="-40"></local:FlyingBottle>
 
-        <local:MTextBlock x:Name="CombosBlock" 
-                          Height="89" Canvas.Left="774" Canvas.Top="610">
-        </local:MTextBlock>
-        <local:MTextBlock x:Name="ScoreBlock" Canvas.Left="292" Canvas.Top="610" Height="89" ></local:MTextBlock>
-        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="610" Height="89" ></local:MTextBlock>
+        <local:MTextBlock x:Name="CombosBlock" Height="89" Canvas.Left="774" Canvas.Top="610"/>
+        <local:MTextBlock x:Name="ScoreBlock" Canvas.Left="292" Canvas.Top="610" Height="89" />
+        <local:MTextBlock x:Name="SkillBlock" Canvas.Left="-180" Canvas.Top="610" Height="89" />
         <local:ShakingBall x:Name="GetPoint" Canvas.Left="1100" Canvas.Top="659" ></local:ShakingBall>
         <local:CountingDown x:Name="CountDown" Height="200" Width="200"  Canvas.Left="358" Canvas.Top="185"/>
 

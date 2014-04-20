@@ -34,8 +34,8 @@ namespace StartConnector
         bool isObliqueRight = false;
         bool isObliqueLeft = false;
         //bool timerImgZomIn = false;
-        bool firstStart = false;
-        bool hashPlayerd = false;
+        //bool firstStart = false;
+        bool hashPlayed = false;
         bool runBackWorker = true;
 
         //int timerImgCount = 3;
@@ -62,7 +62,7 @@ namespace StartConnector
         //public static int sleepTime = 100;
 
 
-        public static ShakingBall skb = new ShakingBall();
+       public static ShakingBall skb = new ShakingBall();
         //Timer countDownTimer;
 
         public GameWindow()
@@ -84,7 +84,7 @@ namespace StartConnector
             RunBackWorker();
 
             // regist keydown event to control angle of player's orientation
-            //this.KeyDown += new KeyEventHandler(this.controlPlayerAngle);
+            //this.KeyDown += new KeyEventHandler(this.controlPlayer);
             //CountDown.SignalLight();
         }
 
@@ -92,12 +92,12 @@ namespace StartConnector
 
         private void InitObjectsData()
         {
-            ScoreBlock.Content.Text = "Score: ";
-            ScoreBlock.Number.Text = "0";
-            CombosBlock.Content.Text = "Combo: ";
-            CombosBlock.Number.Text = "0";
-            SkillBlock.Content.Text = "Skill: ";
-            SkillBlock.Number.Text = "0";
+            //ScoreBlock.Content.Text = "Score: ";
+            //ScoreBlock.Number.Text = "0";
+            //CombosBlock.Content.Text = "Combo: ";
+            //CombosBlock.Number.Text = "0";
+            //SkillBlock.Content.Text = "Skill: ";
+            //SkillBlock.Number.Text = "0";
             skb = GetPoint;
             //balls.
             for (int i = 0; i < 5; i++)
@@ -182,15 +182,13 @@ namespace StartConnector
 
         private void Rendering(object sender, EventArgs e)
         {
-            //Console.WriteLine("Rendering");
             if (Running == GameStatus.STA_START && isRendering)
             {
                 isRendering = false;
 
                 // Timer : wait 3 seconds to start game
-                if (startGameCount < 30)
+                if (startGameCount <= 30)
                     startGameCount++;
-                
                 else
                 {
                     GenerateObject();
@@ -215,8 +213,8 @@ namespace StartConnector
             }
             else if (Running == GameStatus.STA_OVER)
             {
-                ScoreBlock.Number.Text = Kernel.getScore.ToString();
-                CombosBlock.Number.Text = Kernel.maxComboCount.ToString();
+               // ScoreBlock.Number.Text = Kernel.getScore.ToString();
+               // CombosBlock.Number.Text = Kernel.maxComboCount.ToString();
 
                 //TimerImage.Source = gameOverImg;
                 //TimerImage.Opacity = 1.0;
@@ -403,10 +401,10 @@ namespace StartConnector
                    Math.Abs(Kernel.rightHand.Position.Y - Kernel.leftHand.Position.Y) < 0.3
                 && Math.Abs(Kernel.rightHand.Position.Z - Kernel.leftHand.Position.Z) < 0.3
                 && Kernel.rightHand.Position.X - Kernel.leftHand.Position.X > 1.3
-                && !firstStart
+                
                 )
             {
-                firstStart = true;
+                //firstStart = true;
                 //TimerImage.Source = null;
                 
                 Running = GameStatus.STA_START;
@@ -434,7 +432,7 @@ namespace StartConnector
                 )
             {
                 Running = GameStatus.STA_OVER;
-                firstStart = false;
+                //firstStart = false;
             }
 
             // most right and left
@@ -608,12 +606,14 @@ namespace StartConnector
                 case Key.F1:
                     Running = GameStatus.STA_START;
                     CountDown.SignalLight();
-                    hashPlayerd = true;
+                    hashPlayed = true;
                     break;
                 case Key.Escape:
                     Running = GameStatus.STA_OVER;
-                    if (hashPlayerd)
+                    if (hashPlayed && !ResultMenu.hasShowed)
                         ResultPanel.ShowResult();
+                    else if (hashPlayed && ResultMenu.hasShowed)
+                        ResultPanel.CloseMenu();
                     break;
                 default:
                     break;
