@@ -1,0 +1,3 @@
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\Start_Connector_Setup\bin\Debug\cab1.cab
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\Start_Connector_Setup\bin\Debug\Start_Connector_Setup.msi
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\Start_Connector_Setup\bin\Debug\Start_Connector_Setup.wixpdb

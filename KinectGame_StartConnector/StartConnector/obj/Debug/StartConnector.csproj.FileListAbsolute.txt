@@ -29,3 +29,33 @@ D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\ShakingBall.baml
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\CountingDown.g.cs
 D:\Code\C#\ConsoleApplication\KinectGame_StartConnector\StartConnector\obj\Debug\ShakingBall.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe.config
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.exe
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.pdb
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.exe
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\bin\Debug\StartConnector.pdb
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\CountingDown.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBall.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBottle.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\Menual.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\NavigateWindow.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\Player.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\ResultMenu.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\ShakingBall.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\CountingDown.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBall.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\FlyingBottle.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\GameWindow.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\Menual.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\NavigateWindow.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\Player.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\ResultMenu.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\ShakingBall.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\App.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.cache
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector_MarkupCompile.lref
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\GameWindow.baml
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.g.resources
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.Properties.Resources.resources
+D:\Documents\Visual Studio 2013\Projects\leftBall\KinectGame_StartConnector\StartConnector\obj\Debug\StartConnector.csproj.GenerateResource.Cache

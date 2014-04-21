@@ -31,7 +31,7 @@ namespace StartConnector
         public int getBest(string temp)
         {
             int bestscore = 0;
-            FileStream F = new FileStream(temp + ".dat", FileMode.OpenOrCreate, FileAccess.Read);
+            FileStream F = new FileStream(@"C:\ProgramData\StartConnecor\" + temp + ".dat", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader sr = new StreamReader(F, System.Text.Encoding.UTF8);
             string bestValue = sr.ReadLine();
             if (bestValue != null)
@@ -45,7 +45,7 @@ namespace StartConnector
         }
         public void setBest(int bestscore, string temp)
         {
-            FileStream F = new FileStream(temp + ".dat", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream F = new FileStream(@"C:\ProgramData\StartConnecor\" + temp + ".dat", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter st = new StreamWriter(F, System.Text.Encoding.UTF8);
             st.WriteLine(bestscore.ToString());
             st.Flush();

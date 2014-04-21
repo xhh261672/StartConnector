@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="*" Name="Start_Connector_Setup" Language="1033" Version="1.0.0.0" Manufacturer="Soccer Rush" UpgradeCode="2730cf4d-3b28-4e5d-821a-19ee0e654fb9">
+    <Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="StartConnectorSetup" Level="1">
+      <ComponentRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut"/>
+      <ComponentRef Id="DesktopFolderShortcut"/>
+    </Feature>
+    <Property Id="WIXUI_INSTALLDIR" Value="TESTFILEPRODUCTDIR" />
+
+    <UI>
+      <UIRef Id="WixUI_InstallDir"/>
+    </UI>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+        <Directory Id="TESTFILEPRODUCTDIR" Name="Start Connector"/>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="StartConnector"/>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="TESTFILEPRODUCTDIR">
+      <Component Id="ProductComponents" Guid="*">
+        <File Id="StartConnector.exe"  Source="$(var.StartConnector.TargetPath)" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="*">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Start Connector"
+                     Icon="StartConnector.exe"
+                  Description="my first application installed by wix"
+                  Target="[TESTFILEPRODUCTDIR]StartConnector.exe"
+                  WorkingDirectory="TESTFILEPRODUCTDIR">
+          <Icon Id="StartConnector.exe" SourceFile="content/MyIcon.ico"/>
+        </Shortcut>
+        <Shortcut Id="UninstallProduct"
+                          Name="Uninstall"
+                          Description="Uninstalls My Application"
+                          Target="[SystemFolder]msiexec.exe"
+                          Arguments="/x [ProductCode]" />
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopFolderShortcut" Guid="5F581D64-8276-4C06-BB52-070CA887CD28">
+        <Shortcut Id="DesktopShortcut" Directory="DesktopFolder"   Name="Start Connector" Target="[TESTFILEPRODUCTDIR]StartConnector.exe"  WorkingDirectory="TESTFILEPRODUCTDIR" Icon="FuckWPFDesktop.exe">
+          <Icon Id="FuckWPFDesktop.exe" SourceFile="content/MyIcon.ico"/>
+        </Shortcut>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

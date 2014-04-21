@@ -24,7 +24,7 @@ namespace StartConnector
     using System.IO;
     public partial class NavigateWindow : NavigationWindow
     {
-        KinectAudioSource audioSource;
+       // KinectAudioSource audioSource;
         
         
         /*
@@ -115,6 +115,9 @@ namespace StartConnector
         public NavigateWindow()
         {
             InitializeComponent();
+            string dataDir = @"C:\ProgramData\StartConnecor\";
+            if (!Directory.Exists(dataDir))
+                Directory.CreateDirectory(dataDir);
         }
        
         private void NavigationWindow_Navigating(object sender, NavigatingCancelEventArgs e)
